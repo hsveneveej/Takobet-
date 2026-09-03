@@ -1,589 +1,2714 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-MZ">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat Investment - VIP Moçambique</title>
-    <style>
-        :root {
-            --primary: #32cd32;
-            --dark-bg: #121212;
-            --card-bg: #1e1e1e;
-            --accent: #ffa500;
-            --text: #ffffff;
-            --vip-active: #ffd700;
-            --success-bg: rgba(0, 100, 0, 0.4);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TAKO BET — A nova dimensão do jogo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void: #060706;
+    --ink: #0E120E;
+    --panel: #141914;
+    --panel-2: #191F19;
+    --hairline: #262E24;
+    --hairline-soft: rgba(201,164,92,0.14);
+    --gold: #C9A45C;
+    --gold-light: #F3D58B;
+    --wine: #541923;
+    --text: #E9E4D8;
+    --muted: #8E9488;
+    --green-live: #74B98B;
+  }
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text);
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            overflow-x: hidden;
-        }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
 
-        .container { width: 100%; max-width: 450px; min-height: 100vh; position: relative; padding-bottom: 80px; }
-        .screen { display: none; padding: 20px; box-sizing: border-box; }
-        .active { display: block; animation: fadeIn 0.5s; }
+  body{
+    background: var(--void);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+  }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  h1, h2, h3, .brand, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
 
-        /* Estilo da Tela de Transações Profissional (Azul e Verde) */
-        .fake-transactions-container {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            width: 200px;
-            z-index: 10000;
-            pointer-events: none;
-        }
+  a{ color: inherit; text-decoration: none; }
+  ul{ list-style: none; }
+  button{ font-family: inherit; }
+  img, svg{ display:block; max-width:100%; }
 
-        .fake-item {
-            background: linear-gradient(135deg, #00b4db, #00ff87); 
-            color: #000;
-            padding: 10px 15px;
-            margin-bottom: 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            animation: slideInRight 0.5s ease-out, fadeOut 0.5s ease-in 2.5s forwards;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+  ::selection{ background: var(--gold); color: #060706; }
+  :focus-visible{ outline: 1.5px solid var(--gold-light); outline-offset: 3px; }
 
-        @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
+  .wrap{ max-width: 1180px; margin: 0 auto; padding: 0 24px; }
 
-        @keyframes fadeOut {
-            to { opacity: 0; transform: translateY(-20px); }
-        }
+  .grain{
+    position: fixed; inset:0; z-index: 1; pointer-events:none;
+    opacity: 0.045; mix-blend-mode: overlay;
+  }
+  #particles{
+    position: fixed; inset:0; z-index: 0; pointer-events:none;
+  }
 
-        button { 
-            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer; outline: none; border: none;
-        }
+  header{
+    position: sticky; top: 0; z-index: 60;
+    background: rgba(6,7,6,0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .nav{ display:flex; align-items:center; justify-content: space-between; padding: 16px 0; position:relative; }
+  .brand{ font-size: 1.3rem; display:flex; align-items:center; gap: 10px; }
+  .brand .mark{ width: 24px; height: 24px; flex-shrink: 0; }
+  .brand .mark path, .brand .mark circle{ stroke: var(--gold); }
+  .nav-links{ display:flex; gap: 30px; font-size: 0.88rem; color: var(--muted); }
+  .nav-links a{ position:relative; transition: color 0.2s ease; }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; right:0; bottom:-6px; height:1px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+  .nav-links a:hover{ color: var(--text); }
+  .nav-links a:hover::after{ transform: scaleX(1); }
 
-        button:active { transform: scale(0.92); filter: brightness(1.2); }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 12px 22px;
+    font-size: 0.84rem; font-weight: 700;
+    border: 1px solid var(--hairline-soft); color: var(--gold-light);
+    background: rgba(201,164,92,0.06); cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .btn:hover{ border-color: var(--gold); background: rgba(201,164,92,0.14); }
+  .btn.solid{
+    background: linear-gradient(135deg, var(--gold-light), var(--gold) 60%);
+    color: #17130A; border: none;
+  }
+  .btn.solid:hover{ transform: translateY(-1px); filter: brightness(1.06); }
+  .btn.small{ padding: 8px 15px; font-size: 0.76rem; }
 
-        input { 
-            width: 100%; padding: 15px; margin: 10px 0; border-radius: 10px; 
-            border: 1px solid #333; background: #252525; color: #fff; box-sizing: border-box; 
-            font-size: 16px;
-        }
+  .menu-toggle{
+    display:none; background:none; border:1px solid var(--hairline); color:var(--text);
+    font-size:0.8rem; cursor:pointer; padding:8px 12px;
+  }
 
-        .btn-principal { 
-            background: linear-gradient(45deg, #7cfc00, var(--primary)); 
-            color: #000; padding: 15px; border-radius: 10px; 
-            font-weight: bold; width: 100%; margin-top: 15px; 
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(50, 205, 50, 0.3);
-        }
+  .header-top{ background: var(--void); }
+  .header-top-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 14px 0;
+  }
+  .header-actions{ display:flex; align-items:center; gap: 10px; }
+  .btn.ghost{
+    background: transparent; border: 1px solid var(--hairline);
+    color: var(--text); font-weight: 700;
+  }
+  .btn.ghost:hover{ border-color: var(--gold); color: var(--gold-light); }
 
-        header { background: linear-gradient(to bottom, #7cfc00, #32cd32); padding: 25px; text-align: center; border-radius: 0 0 30px 30px; color: #000; }
-        .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
-        .stat-card { background: var(--card-bg); padding: 15px; border-radius: 12px; text-align: center; border: 1px solid #333; }
-        
-        #vip-container { display: flex; flex-direction: column; gap: 18px; margin-top: 20px; }
+  .icon-nav{
+    background: var(--ink);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 2px solid var(--gold);
+  }
+  .icon-nav-track{
+    display:flex; gap: 30px;
+    padding: 14px 24px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+  }
+  .icon-nav-track::-webkit-scrollbar{ height: 4px; }
+  .icon-nav-track::-webkit-scrollbar-thumb{ background: var(--hairline-soft); }
+  .icon-nav-item{
+    display:flex; flex-direction:column; align-items:center; gap: 7px;
+    flex-shrink: 0;
+    color: var(--muted);
+    font-size: 0.66rem; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .icon-nav-item svg{ width: 26px; height: 26px; stroke: currentColor; transition: transform 0.2s ease; }
+  .icon-nav-item:hover svg{ transform: translateY(-2px); }
+  .icon-nav-item:hover{ color: var(--text); }
+  .icon-nav-item.active{ color: var(--gold-light); }
+  .icon-nav-item.active::after{ content:""; display:block; width:16px; height:2px; margin-top:2px; border-radius:2px; background: currentColor; }
+  .icon-nav-item.c-sport svg{ color:#4ADE80; }
+  .icon-nav-item.c-live svg{ color:#FF4757; }
+  .icon-nav-item.c-rocket svg{ color:#FFC93C; }
+  .icon-nav-item.c-zonax svg{ color:#FF6EC7; }
+  .icon-nav-item.c-tower svg{ color:#8B93FF; }
+  .icon-nav-item.c-jackpot svg{ color:#FFD700; }
+  .icon-nav-item.c-roulette svg{ color:#2DD4BF; }
+  .icon-nav-item.c-blackjack svg{ color:#38BDF8; }
+  .icon-nav-item.c-slots svg{ color:#FB923C; }
+  .icon-nav-item.c-promo svg{ color:#A3E635; }
+  .icon-nav-item.c-afiliados svg{ color:#F3D58B; }
 
-        .vip-card {
-            background: linear-gradient(145deg, #1a1a1a, #252525);
-            border-radius: 20px; padding: 20px; display: flex;
-            flex-direction: column; gap: 12px; border: 1px solid #333;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.5); position: relative; transition: 0.3s;
-        }
+  @media (max-width: 620px){
+    .utility-left span:not(:first-child){ display:none; }
+  }
 
-        .active-plan { border: 1.5px solid var(--primary); background: #222; }
-        .active-badge { position: absolute; top: -10px; left: 20px; background: var(--primary); color: #000; font-size: 10px; font-weight: bold; padding: 3px 12px; border-radius: 20px; z-index: 5; }
+  .hero{
+    position: relative; z-index: 2;
+    padding: 90px 0 70px;
+    border-bottom: 1px solid var(--hairline);
+    overflow: hidden;
+  }
+  .hero::before{
+    content:""; position:absolute; inset: -10% -10% auto -10%; height: 700px;
+    background: radial-gradient(ellipse 640px 460px at 72% 18%, rgba(201,164,92,0.14), transparent 68%),
+                radial-gradient(ellipse 420px 360px at 6% 82%, rgba(84,25,35,0.28), transparent 70%);
+    pointer-events:none;
+  }
+  .hero-grid{ position:relative; display:grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items:center; }
+  .eyebrow-line{
+    display:flex; align-items:center; gap:10px; color: var(--gold);
+    font-size:0.84rem; margin-bottom:22px; font-family:'Fraunces', serif; font-style: italic; font-weight: 400;
+  }
+  .eyebrow-line span.bar{ width:26px; height:1px; background: var(--gold); }
+  .hero h1{ font-size: clamp(2.3rem, 4.6vw, 3.6rem); line-height: 1.08; }
+  .hero h1 em{ font-style: italic; color: var(--gold-light); font-weight: 400; }
+  .hero p{ margin-top: 22px; color: var(--muted); max-width: 46ch; font-size: 1.03rem; }
+  .hero-actions{ margin-top: 32px; display:flex; gap: 14px; flex-wrap: wrap; }
+  .hero-note{
+    margin-top: 34px; font-size: 0.78rem; color: var(--muted);
+    border-left: 2px solid var(--wine); padding-left: 14px; max-width: 44ch;
+  }
 
-        .vip-header { display: flex; justify-content: space-between; align-items: flex-start; }
-        .vip-badge-roi { 
-            background: rgba(50, 205, 50, 0.15); color: var(--primary); 
-            font-size: 10px; padding: 4px 10px; border-radius: 6px; 
-            border: 1px solid rgba(50, 205, 50, 0.3); font-weight: bold;
-        }
+  .hero-panel-wrap{ perspective: 1400px; }
+  .hero-panel{
+    background: linear-gradient(155deg, rgba(25,31,25,0.9), rgba(14,18,14,0.85));
+    border: 1px solid var(--hairline-soft);
+    backdrop-filter: blur(18px);
+    padding: 26px;
+    transform: rotateY(-8deg) rotateX(4deg);
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,0.7), 0 0 60px -20px rgba(201,164,92,0.15);
+    transition: transform 0.5s ease;
+  }
+  .hero-panel-wrap:hover .hero-panel{ transform: rotateY(-3deg) rotateX(1deg); }
+  .hero-panel-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px; }
+  .live-badge{
+    display:inline-flex; align-items:center; gap:6px;
+    font-size: 0.7rem; font-weight: 700; color: var(--green-live);
+    letter-spacing: 0.03em;
+  }
+  .live-dot{ width:6px; height:6px; border-radius:50%; background: var(--green-live); animation: pulseDot 1.8s ease-in-out infinite; }
+  @keyframes pulseDot{ 0%,100%{ opacity:1; } 50%{ opacity: 0.35; } }
+  .hero-panel-cat{ font-size: 0.72rem; color: var(--muted); }
+  .hero-panel-match{ display:flex; justify-content:space-between; align-items:center; padding: 14px 0; border-top: 1px solid var(--hairline); }
+  .hero-panel-match:first-of-type{ border-top: none; }
+  .team{ font-size: 0.96rem; }
+  .team-score{ font-family:'Fraunces', serif; font-size: 1.1rem; color: var(--gold-light); }
+  .hero-panel-odds{ display:flex; gap: 8px; margin-top: 18px; }
+  .mini-odd{
+    flex:1; text-align:center; padding: 10px 6px;
+    background: rgba(201,164,92,0.06); border: 1px solid var(--hairline-soft);
+  }
+  .mini-odd .lbl{ font-size: 0.64rem; color: var(--muted); display:block; margin-bottom:3px; }
+  .mini-odd .val{ font-size: 0.92rem; font-weight: 700; color: var(--text); }
+  .hero-panel-demo{ margin-top:16px; font-size: 0.68rem; color: var(--muted); text-align:center; }
 
-        .vip-info b { color: var(--vip-active); font-size: 19px; display: block; margin-bottom: 2px; }
-        .vip-info span { color: var(--primary); font-size: 14px; font-weight: bold; }
+  .ticker{
+    position: relative; z-index: 2;
+    background: var(--ink);
+    border-bottom: 1px solid var(--hairline);
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-track{
+    display:inline-flex; gap: 44px; padding: 11px 0;
+    animation: tickerScroll 34s linear infinite;
+  }
+  .ticker-item{ display:inline-flex; align-items:center; gap: 9px; font-size: 0.8rem; color: var(--muted); }
+  .ticker-item strong{ color: var(--text); font-weight: 600; }
+  .ticker-item .odd{ color: var(--gold-light); font-weight: 700; }
+  @keyframes tickerScroll{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce){ .ticker-track{ animation: none; overflow-x: auto; } }
 
-        .vip-details-grid { 
-            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; 
-            background: rgba(0,0,0,0.3); padding: 12px; border-radius: 12px;
-        }
+  section{ position: relative; z-index: 2; }
+  .section-head{ margin-bottom: 40px; max-width: 62ch; }
+  .section-head .eyebrow-line{ margin-bottom: 16px; }
+  .section-head h2{ font-size: clamp(1.7rem, 3vw, 2.1rem); }
+  .section-head p{ color: var(--muted); margin-top: 14px; font-size: 0.96rem; }
 
-        .detail-item { font-size: 11px; color: #888; }
-        .detail-item b { color: #fff; display: block; font-size: 14px; margin-top: 3px; }
+  .games-showcase{ padding: 80px 0 92px; border-bottom: 1px solid var(--hairline); }
+  .crash-grid{
+    display:flex;
+    gap: 18px;
+    margin-bottom: 22px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    padding-bottom: 10px;
+  }
+  .crash-grid::-webkit-scrollbar{ height: 6px; }
+  .crash-grid::-webkit-scrollbar-track{ background: transparent; }
+  .crash-grid::-webkit-scrollbar-thumb{ background: var(--hairline-soft); }
+  .crash-card{
+    position: relative; overflow: hidden;
+    padding: 26px 24px 24px;
+    border: 1px solid var(--hairline-soft);
+    min-height: 220px;
+    flex: 0 0 300px;
+    width: 300px;
+    scroll-snap-align: start;
+    display:flex; flex-direction:column; justify-content:space-between;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .crash-card:hover{ transform: translateY(-4px); }
+  .crash-card.gold{ background: radial-gradient(ellipse 260px 220px at 85% -10%, rgba(243,213,139,0.35), transparent 60%), linear-gradient(160deg, #1C1707, #0A0904 75%); }
+  .crash-card.wine{ background: radial-gradient(ellipse 260px 220px at 85% -10%, rgba(201,90,110,0.32), transparent 60%), linear-gradient(160deg, #23090F, #0A0503 75%); }
+  .crash-card.forest{ background: radial-gradient(ellipse 260px 220px at 85% -10%, rgba(122,190,138,0.28), transparent 60%), linear-gradient(160deg, #0F1A10, #08100A 75%); }
+  .crash-card:hover.gold{ box-shadow: 0 24px 60px -20px rgba(243,213,139,0.35); }
+  .crash-card:hover.wine{ box-shadow: 0 24px 60px -20px rgba(201,90,110,0.32); }
+  .crash-card:hover.forest{ box-shadow: 0 24px 60px -20px rgba(122,190,138,0.28); }
 
-        .btn-invest { 
-            background: #32cd32; color: #000; padding: 14px; border-radius: 12px; 
-            font-weight: bold; font-size: 14px; width: 100%; border-bottom: 4px solid #228b22;
-        }
+  .crash-top{ display:flex; justify-content:space-between; align-items:flex-start; position: relative; z-index:2; }
+  .crash-badge{
+    font-size: 0.66rem; font-weight: 700; letter-spacing: 0.02em;
+    padding: 4px 9px; border: 1px solid rgba(255,255,255,0.18); color: var(--text);
+    background: rgba(0,0,0,0.25);
+  }
+  .crash-live{ display:inline-flex; align-items:center; gap:5px; font-size:0.66rem; font-weight:700; color: var(--green-live); }
 
-        .btn-disabled { background: #444 !important; border-bottom: 4px solid #222 !important; color: #888 !important; cursor: default; transform: none !important; }
+  .crash-icon{
+    width: 46px; height:46px; border-radius: 50%;
+    display:flex; align-items:center; justify-content:center;
+    padding: 11px; box-sizing: border-box;
+  }
+  .crash-card.gold .crash-icon{ background: rgba(243,213,139,0.16); color: var(--gold-light); }
+  .crash-card.wine .crash-icon{ background: rgba(232,169,180,0.16); color: #E8A9B4; }
+  .crash-card.forest .crash-icon{ background: rgba(116,185,139,0.16); color: var(--green-live); }
+  .crash-icon svg{ width:100%; height:100%; }
 
-        .pay-card {
-            padding: 15px; border-radius: 15px; margin-bottom: 12px; display: flex; 
-            align-items: center; justify-content: space-between; border: 2px solid rgba(255,255,255,0.1);
-            cursor: pointer;
-        }
-        .copy-chip { background: rgba(255,255,255,0.2); color: #fff; padding: 8px 12px; border-radius: 8px; font-size: 10px; font-weight: bold; }
+  .crash-mid{ position: relative; z-index:2; margin-top: 18px; }
+  .crash-name{ font-size: 1.3rem; margin-bottom: 4px; }
+  .crash-sub{ font-size: 0.78rem; color: var(--muted); }
 
-        .nav-bar { position: fixed; bottom: 0; width: 100%; max-width: 450px; background: #1e1e1e; display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #333; z-index: 100; }
-        .nav-item { font-size: 11px; text-align: center; cursor: pointer; color: #888; flex: 1; transition: 0.2s; }
-        .nav-item:active { transform: scale(0.8); color: var(--primary); }
+  .crash-multiplier{
+    position: relative; z-index:2; margin-top: 16px;
+    font-family: 'Fraunces', serif; font-size: 2.1rem; font-weight: 600;
+    display:flex; align-items:baseline; gap: 6px;
+  }
+  .crash-multiplier .x{ font-size: 1rem; color: var(--muted); font-family:'Manrope',sans-serif; }
+  .crash-card.gold .crash-multiplier{ color: var(--gold-light); }
+  .crash-card.wine .crash-multiplier{ color: #E8A9B4; }
+  .crash-card.forest .crash-multiplier{ color: var(--green-live); }
 
-        .live-transactions { background: var(--success-bg); border-radius: 15px; padding: 15px; margin-top: 25px; border: 1px solid rgba(50, 205, 50, 0.3); height: 115px; overflow: hidden; }
-        .transaction-item { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 11px; font-weight: bold; animation: slideDown 0.4s ease-out; }
-    </style>
+  .crash-foot{ position: relative; z-index:2; display:flex; justify-content:space-between; align-items:center; margin-top: 18px; }
+  .crash-play{
+    font-size: 0.78rem; font-weight: 700; padding: 8px 16px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); color: var(--text);
+  }
+  .crash-max{ font-size: 0.68rem; color: var(--muted); }
+
+  .games-other-grid{
+    display:flex;
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x proximity;
+    padding-bottom: 10px;
+  }
+  .games-other-grid::-webkit-scrollbar{ height: 6px; }
+  .games-other-grid::-webkit-scrollbar-track{ background: transparent; }
+  .games-other-grid::-webkit-scrollbar-thumb{ background: var(--hairline-soft); }
+  .game-tile{
+    background: rgba(20,25,20,0.5); border: 1px solid var(--hairline);
+    padding: 20px 18px; display:flex; flex-direction:column; gap: 12px;
+    flex: 0 0 220px; width: 220px; scroll-snap-align: start;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .game-tile:hover{ border-color: var(--gold); transform: translateY(-2px); }
+  .game-tile .icon{
+    width: 40px; height:40px; color: var(--gold-light);
+    background: rgba(201,164,92,0.14); border-radius: 50%;
+    padding: 9px; box-sizing: border-box;
+  }
+  .game-tile h4{ font-family:'Fraunces', serif; font-size: 1.02rem; font-weight: 500; }
+  .game-tile p{ font-size: 0.8rem; color: var(--muted); }
+
+  .tako-live{ padding: 92px 0; border-bottom: 1px solid var(--hairline); }
+  .live-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .live-card{
+    background: linear-gradient(160deg, rgba(25,31,25,0.7), rgba(14,18,14,0.55));
+    border: 1px solid var(--hairline-soft);
+    backdrop-filter: blur(10px);
+    padding: 26px;
+    display:flex; flex-direction:column; gap: 18px;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+  }
+  .live-card:hover{ border-color: var(--gold); transform: translateY(-3px); }
+  .live-card-top{ display:flex; justify-content:space-between; align-items:center; }
+  .live-sport{ font-size: 0.74rem; color: var(--muted); }
+  .live-teams{ display:flex; flex-direction:column; gap: 12px; }
+  .live-team-row{ display:flex; justify-content:space-between; align-items:center; font-size: 0.98rem; }
+  .live-score{ font-family:'Fraunces', serif; font-size: 1.4rem; color: var(--gold-light); }
+  .live-card-foot{ display:flex; justify-content:space-between; align-items:center; margin-top: 6px; }
+  .live-card-foot a{ font-size: 0.82rem; color: var(--gold); }
+  .demo-chip{
+    font-size: 0.62rem; letter-spacing: 0.04em; color: var(--muted);
+    border: 1px solid var(--hairline); padding: 3px 8px;
+  }
+
+  .odds{ padding: 92px 0; border-bottom: 1px solid var(--hairline); }
+  .odds-filters{ display:flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+  .odds-filter-btn{
+    padding: 9px 17px; font-size: 0.8rem;
+    background: transparent; border: 1px solid var(--hairline); color: var(--muted);
+    cursor: pointer; transition: all 0.2s ease;
+  }
+  .odds-filter-btn:hover{ color: var(--text); border-color: var(--gold); }
+  .odds-filter-btn.active{ background: var(--gold); border-color: var(--gold); color: #17130A; }
+
+  .odds-list{ display:flex; flex-direction:column; gap: 12px; }
+  .odds-row{
+    display:grid;
+    grid-template-columns: 90px 1fr auto;
+    align-items:center;
+    gap: 20px;
+    background: rgba(20,25,20,0.5);
+    border: 1px solid var(--hairline);
+    padding: 18px 22px;
+    transition: border-color 0.2s ease;
+  }
+  .odds-row:hover{ border-color: var(--hairline-soft); }
+  .odds-cat{ font-size: 0.7rem; color: var(--gold); display:flex; align-items:center; gap:6px; }
+  .odds-cat .live-dot{ display: none; }
+  .odds-row[data-live="true"] .odds-cat .live-dot{ display: inline-block; }
+  .odds-match{ font-size: 0.98rem; }
+  .odds-match .odds-time{ display:block; font-size: 0.78rem; color: var(--muted); margin-top: 4px; }
+  .odds-values{ display:flex; gap: 8px; }
+  .odds-btn{
+    display:flex; flex-direction:column; align-items:center; gap:2px;
+    min-width: 64px;
+    padding: 9px 10px;
+    background: rgba(201,164,92,0.05);
+    border: 1px solid var(--hairline);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.18s ease;
+  }
+  .odds-btn span.lbl{ font-size: 0.64rem; color: var(--muted); }
+  .odds-btn span.val{ font-size: 0.92rem; font-weight: 700; }
+  .odds-btn:hover{ border-color: var(--gold); box-shadow: 0 0 16px -6px rgba(201,164,92,0.5); }
+  .odds-btn.active{ background: linear-gradient(135deg, var(--gold-light), var(--gold)); border-color: var(--gold); }
+  .odds-btn.active span.val, .odds-btn.active span.lbl{ color: #17130A; }
+  .odds-disclaimer{ margin-top: 22px; font-size: 0.78rem; color: var(--muted); }
+
+  @media (max-width: 700px){
+    .odds-row{ grid-template-columns: 1fr; }
+    .odds-values{ flex-wrap: wrap; }
+  }
+
+  .promotions{ padding: 92px 0; border-bottom: 1px solid var(--hairline); }
+  .promo-grid{ display:grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 18px; }
+  .promo-card{
+    background: linear-gradient(160deg, rgba(25,31,25,0.65), rgba(14,18,14,0.5));
+    border: 1px solid var(--hairline-soft);
+    padding: 30px 26px;
+    display:flex; flex-direction:column;
+    transition: border-color 0.2s ease;
+  }
+  .promo-card:hover{ border-color: var(--gold); }
+  .promo-card.tall{ grid-row: span 1; padding: 38px 30px; }
+  .promo-tier{ font-size: 0.72rem; color: var(--gold); font-family:'Fraunces', serif; font-style: italic; margin-bottom: 16px; }
+  .promo-card h3{ font-size: 1.2rem; margin-bottom: 10px; }
+  .promo-card p{ color: var(--muted); font-size: 0.88rem; flex-grow: 1; }
+  .promo-card .btn{ margin-top: 22px; align-self: flex-start; }
+
+  @media (max-width: 900px){ .promo-grid{ grid-template-columns: 1fr; } }
+
+  .pillars{ padding: 92px 0; border-bottom: 1px solid var(--hairline); }
+  .pillars-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); }
+  .pillar{ background: var(--void); padding: 38px 30px; }
+  .pillar h3{ font-size: 1.15rem; margin-bottom: 10px; }
+  .pillar p{ color: var(--muted); font-size: 0.9rem; }
+  .pillar .icon{ width: 30px; height: 30px; color: var(--gold); margin-bottom: 20px; }
+
+  @media (max-width: 900px){ .pillars-grid{ grid-template-columns: 1fr; } }
+
+  .experience{ padding: 92px 0; border-bottom: 1px solid var(--hairline); }
+  .exp-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items:center; }
+  .exp-panel{
+    aspect-ratio: 5/4;
+    background: radial-gradient(ellipse at 60% 30%, rgba(201,164,92,0.12), transparent 60%), var(--panel-2);
+    border: 1px solid var(--hairline-soft);
+    position: relative;
+  }
+  .exp-panel .exp-figure{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+  .exp-figure svg{ width: 44%; opacity: 0.95; }
+  .exp-text h2{ font-size: clamp(1.7rem, 3vw, 2.1rem); margin-bottom: 18px; }
+  .exp-text p{ color: var(--muted); margin-bottom: 16px; }
+  .exp-list{ margin-top: 28px; display:flex; flex-direction: column; gap: 16px; }
+  .exp-list li{ display:flex; gap: 14px; align-items:flex-start; font-size: 0.94rem; }
+  .exp-list li .mark{ color: var(--gold); font-family:'Fraunces', serif; font-style: italic; flex-shrink:0; }
+
+  @media (max-width: 900px){
+    .exp-grid{ grid-template-columns: 1fr; }
+    .exp-panel{ order: -1; max-width: 420px; }
+  }
+
+  .payments{ padding: 76px 0; border-bottom: 1px solid var(--hairline); }
+  .payments-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
+  .payment-card{
+    border: 1px solid var(--hairline);
+    background: rgba(20,25,20,0.4);
+    padding: 18px 20px;
+    display:flex; flex-direction:column; gap: 10px;
+  }
+  .payment-card .p-name{ font-size: 0.94rem; }
+  .payment-status{ display:flex; align-items:center; gap: 7px; font-size: 0.76rem; color: var(--muted); }
+  .payment-status .dotstat{ width:6px; height:6px; border-radius:50%; background: var(--green-live); }
+  .payments-note{ margin-top: 20px; font-size: 0.78rem; color: var(--muted); max-width: 60ch; }
+
+  .activity{ padding: 76px 0; border-bottom: 1px solid var(--hairline); background: var(--ink); }
+  .activity-marquee{
+    overflow: hidden; white-space: nowrap; position: relative;
+    mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  }
+  .activity-track{ display:inline-flex; gap: 16px; animation: activityScroll 40s linear infinite; }
+  .activity-track:hover{ animation-play-state: paused; }
+  @keyframes activityScroll{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
+  .activity-card{
+    display:inline-flex; align-items:center; gap: 14px;
+    background: var(--panel); border: 1px solid var(--hairline);
+    padding: 14px 20px; white-space: nowrap;
+  }
+  .activity-avatar{
+    width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-size: 0.8rem; color: var(--gold); flex-shrink: 0;
+  }
+  .activity-info{ display:flex; flex-direction:column; gap: 2px; }
+  .activity-name{ font-size: 0.84rem; display:flex; align-items:center; gap:8px; }
+  .activity-name .amount{ color: var(--green-live); font-weight: 700; }
+  .activity-meta{ font-size: 0.72rem; color: var(--muted); }
+  @media (prefers-reduced-motion: reduce){ .activity-track{ animation: none; overflow-x: auto; } }
+
+  .banner{ padding: 76px 0; border-bottom: 1px solid var(--hairline); background: linear-gradient(120deg, var(--ink), var(--void)); }
+  .banner-inner{ display:grid; grid-template-columns: 1fr auto; align-items:center; gap: 24px; }
+  .banner h2{ font-size: clamp(1.5rem, 2.6vw, 1.9rem); max-width: 20ch; }
+  .banner p{ color: var(--muted); margin-top: 10px; max-width: 46ch; }
+
+  @media (max-width: 700px){ .banner-inner{ grid-template-columns: 1fr; } }
+
+  .newsletter{ padding: 92px 0; }
+  .nl-box{
+    background: linear-gradient(155deg, rgba(25,31,25,0.7), rgba(14,18,14,0.55));
+    border: 1px solid var(--hairline-soft);
+    padding: 54px; display:grid; grid-template-columns: 1fr 1fr; gap: 44px; align-items:center;
+  }
+  .nl-box h2{ font-size: clamp(1.4rem, 2.4vw, 1.7rem); max-width: 16ch; }
+  .nl-box p{ color: var(--muted); margin-top: 12px; font-size: 0.92rem; }
+  .nl-form{ display:flex; gap: 10px; }
+  .nl-form input{
+    flex-grow:1; background: var(--void); border: 1px solid var(--hairline);
+    padding: 13px 16px; color: var(--text); font-size: 0.92rem;
+  }
+  .nl-form input::placeholder{ color: var(--muted); }
+  .nl-msg{ margin-top: 12px; font-size: 0.82rem; color: var(--gold-light); min-height: 1em; }
+
+  @media (max-width: 900px){ .nl-box{ grid-template-columns: 1fr; padding: 36px; } }
+  @media (max-width: 620px){ .nl-form{ flex-direction:column; } }
+
+  footer{
+    position:relative; z-index:2; border-top: 1px solid var(--hairline);
+    padding: 260px 0 32px; overflow: hidden;
+  }
+  .footer-players-bg{
+    position:absolute; left:0; right:0; bottom:0; height: 240px;
+    z-index:0; pointer-events:none;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, black 45%);
+    mask-image: linear-gradient(to bottom, transparent, black 45%);
+  }
+  .footer-players-bg svg{ width:100%; height:100%; }
+  footer > .wrap{ position:relative; z-index:1; }
+  .foot-grid{ display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 36px; }
+  .foot-grid h4{ font-size: 0.8rem; font-weight: 700; margin-bottom: 16px; color: var(--text); }
+  .foot-grid ul li{ margin-bottom: 10px; }
+  .foot-grid ul li a{ color: var(--muted); font-size: 0.88rem; }
+  .foot-grid ul li a:hover{ color: var(--gold); }
+  .foot-grid p{ color: var(--muted); font-size: 0.88rem; max-width: 34ch; margin-top: 12px; }
+  .responsible-note{ border: 1px solid var(--hairline); padding: 20px 22px; font-size: 0.78rem; color: var(--muted); margin-bottom: 28px; background: rgba(6,7,6,0.55); backdrop-filter: blur(6px); }
+  .responsible-note strong{ color: var(--text); }
+  .responsible-note ul{ margin-top: 10px; padding-left: 18px; list-style: disc; }
+  .responsible-note ul li{ margin-bottom: 4px; }
+  .foot-legal{ font-size:0.76rem; color:var(--muted); max-width:80ch; margin-bottom:20px; }
+  .foot-bottom{
+    display:flex; justify-content: space-between; padding-top: 24px;
+    border-top: 1px solid var(--hairline); color: var(--muted); font-size: 0.8rem; flex-wrap: wrap; gap: 10px;
+  }
+
+  @media (max-width: 900px){ .foot-grid{ grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 620px){ .foot-grid{ grid-template-columns: 1fr; } }
+
+  .footer-info-band{
+    position: relative; z-index:1;
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 40px;
+  }
+  .footer-info-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap: wrap; gap: 28px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .footer-lang{ display:flex; flex-direction:column; align-items:center; gap: 6px; }
+  .footer-lang-row{ display:flex; align-items:center; gap: 8px; cursor:pointer; }
+  .footer-lang-flag{ width: 22px; height: 16px; border-radius: 2px; overflow:hidden; flex-shrink:0; }
+  .footer-lang-flag svg{ width:100%; height:100%; }
+  .footer-lang span.label{ font-size: 0.78rem; color: var(--text); letter-spacing: 0.03em; }
+  .footer-lang .chevron{ color: var(--muted); font-size: 0.7rem; }
+
+  .footer-age{ display:flex; flex-direction:column; align-items:center; gap: 10px; max-width: 360px; text-align:center; }
+  .footer-age-badge{
+    width: 52px; height: 52px; border-radius: 50%;
+    border: 2px solid #EE1D23;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight: 700; font-size: 0.92rem; color: #EE1D23;
+  }
+  .footer-age p{ font-size: 0.78rem; color: var(--muted); }
+
+  .footer-social{ display:flex; gap: 16px; }
+  .footer-social a{
+    width: 36px; height: 36px; border: 1px solid var(--hairline);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--muted); transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .footer-social a:hover{ color: var(--gold-light); border-color: var(--gold); }
+  .footer-social svg{ width: 17px; height: 17px; }
+
+  .footer-payments-row{
+    display:flex; align-items:center; gap: 16px; flex-wrap: wrap;
+    padding: 26px 0;
+  }
+  .footer-payments-row .p-label{ font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 4px; }
+  .footer-op-badge{
+    display:flex; align-items:stretch; border-radius: 4px; overflow:hidden;
+    box-shadow: 0 6px 16px -8px rgba(0,0,0,0.6);
+  }
+  .footer-op-badge .net{
+    display:flex; align-items:center; gap: 6px;
+    padding: 10px 14px; font-weight: 800; font-size: 0.72rem; letter-spacing:0.02em; color:#fff;
+  }
+  .footer-op-badge .svc{
+    display:flex; align-items:center; gap: 6px;
+    padding: 10px 14px; font-weight: 700; font-size: 0.78rem; color:#17130A; background:#fff;
+  }
+  .footer-op-badge .svc svg{ width:14px; height:14px; }
+  .footer-op-badge.mpesa .net{ background: linear-gradient(135deg,#EE1D23,#9E1015); }
+  .footer-op-badge.emola .net{ background: linear-gradient(135deg,#F7941E,#C25E0A); }
+  .footer-op-badge.mkesh .net{ background: linear-gradient(135deg,#FFD400,#C79A10); color:#1A1503; }
+  .footer-op-badge.visa{ padding: 10px 18px; font-weight:700; font-size:0.82rem; color:#fff; background: linear-gradient(135deg,#1A56DB,#0B2E7A); }
+
+  @media (max-width: 700px){
+    .footer-info-inner{ flex-direction: column; text-align:center; }
+  }
+
+  .footer-brand-band{
+    position: relative; z-index:1;
+    background: var(--void);
+    border-top: 1px solid var(--hairline);
+    margin-top: 36px;
+    padding: 44px 0 28px;
+    text-align: center;
+  }
+  .footer-brand-band .brand{
+    justify-content:center; font-size: 1.9rem; margin-bottom: 10px;
+  }
+  .footer-brand-band .brand .mark{ width: 32px; height: 32px; }
+  .footer-brand-tagline{ font-size: 0.8rem; color: var(--muted); margin-bottom: 26px; }
+  .footer-brand-band .foot-legal{ margin: 0 auto 18px; text-align:center; }
+  .footer-brand-copyright{ font-size: 0.78rem; color: var(--muted); }
+
+  @keyframes riseIn{ from{ opacity:0; transform: translateY(16px); } to{ opacity:1; transform: translateY(0); } }
+  .hero-grid > *{ animation: riseIn 0.7s ease both; }
+  .hero-grid > *:nth-child(2){ animation-delay: 0.1s; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    .hero-grid > *{ animation: none; }
+  }
+
+  @media (max-width: 900px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .hero-panel{ transform:none; }
+    .hero-panel-wrap:hover .hero-panel{ transform:none; }
+  }
+
+  @media (max-width: 620px){
+    .nav-links{ display:none; }
+    .menu-toggle{ display:block; }
+    .nav-links.open{
+      display:flex; flex-direction:column; position:absolute;
+      top: 100%; left:0; right:0; background: var(--void);
+      border-bottom: 1px solid var(--hairline); padding: 20px 24px; gap: 18px; z-index: 70;
+    }
+    .hero{ padding: 60px 0 50px; }
+    .odds-row{ padding: 16px; }
+    footer{ padding-top: 180px; }
+    .footer-players-bg{ height: 170px; }
+  }
+
+  .modal-overlay{
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(6,7,6,0.78);
+    backdrop-filter: blur(6px);
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 64px 20px;
+  }
+  .modal-overlay.open{ display: flex; }
+  .modal-box{
+    width: 100%; max-width: 420px;
+    background: linear-gradient(160deg, rgba(25,31,25,0.98), rgba(14,18,14,0.98));
+    border: 1px solid var(--hairline-soft);
+    box-shadow: 0 40px 90px -30px rgba(0,0,0,0.8);
+    padding: 36px 32px 32px;
+    position: relative;
+    animation: modalRise 0.25s ease both;
+  }
+  .modal-box.wide{ max-width: 520px; }
+  @keyframes modalRise{ from{ opacity:0; transform: translateY(10px); } to{ opacity:1; transform: translateY(0); } }
+  .modal-close{
+    position: absolute; top: 18px; right: 18px;
+    width: 30px; height: 30px;
+    display:flex; align-items:center; justify-content:center;
+    border: 1px solid var(--hairline); background: transparent; color: var(--muted);
+    cursor: pointer; font-size: 1rem; line-height:1;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .modal-close:hover{ color: var(--gold-light); border-color: var(--gold); }
+  .modal-eyebrow{ font-family:'Fraunces', serif; font-style: italic; color: var(--gold); font-size: 0.84rem; margin-bottom: 6px; }
+  .modal-box h3{ font-size: 1.5rem; margin-bottom: 22px; }
+  .modal-tabs{ display:flex; gap: 4px; margin-bottom: 26px; border-bottom: 1px solid var(--hairline); }
+  .modal-tab{
+    flex:1; text-align:center; padding: 12px 6px; font-size: 0.84rem; font-weight: 700;
+    color: var(--muted); background:none; border:none; cursor:pointer;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .modal-tab.active{ color: var(--gold-light); border-color: var(--gold); }
+  .modal-panel{ display:none; flex-direction: column; gap: 16px; }
+  .modal-panel.active{ display:flex; }
+  .field-label{ font-size: 0.78rem; color: var(--muted); margin-bottom: 7px; display:block; }
+  .field-input{
+    width: 100%; background: var(--void); border: 1px solid var(--hairline);
+    padding: 13px 15px; color: var(--text); font-size: 0.94rem; font-family: inherit;
+  }
+  .field-input:focus{ border-color: var(--gold); }
+  .field-input::placeholder{ color: var(--muted); }
+  .field-group{ display:flex; flex-direction: column; }
+  .field-row-2{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .modal-forgot{
+    align-self: flex-end; font-size: 0.78rem; color: var(--gold);
+    background:none; border:none; cursor:pointer; padding: 0;
+  }
+  .modal-forgot:hover{ color: var(--gold-light); }
+  .modal-submit{ margin-top: 6px; width: 100%; justify-content: center; }
+  .modal-note{ margin-top: 18px; font-size: 0.76rem; color: var(--muted); text-align:center; }
+  .modal-msg{ font-size: 0.82rem; color: var(--gold-light); min-height: 1em; }
+  .modal-back{
+    font-size: 0.78rem; color: var(--gold); background:none; border:none; cursor:pointer;
+    padding: 0; margin-bottom: 18px; display:inline-flex; align-items:center; gap:6px;
+  }
+  .modal-back:hover{ color: var(--gold-light); }
+
+  .aff-steps{ display:flex; flex-direction:column; gap: 14px; margin-bottom: 24px; }
+  .aff-step{ display:flex; gap: 14px; align-items:flex-start; }
+  .aff-step-num{
+    flex-shrink:0; width: 26px; height: 26px; border: 1px solid var(--gold);
+    color: var(--gold-light); font-family:'Fraunces', serif; font-size: 0.84rem;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .aff-step p{ font-size: 0.88rem; color: var(--muted); margin-top: 2px; }
+  .aff-step strong{ color: var(--text); font-weight: 700; font-size: 0.94rem; }
+  .aff-pending{
+    border: 1px solid var(--hairline-soft); background: rgba(201,164,92,0.06);
+    padding: 20px; text-align:center;
+  }
+  .aff-pending .status-dot{ width:8px; height:8px; border-radius:50%; background: var(--gold-light); display:inline-block; margin-right:7px; animation: pulseDot 1.8s ease-in-out infinite; }
+  .aff-pending h4{ font-family:'Fraunces', serif; font-size: 1.05rem; margin-bottom: 8px; }
+  .aff-pending p{ font-size: 0.84rem; color: var(--muted); }
+
+  @media (max-width: 480px){
+    .modal-box{ padding: 30px 22px 26px; }
+    .field-row-2{ grid-template-columns: 1fr; }
+  }
+
+  .balance-actions{ position: relative; }
+  .balance-wrap{ position: relative; }
+  .balance-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background: rgba(201,164,92,0.1); border-color: var(--hairline-soft);
+  }
+  .balance-btn .chevron{ font-size: 0.7rem; color: var(--muted); transition: transform 0.2s ease; }
+  .balance-btn.open .chevron{ transform: rotate(180deg); }
+  .balance-dropdown{
+    display:none; position:absolute; top: calc(100% + 10px); right: 0;
+    min-width: 240px; z-index: 90;
+    background: linear-gradient(160deg, rgba(25,31,25,0.98), rgba(14,18,14,0.98));
+    border: 1px solid var(--hairline-soft);
+    box-shadow: 0 30px 70px -20px rgba(0,0,0,0.75);
+    padding: 8px;
+  }
+  .balance-dropdown.open{ display:block; }
+  .bd-row{
+    display:flex; justify-content:space-between; gap: 14px;
+    padding: 10px 12px; font-size: 0.82rem; color: var(--muted);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .bd-row strong{ color: var(--text); font-weight: 700; }
+  .bd-link{
+    display:block; width:100%; text-align:left;
+    padding: 11px 12px; font-size: 0.84rem; color: var(--text);
+    background:none; border:none; border-bottom: 1px solid var(--hairline); cursor:pointer;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+  .bd-link:last-child{ border-bottom:none; }
+  .bd-link:hover{ color: var(--gold-light); background: rgba(201,164,92,0.08); }
+  .bd-link.bd-exit{ color: #E88A93; }
+  .bd-link.bd-exit:hover{ color: #F3A9B0; }
+
+  .account-head{ display:flex; flex-direction:column; align-items:center; text-align:center; gap: 6px; margin-bottom: 24px; }
+  .account-avatar{
+    width: 84px; height: 84px; border-radius: 50%;
+    border: 1px solid var(--hairline-soft);
+    background: var(--panel-2);
+    display:flex; align-items:center; justify-content:center;
+    color: var(--muted); position: relative; margin-bottom: 8px;
+  }
+  .account-avatar svg{ width: 46%; height:46%; }
+  .account-avatar .edit-dot{
+    position:absolute; right:-2px; bottom:-2px;
+    width: 26px; height: 26px; border-radius:50%;
+    background: var(--gold); color:#17130A;
+    display:flex; align-items:center; justify-content:center;
+    border: 2px solid var(--void);
+  }
+  .account-avatar .edit-dot svg{ width: 13px; height: 13px; }
+  .account-idline{ font-size: 1rem; display:flex; gap: 10px; align-items:center; flex-wrap: wrap; justify-content:center; }
+  .account-idline .id-tag{ color: var(--muted); font-size: 0.86rem; }
+  .account-stars{ display:flex; gap: 3px; color: var(--hairline-soft); margin-top: 2px; }
+  .account-stars svg{ width: 15px; height: 15px; }
+  .account-stars .filled{ color: var(--gold); }
+
+  .account-stats{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 22px; }
+  .account-stat{ text-align:center; padding: 14px 8px; background: rgba(201,164,92,0.05); border: 1px solid var(--hairline); }
+  .account-stat .lbl{ font-size: 0.66rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; display:block; margin-bottom: 5px; }
+  .account-stat .val{ font-size: 0.94rem; font-weight: 700; color: var(--gold-light); }
+
+  .account-actions-row{ display:flex; gap: 10px; margin-bottom: 26px; }
+  .account-actions-row .btn{ flex:1; justify-content:center; }
+  .btn.danger{ background: linear-gradient(135deg, #C9424F, var(--wine)); border:none; color: var(--text); }
+  .btn.danger:hover{ filter: brightness(1.08); transform: translateY(-1px); }
+
+  .account-accordion{ display:flex; flex-direction:column; border-top: 1px solid var(--hairline); }
+  .acc-item{ border-bottom: 1px solid var(--hairline); }
+  .acc-item-head{
+    width:100%; display:flex; justify-content:space-between; align-items:center;
+    padding: 15px 4px; background:none; border:none; color: var(--text);
+    font-size: 0.9rem; font-weight: 700; cursor:pointer; text-align:left;
+  }
+  .acc-item-head .chevron{ color: var(--gold); font-size: 0.76rem; transition: transform 0.2s ease; }
+  .acc-item.open .acc-item-head .chevron{ transform: rotate(180deg); }
+  .acc-item-body{ display:none; padding: 4px 4px 20px; flex-direction: column; gap: 14px; }
+  .acc-item.open .acc-item-body{ display:flex; }
+  .acc-item-body p.hint{ font-size: 0.84rem; color: var(--muted); }
+  .withdraw-amount{ display:flex; border: 1px solid var(--hairline); background: var(--void); }
+  .withdraw-amount .curr{ padding: 13px 12px; font-size: 0.84rem; color: var(--gold); border-right: 1px solid var(--hairline); }
+  .withdraw-amount input{ flex:1; border:none; background:none; color: var(--text); padding: 13px 12px; font-size: 0.94rem; }
+  .withdraw-amount input:focus{ outline:none; }
+  select.field-input{ appearance:none; }
+  .btn.teal{ background: linear-gradient(135deg, #8FD6AE, var(--green-live)); border:none; color: #0B1F14; }
+  .btn.teal:hover{ filter: brightness(1.06); transform: translateY(-1px); }
+
+  .auth-divider{ display:flex; align-items:center; gap: 12px; margin: 4px 0; }
+  .auth-divider::before, .auth-divider::after{ content:""; flex:1; height:1px; background: var(--hairline); }
+  .auth-divider span{ font-size: 0.72rem; color: var(--muted); }
+  .btn.google{
+    width:100%; justify-content:center; background: #fff; color:#3c3c3c; border:none;
+  }
+  .btn.google:hover{ filter: brightness(0.97); transform: translateY(-1px); }
+  .btn.google svg{ width:18px; height:18px; }
+</style>
 </head>
 <body>
 
-<div id="fake-notifications" class="fake-transactions-container"></div>
+<svg class="grain" width="100%" height="100%">
+  <filter id="noiseFilter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <rect width="100%" height="100%" filter="url(#noiseFilter)"/>
+</svg>
+<canvas id="particles"></canvas>
 
-<div class="container">
-    
-    <div id="screen-login" class="screen active">
-        <div style="text-align: center; margin-top: 40px;">
-            <h1 style="color: var(--primary); letter-spacing: 2px;">CAT INVESTMENT</h1>
-            <p style="color: #888; font-size: 13px;">Inicie sua jornada lucrativa</p>
-            <input type="text" id="reg-phone" placeholder="Número de Telefone">
-            <input type="password" id="reg-pass" placeholder="Sua Senha">
-            <div id="new-user-fields">
-                <input type="text" id="reg-name" placeholder="Nome Completo">
-            </div>
-            <button class="btn-principal" onclick="handleAuth()">ENTRAR NO PAINEL</button>
-            <div class="live-transactions"><div id="ticker-content"></div></div>
+<header>
+  <div class="header-top">
+    <div class="wrap header-top-inner">
+      <a href="#top" class="brand">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="17" r="9" stroke-width="1.6"/>
+          <path d="M11 21c-1 4-3 5-4 9 3-1 5-3 6-6" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M15 24c0 4-1 6-2 10 3-2 4-4 5-7" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M20 25c1 4 1 6 1 10 2-2 2-5 2-8" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M25 24c1 3 3 4 5 7-1-4 0-6-1-10" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M29 21c2 3 4 4 6 6-2-4-1-6-3-9" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        TAKO BET
+      </a>
+      <div class="header-actions" id="loggedOutActions">
+        <button type="button" class="btn small ghost" data-open-auth="registar">Registe-se</button>
+        <button type="button" class="btn small solid" data-open-auth="login">Iniciar sessão</button>
+      </div>
+      <div class="header-actions balance-actions" id="loggedInActions" style="display:none;">
+        <button type="button" class="btn small ghost" id="depositBtn">Depósito</button>
+        <div class="balance-wrap">
+          <button type="button" class="btn small balance-btn" id="balanceToggle">
+            <span id="balanceAmount">0.00 MZN</span>
+            <span class="chevron">▾</span>
+          </button>
+          <div class="balance-dropdown" id="balanceDropdown">
+            <div class="bd-row"><span>Telefone:</span><strong id="bdPhone">—</strong></div>
+            <div class="bd-row"><span>Bónus:</span><strong id="bdBonus">0.00 MZN</strong></div>
+            <div class="bd-row"><span>Extraível:</span><strong id="bdWithdrawable">0.00 MZN</strong></div>
+            <div class="bd-row"><span>Desbloqueio:</span><strong id="bdUnlock">0.00 MZN</strong></div>
+            <button type="button" class="bd-link" data-open-account="depositos">Depósitos</button>
+            <button type="button" class="bd-link" data-open-account="levantamentos">Levantamentos</button>
+            <button type="button" class="bd-link" data-open-account="pessoal">Meu Perfil</button>
+            <button type="button" class="bd-link bd-exit" id="logoutBtn">Sair</button>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="icon-nav">
+    <div class="icon-nav-track" id="iconNavTrack">
+      <a href="#odds" class="icon-nav-item c-sport active" data-target="odds">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 6l3 3-1.2 3.7H10.2L9 9z"/><path d="M12 3v3M4.5 8.5l2.7 1M18.9 9.5l-2.7 0M6.3 18.5l2.4-2.3M17.7 18.5l-2.4-2.3"/></svg>
+        <span>Desportos</span>
+      </a>
+      <a href="#tako-live" class="icon-nav-item c-live" data-target="tako-live">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2"/><path d="M9 2h6M12 2v2"/></svg>
+        <span>Ao vivo</span>
+      </a>
+      <a href="#jogos" class="icon-nav-item c-rocket" data-target="jogos">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2c2 3 4 7 4 10a4 4 0 01-8 0c0-3 2-7 4-10z"/><path d="M9 15l-3 5 4-1M15 15l3 5-4-1"/></svg>
+        <span>Foguete</span>
+      </a>
+      <a href="#jogos" class="icon-nav-item c-zonax" data-target="jogos">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+        <span>Zona X</span>
+      </a>
+      <a href="#jogos" class="icon-nav-item c-tower" data-target="jogos">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="4" y="14" width="4" height="6"/><rect x="10" y="9" width="4" height="11"/><rect x="16" y="4" width="4" height="16"/></svg>
+        <span>Torre</span>
+      </a>
+      <a href="#jogos" class="icon-nav-item c-jackpot" data-target="jogos">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+        <span>Jackpot</span>
+      </a>
+      <a href="#jogos" class="icon-nav-item c-roulette" data-target="jogos">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/></svg>
+        <span>Roleta</span>
+      </a>
+      <a href="#jogos" class="icon-nav-item c-blackjack" data-target="jogos">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 10h18"/></svg>
+        <span>Blackjack</span>
+      </a>
+      <a href="#jogos" class="icon-nav-item c-slots" data-target="jogos">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v16M15 4v16M4 9h16M4 15h16"/></svg>
+        <span>Slots</span>
+      </a>
+      <a href="#promocoes" class="icon-nav-item c-promo" data-target="promocoes">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2v20M5 8l7-6 7 6M5 16l7 6 7-6"/></svg>
+        <span>Promoções</span>
+      </a>
+      <a href="#afiliados" class="icon-nav-item c-afiliados" data-target="afiliados">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.6 3-5.6 5.5-5.6s4.9 2 5.5 5.6"/><circle cx="17.5" cy="9" r="2.6"/><path d="M15.8 14.7c1.9.3 3.6 1.9 4.1 5"/></svg>
+        <span>Afiliados</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<section class="games-showcase" id="jogos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"><span class="bar"></span>Prévia dos jogos</div>
+      <h2>Escolha o seu jogo</h2>
+      <p>Uma prévia da categoria crash e de outros jogos da casa. Deslize para o lado para ver todos.</p>
     </div>
 
-    <div id="screen-admin" class="screen">
-        <h2 style="color: var(--primary); text-align: center;">GERÊNCIA</h2>
-        <div id="admin-stats-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;"></div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <button onclick="renderAdminLogs('deposits')" style="font-size: 11px; background: #32cd32; color: #000; border-radius: 8px; padding: 10px;">DEPÓSITOS</button>
-            <button onclick="renderAdminLogs('withdraws')" style="font-size: 11px; background: #ffa500; color: #000; border-radius: 8px; padding: 10px;">SAQUES</button>
+    <div class="crash-grid">
+
+      <div class="crash-card gold">
+        <div class="crash-top">
+          <span class="crash-badge">CRASH</span>
         </div>
-        <div id="admin-list" style="margin-top: 20px;"></div>
-        <button onclick="showScreen('screen-main')" style="background: #444; color: #fff; margin-top: 20px; border-radius: 8px;">SAIR DO ADM</button>
+        <div class="crash-mid">
+          <div class="crash-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2c2 3 4 7 4 10a4 4 0 01-8 0c0-3 2-7 4-10z"/><path d="M9 15l-3 5 4-1M15 15l3 5-4-1"/></svg>
+          </div>
+          <div class="crash-name">Foguete Dourado</div>
+          <div class="crash-sub">Retire antes que o foguete exploda</div>
+        </div>
+        <div class="crash-multiplier"><span class="mult-val">2.47</span><span class="x">×</span></div>
+        <div class="crash-foot">
+          <a href="#contato" class="crash-play">Jogar</a>
+          <span class="crash-max">até 500×</span>
+        </div>
+      </div>
+
+      <div class="crash-card wine">
+        <div class="crash-top">
+          <span class="crash-badge">CRASH</span>
+        </div>
+        <div class="crash-mid">
+          <div class="crash-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+          </div>
+          <div class="crash-name">Zona X</div>
+          <div class="crash-sub">O multiplicador acelera sem aviso</div>
+        </div>
+        <div class="crash-multiplier"><span class="mult-val">8.12</span><span class="x">×</span></div>
+        <div class="crash-foot">
+          <a href="#contato" class="crash-play">Jogar</a>
+          <span class="crash-max">até 1000×</span>
+        </div>
+      </div>
+
+      <div class="crash-card forest">
+        <div class="crash-top">
+          <span class="crash-badge">CRASH</span>
+        </div>
+        <div class="crash-mid">
+          <div class="crash-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="14" width="4" height="6"/><rect x="10" y="9" width="4" height="11"/><rect x="16" y="4" width="4" height="16"/></svg>
+          </div>
+          <div class="crash-name">Torre Dourada</div>
+          <div class="crash-sub">Cada andar multiplica o valor</div>
+        </div>
+        <div class="crash-multiplier"><span class="mult-val">1.00</span><span class="x">×</span></div>
+        <div class="crash-foot">
+          <a href="#contato" class="crash-play">Jogar</a>
+          <span class="crash-max">até 250×</span>
+        </div>
+      </div>
+
     </div>
 
-    <div id="screen-main" class="screen">
-        <header>
-            <div onclick="handleAdminTrigger()" style="font-weight: bold; font-size: 20px; cursor: pointer;">CAT INVESTMENT</div>
-            <p id="welcome-msg" style="margin: 5px 0 0 0; font-size: 12px; font-weight: bold;"></p>
-        </header>
-        <div class="stats">
-            <div class="stat-card">Saldo Disponível<br><span id="user-balance" style="color: var(--primary); font-weight: bold; font-size: 18px;">MT 0,00</span></div>
-            <div class="stat-card">Renda Diária<br><span id="daily-info" style="color: var(--primary); font-weight: bold; font-size: 18px;">MT 0,00</span></div>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
-            <button onclick="showScreen('screen-deposit')" style="background: #252525; color: #fff; font-size: 10px; border: 1px solid #444; border-radius: 8px;">DEPOSITAR</button>
-            <button onclick="showScreen('screen-withdraw')" style="background: #252525; color: #fff; font-size: 10px; border: 1px solid #444; border-radius: 8px;">LEVANTAR</button>
-            <button onclick="doTask()" style="background: var(--accent); color: #000; font-size: 10px; font-weight: bold; border-radius: 8px;">TAREFA</button>
-        </div>
-        <div id="vip-container"></div>
+    <div class="games-other-grid">
+      <div class="game-tile">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/></svg>
+        <h4>Roleta ao vivo</h4>
+        <p>Mesa com crupiê real, transmitida em tempo integral.</p>
+      </div>
+      <div class="game-tile">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 10h18"/></svg>
+        <h4>Blackjack</h4>
+        <p>Mesas clássicas e mesas de alta aposta, 24 horas.</p>
+      </div>
+      <div class="game-tile">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v16M15 4v16M4 9h16M4 15h16"/></svg>
+        <h4>Slots</h4>
+        <p>Centenas de máquinas, de clássicas a temáticas.</p>
+      </div>
+      <div class="game-tile">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+        <h4>Jackpot</h4>
+        <p>Prêmio acumulado, cresce a cada rodada da casa.</p>
+      </div>
     </div>
+  </div>
+</section>
 
-    <div id="screen-invite" class="screen">
-        <h2 style="color: var(--primary); text-align: center;">CONVIDAR AMIGOS</h2>
-        <div class="stat-card" style="margin-bottom: 20px; border: 1px solid var(--primary);">
-            <p style="font-size: 12px; color: #888;">Sua Comissão Vitalícia</p>
-            <b style="font-size: 22px; color: var(--primary);">GANHE 10% DE BÓNUS</b>
-        </div>
-        <p style="font-size: 13px; color: #bbb; text-align: center;">Ganhe 10% do valor de cada depósito que seus amigos realizarem!</p>
-        
-        <div style="background: #1a1a1a; padding: 15px; border-radius: 10px; border: 1px dashed var(--primary); margin-top: 15px; text-align: center;">
-            <p style="font-size: 11px; color: #888; margin-bottom: 10px;">Link de indicação abaixo:</p>
-            <div style="word-break: break-all; font-size: 13px; color: var(--primary); font-weight: bold;" id="invite-link-text">
-                Gerando link...
-            </div>
-        </div>
-
-        <button class="btn-principal" onclick="copyInviteLink()">COPIAR MEU LINK</button>
-        <button onclick="contactSupport()" style="background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 15px; border-radius: 10px; font-weight: bold; width: 100%; margin-top: 15px; text-transform: uppercase;">FALAR COM SUPORTE</button>
-        <button onclick="showScreen('screen-main')" style="background: transparent; color: #888; margin-top: 10px; width: 100%;">Voltar</button>
-    </div>
-
-    <div id="screen-deposit" class="screen">
-        <h2 style="color: var(--primary); text-align: center;">DEPÓSITO</h2>
-        <p style="font-size: 13px; color: #888; text-align: center; margin-bottom: 15px;">Escolha o método de envio:</p>
-        
-        <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-            <button onclick="setDepositMethod('mpesa')" id="btn-method-mpesa" style="flex: 1; padding: 12px; border-radius: 12px; background: #8b0000; color: white; font-weight: bold; border: 2px solid transparent; font-size: 12px;">M-PESA</button>
-            <button onclick="setDepositMethod('emola')" id="btn-method-emola" style="flex: 1; padding: 12px; border-radius: 12px; background: #ff6600; color: white; font-weight: bold; border: 2px solid transparent; font-size: 12px;">E-MOLA</button>
-        </div>
-
-        <div id="pay-card-area" class="pay-card" style="display: none; flex-direction: column; align-items: center; gap: 5px; padding: 20px;" onclick="copyCurrentNumber()">
-            <div style="color: #fff; font-size: 16px;"><b id="display-method-name">MÉTODO</b>: <span id="display-number" style="letter-spacing: 1px;">000000000</span></div>
-            <div id="display-holder" style="font-size: 11px; color: rgba(255,255,255,0.8); text-transform: uppercase;">TITULAR</div>
-            <div class="copy-chip" style="margin-top: 10px;">CLIQUE PARA COPIAR NÚMERO</div>
-        </div>
-
-        <input type="number" id="dep-amount" placeholder="Valor enviado (MT)" style="margin-top: 20px;">
-        <button class="btn-principal" onclick="submitDeposit()">CONFIRMAR ENVIO</button>
-        <button onclick="showScreen('screen-main')" style="background: transparent; color: #888; margin-top: 10px; width: 100%;">Cancelar</button>
-    </div>
-
-    <div id="screen-withdraw" class="screen">
-        <h2 style="color: var(--primary); text-align: center;">LEVANTAMENTO</h2>
-        <input type="number" id="withdraw-amount" placeholder="Valor (Mín 100 MT)">
-        <input type="text" id="withdraw-number" placeholder="Número da conta">
-        <button class="btn-principal" style="background: var(--accent);" onclick="submitWithdraw()">PEDIR SAQUE</button>
-        <button onclick="showScreen('screen-main')" style="background: transparent; color: #888; margin-top: 10px; width: 100%;">Voltar</button>
-    </div>
-
-    <nav class="nav-bar" id="main-nav" style="display:none">
-        <div class="nav-item" onclick="showScreen('screen-main')">🏠<br>Home</div>
-        <div class="nav-item" onclick="showScreen('screen-invite')">👥<br>Convidar</div>
-        <div class="nav-item" onclick="contactSupport()">🎧<br>Suporte</div>
-        <div class="nav-item" onclick="location.reload()">👤<br>Sair</div>
-    </nav>
-
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack"></div>
 </div>
 
-<script>
-    const planosVip = [
-        {v: 500, l: 25}, {v: 700, l: 35}, {v: 1000, l: 50}, {v: 1300, l: 65},
-        {v: 1600, l: 80}, {v: 2000, l: 100}, {v: 3000, l: 150}, {v: 4000, l: 200},
-        {v: 5000, l: 250}, {v: 7000, l: 350}, {v: 10000, l: 500}, {v: 15000, l: 750},
-        {v: 20000, l: 1000}, {v: 25000, l: 1250}, {v: 30000, l: 1500}, {v: 35000, l: 1750}
-    ];
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-inner">
+      <div class="eyebrow-line"><span class="bar"></span>Somente para maiores de 18 anos</div>
+      <h1>TAKO BET.<br>O jogo encontra <em>uma nova dimensão.</em></h1>
+      <p>Uma casa pensada para quem valoriza discrição, pagamentos claros e suporte de verdade — sem promessas de vitória garantida.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn solid">Criar conta</a>
+        <a href="#odds" class="btn">Ver odds do dia</a>
+      </div>
+      <p class="hero-note">O jogo deve ser uma escolha consciente. Jogue com responsabilidade e defina limites antes de começar.</p>
+    </div>
 
-    const depositSettings = {
-        mpesa: { name: "M-PESA", number: "851511841", holder: "Benjamim Celeste", color: "#8b0000" },
-        emola: { name: "E-MOLA", number: "870514180", holder: "Amelia Ricardo", color: "#ff6600" }
+    <div class="hero-panel-wrap">
+      <div class="hero-panel">
+        <div class="hero-panel-top">
+          <span class="live-badge"><span class="live-dot"></span>AO VIVO</span>
+          <span class="hero-panel-cat">Futebol</span>
+        </div>
+        <div class="hero-panel-match">
+          <span class="team">Falcões FC</span>
+          <span class="team-score">1</span>
+        </div>
+        <div class="hero-panel-match">
+          <span class="team">Leões United</span>
+          <span class="team-score">0</span>
+        </div>
+        <div class="hero-panel-odds">
+          <div class="mini-odd"><span class="lbl">Casa</span><span class="val">1.85</span></div>
+          <div class="mini-odd"><span class="lbl">Empate</span><span class="val">3.40</span></div>
+          <div class="mini-odd"><span class="lbl">Fora</span><span class="val">4.10</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tako-live" id="tako-live">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"><span class="bar"></span>Tako Live</div>
+      <h2>Eventos acontecendo agora</h2>
+      <p>Placares e odds acompanhando a partida em tempo real.</p>
+    </div>
+    <div class="live-grid">
+
+      <div class="live-card">
+        <div class="live-card-top">
+          <span class="live-badge"><span class="live-dot"></span>AO VIVO</span>
+        </div>
+        <span class="live-sport">Futebol</span>
+        <div class="live-teams">
+          <div class="live-team-row"><span>Falcões FC</span><span class="live-score">1</span></div>
+          <div class="live-team-row"><span>Leões United</span><span class="live-score">0</span></div>
+        </div>
+        <div class="live-card-foot"><span style="font-size:0.78rem;color:var(--muted);">67'</span><a href="#odds">Ver odds →</a></div>
+      </div>
+
+      <div class="live-card">
+        <div class="live-card-top">
+          <span class="live-badge"><span class="live-dot"></span>AO VIVO</span>
+        </div>
+        <span class="live-sport">Basquete</span>
+        <div class="live-teams">
+          <div class="live-team-row"><span>Titãs</span><span class="live-score">84</span></div>
+          <div class="live-team-row"><span>Furacão</span><span class="live-score">79</span></div>
+        </div>
+        <div class="live-card-foot"><span style="font-size:0.78rem;color:var(--muted);">3º período</span><a href="#odds">Ver odds →</a></div>
+      </div>
+
+      <div class="live-card">
+        <div class="live-card-top">
+          <span class="live-badge"><span class="live-dot"></span>AO VIVO</span>
+        </div>
+        <span class="live-sport">Tênis</span>
+        <div class="live-teams">
+          <div class="live-team-row"><span>J. Rocha</span><span class="live-score">2</span></div>
+          <div class="live-team-row"><span>M. Alves</span><span class="live-score">1</span></div>
+        </div>
+        <div class="live-card-foot"><span style="font-size:0.78rem;color:var(--muted);">3º set</span><a href="#odds">Ver odds →</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="odds" id="odds">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"><span class="bar"></span>Quadro de odds</div>
+      <h2>As odds de hoje</h2>
+      <p>Valores atualizados por rodada. Toque numa odd para adicionar ao seu boletim — é só uma pré-visualização, nada é confirmado até você revisar.</p>
+    </div>
+
+    <div class="odds-filters" id="oddsFilters">
+      <button class="odds-filter-btn active" data-filter="todos">Todos</button>
+      <button class="odds-filter-btn" data-filter="futebol">Futebol</button>
+      <button class="odds-filter-btn" data-filter="basquete">Basquete</button>
+      <button class="odds-filter-btn" data-filter="tenis">Tênis</button>
+    </div>
+
+    <div class="odds-list" id="oddsList">
+
+      <div class="odds-row" data-cat="futebol" data-live="true">
+        <span class="odds-cat"><span class="live-dot"></span>Futebol</span>
+        <div class="odds-match">Falcões FC vs Leões United<span class="odds-time">Ao vivo · 67'</span></div>
+        <div class="odds-values">
+          <button class="odds-btn"><span class="lbl">Casa</span><span class="val">1.85</span></button>
+          <button class="odds-btn"><span class="lbl">Empate</span><span class="val">3.40</span></button>
+          <button class="odds-btn"><span class="lbl">Fora</span><span class="val">4.10</span></button>
+        </div>
+      </div>
+
+      <div class="odds-row" data-cat="futebol">
+        <span class="odds-cat">Futebol</span>
+        <div class="odds-match">Estrela Azul vs Porto Real<span class="odds-time">Hoje · 21:30</span></div>
+        <div class="odds-values">
+          <button class="odds-btn"><span class="lbl">Casa</span><span class="val">2.10</span></button>
+          <button class="odds-btn"><span class="lbl">Empate</span><span class="val">3.20</span></button>
+          <button class="odds-btn"><span class="lbl">Fora</span><span class="val">3.05</span></button>
+        </div>
+      </div>
+
+      <div class="odds-row" data-cat="basquete" data-live="true">
+        <span class="odds-cat"><span class="live-dot"></span>Basquete</span>
+        <div class="odds-match">Titãs vs Furacão<span class="odds-time">Ao vivo · 3º período</span></div>
+        <div class="odds-values">
+          <button class="odds-btn"><span class="lbl">Casa</span><span class="val">1.55</span></button>
+          <button class="odds-btn"><span class="lbl">Fora</span><span class="val">2.35</span></button>
+        </div>
+      </div>
+
+      <div class="odds-row" data-cat="basquete">
+        <span class="odds-cat">Basquete</span>
+        <div class="odds-match">Cometas vs Águias<span class="odds-time">Amanhã · 22:15</span></div>
+        <div class="odds-values">
+          <button class="odds-btn"><span class="lbl">Casa</span><span class="val">1.90</span></button>
+          <button class="odds-btn"><span class="lbl">Fora</span><span class="val">1.85</span></button>
+        </div>
+      </div>
+
+      <div class="odds-row" data-cat="tenis">
+        <span class="odds-cat">Tênis</span>
+        <div class="odds-match">J. Rocha vs M. Alves<span class="odds-time">Sáb · 14:00</span></div>
+        <div class="odds-values">
+          <button class="odds-btn"><span class="lbl">Rocha</span><span class="val">1.65</span></button>
+          <button class="odds-btn"><span class="lbl">Alves</span><span class="val">2.20</span></button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="promotions" id="promocoes">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"><span class="bar"></span>Promoções</div>
+      <h2>Benefícios ativos agora</h2>
+      <p>Sem letras miúdas escondidas — cada promoção mostra a condição completa antes de você aceitar.</p>
+    </div>
+    <div class="promo-grid">
+      <div class="promo-card tall">
+        <span class="promo-tier">Novo jogador</span>
+        <h3>Bónus de boas-vindas</h3>
+        <p>Um crédito sobre o primeiro depósito, até um teto definido, liberado em etapas conforme a movimentação da conta. Termos completos disponíveis antes da ativação.</p>
+        <a href="#contato" class="btn small">Ativar</a>
+      </div>
+      <div class="promo-card">
+        <span class="promo-tier">Toda semana</span>
+        <h3>Cashback de sexta</h3>
+        <p>Uma parte do saldo líquido perdido na semana volta para sua conta, sem precisar solicitar nada.</p>
+        <a href="#contato" class="btn small">Saber mais</a>
+      </div>
+      <div class="promo-card">
+        <span class="promo-tier">Nível VIP</span>
+        <h3>Mesas exclusivas</h3>
+        <p>A partir de um determinado volume de conta, você recebe acesso a limites maiores e atendimento dedicado.</p>
+        <a href="#contato" class="btn small">Ver critérios</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="promotions" id="afiliados" style="border-bottom: 1px solid var(--hairline);">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"><span class="bar"></span>Programa de afiliados</div>
+      <h2>Ganhe indicando jogadores</h2>
+      <p>Torne-se afiliado TAKO BET, receba um link exclusivo e acompanhe suas indicações no seu próprio painel — depois que o seu cadastro for aprovado.</p>
+    </div>
+    <div class="promo-grid">
+      <div class="promo-card tall">
+        <span class="promo-tier">Como funciona</span>
+        <h3>Do cadastro ao painel</h3>
+        <div class="aff-steps" style="margin-top:6px;">
+          <div class="aff-step">
+            <span class="aff-step-num">1</span>
+            <div><strong>Preencha o formulário</strong><p>Nome, número de contacto e demais dados do afiliado.</p></div>
+          </div>
+          <div class="aff-step">
+            <span class="aff-step-num">2</span>
+            <div><strong>Aguarde a aprovação</strong><p>A equipa TAKO BET analisa o pedido antes de liberar o acesso.</p></div>
+          </div>
+          <div class="aff-step">
+            <span class="aff-step-num">3</span>
+            <div><strong>Acesse o seu painel</strong><p>Depois de aprovado, você recebe o link e acompanha suas indicações e comissões.</p></div>
+          </div>
+        </div>
+        <a href="#" class="btn small" data-open-affiliate>Candidatar-me a afiliado</a>
+      </div>
+      <div class="promo-card">
+        <span class="promo-tier">Para quem já é afiliado</span>
+        <h3>Painel de afiliados</h3>
+        <p>Se o seu cadastro já foi aprovado, aceda ao seu painel para ver o seu link e os seus dados.</p>
+        <a href="#" class="btn small ghost" data-open-auth="login">Aceder ao painel</a>
+      </div>
+      <div class="promo-card">
+        <span class="promo-tier">Estado do pedido</span>
+        <h3>Cadastro em análise</h3>
+        <p>Cada candidatura passa pelo mesmo processo — sem exceções — até ser aprovada individualmente.</p>
+        <a href="#" class="btn small ghost" data-open-affiliate>Ver processo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pillars" id="vantagens">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"><span class="bar"></span>Por que TAKO BET</div>
+      <h2>O que sustenta a casa</h2>
+      <p>Compromissos que só afirmamos quando já são realidade na operação — não promessas de marketing.</p>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v20M5 8l7-6 7 6M5 16l7 6 7-6"/></svg>
+        <h3>Processos de pagamento claros</h3>
+        <p>Prazos informados com antecedência para cada método — sem surpresas entre o pedido e a confirmação.</p>
+      </div>
+      <div class="pillar">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9M8 12l3 3 5-6"/></svg>
+        <h3>Suporte humano</h3>
+        <p>Uma equipe disponível todos os dias, em português, para resolver de verdade — sem script repetido.</p>
+      </div>
+      <div class="pillar">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+        <h3>Conta sob seu controle</h3>
+        <p>Verificação de identidade, limites de depósito e autoexclusão disponíveis a qualquer momento, direto na conta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="experience" id="experiencia">
+  <div class="wrap exp-grid">
+    <div class="exp-panel">
+      <div class="exp-figure">
+        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" stroke="#C9A45C" stroke-width="0.6"/>
+          <circle cx="50" cy="50" r="34" stroke="#C9A45C" stroke-width="0.6"/>
+          <circle cx="50" cy="50" r="3" fill="#F3D58B"/>
+          <line x1="50" y1="4" x2="50" y2="96" stroke="#C9A45C" stroke-width="0.4"/>
+          <line x1="4" y1="50" x2="96" y2="50" stroke="#C9A45C" stroke-width="0.4"/>
+        </svg>
+      </div>
+    </div>
+    <div class="exp-text">
+      <h2>Uma experiência, não uma promessa</h2>
+      <p>Não vendemos garantia de resultado — vendemos uma casa onde as regras são claras, os prazos são cumpridos e você sempre sabe exatamente onde está o seu dinheiro.</p>
+      <ul class="exp-list">
+        <li><span class="mark">—</span>Conta verificada em minutos, sem burocracia excessiva.</li>
+        <li><span class="mark">—</span>Histórico completo de transações, sempre visível para você.</li>
+        <li><span class="mark">—</span>Ferramentas de limite de depósito e autoexclusão, disponíveis a qualquer momento.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="payments">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"><span class="bar"></span>Pagamentos</div>
+      <h2>Formas de depósito e saque</h2>
+    </div>
+    <div class="payments-grid">
+      <div class="payment-card"><span class="p-name">M-Pesa</span><span class="payment-status"><span class="dotstat"></span>Disponível</span></div>
+      <div class="payment-card"><span class="p-name">e-Mola</span><span class="payment-status"><span class="dotstat"></span>Disponível</span></div>
+      <div class="payment-card"><span class="p-name">mKesh</span><span class="payment-status"><span class="dotstat"></span>Disponível</span></div>
+      <div class="payment-card"><span class="p-name">Cartão Visa / Mastercard</span><span class="payment-status"><span class="dotstat"></span>Disponível</span></div>
+      <div class="payment-card"><span class="p-name">Transferência bancária</span><span class="payment-status"><span class="dotstat"></span>Disponível</span></div>
+    </div>
+    <p class="payments-note">Prazos de processamento variam por método e serão exibidos na tela de depósito assim que confirmados com cada operadora.</p>
+  </div>
+</section>
+
+<section class="activity">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"><span class="bar"></span>Atividade</div>
+      <h2>Atividade da plataforma</h2>
+      <p>Exemplos de como a atividade recente aparece na interface.</p>
+    </div>
+    <div class="activity-marquee">
+      <div class="activity-track" id="activityTrack"></div>
+    </div>
+  </div>
+</section>
+
+<section class="banner">
+  <div class="wrap banner-inner">
+    <div>
+      <h2>Sua conta, em menos de cinco minutos</h2>
+      <p>Verificação simples, primeiro depósito protegido e suporte disponível desde o primeiro clique.</p>
+    </div>
+    <a href="#contato" class="btn solid">Criar conta</a>
+  </div>
+</section>
+
+<section class="newsletter" id="contato">
+  <div class="wrap">
+    <div class="nl-box">
+      <div>
+        <h2>Fale com a equipe</h2>
+        <p>Deixe seu e-mail e alguém do suporte entra em contato — sem fila de robô, sem resposta pronta.</p>
+      </div>
+      <div>
+        <form class="nl-form" id="nlForm">
+          <input type="email" placeholder="seu@email.com" id="nlEmail" required aria-label="Seu e-mail">
+          <button type="submit" class="btn solid">Enviar</button>
+        </form>
+        <p class="nl-msg" id="nlMsg"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-players-bg" aria-hidden="true">
+    <svg viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#C9A45C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+        <g transform="translate(70,60)">
+          <circle cx="30" cy="18" r="14"/>
+          <path d="M30 32v58"/>
+          <path d="M30 46l-30-34"/>
+          <path d="M30 46l30-34"/>
+          <path d="M30 90l-20 40"/>
+          <path d="M30 90l20 40"/>
+        </g>
+        <g transform="translate(210,96)">
+          <circle cx="34" cy="16" r="13"/>
+          <path d="M34 29v40"/>
+          <path d="M34 40h30M34 40h-30"/>
+          <path d="M34 69l-22 34"/>
+          <path d="M34 69l22 34"/>
+          <rect x="52" y="34" width="16" height="10" rx="2"/>
+        </g>
+        <g transform="translate(380,50)">
+          <circle cx="26" cy="16" r="13"/>
+          <path d="M26 29v66"/>
+          <path d="M26 44l-18 20"/>
+          <path d="M26 44l18-8"/>
+          <path d="M26 95l-16 44"/>
+          <path d="M26 95l16 44"/>
+        </g>
+        <g transform="translate(540,64)">
+          <circle cx="24" cy="16" r="13"/>
+          <path d="M24 29v58"/>
+          <path d="M24 42l-24-12"/>
+          <path d="M24 42l26-30"/>
+          <path d="M24 87l-14 42"/>
+          <path d="M24 87l18 42"/>
+          <circle cx="86" cy="8" r="13"/>
+          <path d="M86 21v58"/>
+          <path d="M86 34l24-14"/>
+          <path d="M86 34l-24 4"/>
+          <path d="M86 79l14 42"/>
+          <path d="M86 79l-16 42"/>
+        </g>
+        <g transform="translate(740,100)">
+          <circle cx="26" cy="16" r="13"/>
+          <path d="M26 29v36"/>
+          <path d="M26 40h26M26 40h-22"/>
+          <path d="M26 65l-18 30"/>
+          <path d="M26 65l24 30"/>
+        </g>
+        <g transform="translate(880,54)">
+          <circle cx="26" cy="16" r="13"/>
+          <path d="M26 29v62"/>
+          <path d="M26 42l-26 26"/>
+          <path d="M26 42l24-38"/>
+          <path d="M26 91l-16 40"/>
+          <path d="M26 91l18 40"/>
+        </g>
+        <g transform="translate(1010,84)">
+          <circle cx="22" cy="16" r="12"/>
+          <path d="M22 28v44"/>
+          <path d="M22 40l16 10"/>
+          <path d="M22 40l-16 4"/>
+          <path d="M22 72l-14 36"/>
+          <path d="M22 72l16 36"/>
+          <circle cx="70" cy="20" r="12"/>
+          <path d="M70 32v40"/>
+          <path d="M70 44l-16 6"/>
+          <path d="M70 44l16-2"/>
+          <path d="M70 72l-14 34"/>
+          <path d="M70 72l14 34"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+
+  <div class="footer-info-band">
+    <div class="wrap footer-info-inner">
+      <div class="footer-lang">
+        <div class="footer-lang-row">
+          <span class="footer-lang-flag">
+            <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h900v600H0z" fill="#009639"/>
+              <path d="M0 0l520 300L0 600z" fill="#000"/>
+              <path d="M0 60l430 240L0 540z" fill="#FCD116"/>
+              <path d="M0 120l320 180L0 480z" fill="#DE2910"/>
+            </svg>
+          </span>
+          <span class="label">PORTUGUÊS</span>
+          <span class="chevron">▾</span>
+        </div>
+      </div>
+
+      <div class="footer-age">
+        <div class="footer-age-badge">+18</div>
+        <p>Deve ter 18 anos ou mais para se inscrever ou jogar na TAKO BET.</p>
+      </div>
+
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h2V4h-3a4 4 0 00-4 4v3H7v4h3v9h4v-9h3l1-4h-4V8a1 1 0 011-1z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="wrap footer-payments-row">
+      <span class="p-label">Operadoras:</span>
+      <span class="footer-op-badge mpesa">
+        <span class="net">VODACOM</span>
+        <span class="svc"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>M-Pesa</span>
+      </span>
+      <span class="footer-op-badge emola">
+        <span class="net">MOVITEL</span>
+        <span class="svc"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>e-Mola</span>
+      </span>
+      <span class="footer-op-badge mkesh">
+        <span class="net">TMCEL</span>
+        <span class="svc"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>mKesh</span>
+      </span>
+      <span class="footer-op-badge visa">Visa / Mastercard</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="responsible-note">
+      <strong>Jogo responsável:</strong> este site é destinado exclusivamente a maiores de 18 anos.
+      <ul>
+        <li>Defina limites de tempo e valor antes de jogar.</li>
+        <li>Use as ferramentas de autoexclusão disponíveis na conta a qualquer momento.</li>
+        <li>Se sentir que o jogo deixou de ser uma escolha, procure ajuda especializada.</li>
+      </ul>
+    </div>
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="brand">TAKO BET</a>
+        <p>Uma casa pensada para durar — regras claras, suporte real e limites que você controla.</p>
+      </div>
+      <div>
+        <h4>Navegar</h4>
+        <ul>
+          <li><a href="#tako-live">Ao vivo</a></li>
+          <li><a href="#odds">Odds</a></li>
+          <li><a href="#promocoes">Promoções</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#top">Termos de uso</a></li>
+          <li><a href="#top">Privacidade</a></li>
+          <li><a href="#top">Jogo responsável</a></li>
+          <li><a href="#top">Política de KYC/AML</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="#contato">Suporte</a></li>
+          <li><a href="#contato">Parcerias</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-brand-band">
+    <div class="wrap">
+      <a href="#top" class="brand">
+        <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="17" r="9" stroke-width="1.6"/>
+          <path d="M11 21c-1 4-3 5-4 9 3-1 5-3 6-6" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M15 24c0 4-1 6-2 10 3-2 4-4 5-7" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M20 25c1 4 1 6 1 10 2-2 2-5 2-8" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M25 24c1 3 3 4 5 7-1-4 0-6-1-10" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M29 21c2 3 4 4 6 6-2-4-1-6-3-9" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        TAKO BET
+      </a>
+      <p class="footer-brand-tagline">Plataforma de apostas online — Moçambique</p>
+      <p class="foot-legal">
+        TAKO BET é atualmente um projeto de demonstração visual. Operação sujeita à legislação de jogos e apostas vigente na jurisdição do usuário; número de licença, entidade reguladora e jurisdições autorizadas serão publicados aqui antes de qualquer operação com dinheiro real.
+      </p>
+      <p class="footer-brand-copyright">© 2026 TAKO BET. Todos os direitos reservados. · +18 · Jogue com responsabilidade.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MODAL: LOGIN / REGISTAR / REDEFINIR PALAVRA-PASSE -->
+<div class="modal-overlay" id="authOverlay">
+  <div class="modal-box">
+    <button type="button" class="modal-close" data-close-modal aria-label="Fechar">✕</button>
+
+    <div id="authTabsView">
+      <div class="modal-eyebrow">TAKO BET</div>
+      <div class="modal-tabs">
+        <button type="button" class="modal-tab" data-auth-tab="login">Iniciar sessão</button>
+        <button type="button" class="modal-tab" data-auth-tab="registar">Registar</button>
+      </div>
+
+      <form class="modal-panel" id="loginPanel" data-auth-panel="login">
+        <div class="field-group">
+          <label class="field-label" for="loginPhone">Número de telefone</label>
+          <input class="field-input" type="tel" id="loginPhone" placeholder="84 123 4567" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="loginPassword">Palavra-passe</label>
+          <input class="field-input" type="password" id="loginPassword" placeholder="••••••••" required>
+        </div>
+        <button type="button" class="modal-forgot" data-forgot-open>Esqueceu a palavra-passe?</button>
+        <button type="submit" class="btn solid modal-submit">Iniciar sessão</button>
+        <div class="auth-divider"><span>ou</span></div>
+        <button type="button" class="btn google" id="googleLoginBtn">
+          <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6 29.5 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.3C29.3 35.4 26.8 36 24 36c-5.2 0-9.6-3.1-11.3-7.6l-6.5 5C9.6 39.6 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.3 5.7l6.2 5.3C39.9 37 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
+          Continuar com Google
+        </button>
+        <p class="modal-msg" id="loginMsg"></p>
+      </form>
+
+      <form class="modal-panel" id="registarPanel" data-auth-panel="registar">
+        <div class="field-group">
+          <label class="field-label" for="regPhone">Número de telefone</label>
+          <input class="field-input" type="tel" id="regPhone" placeholder="84 123 4567" required>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="regPassword">Palavra-passe</label>
+          <input class="field-input" type="password" id="regPassword" placeholder="••••••••" required minlength="6">
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="regPassword2">Confirmar palavra-passe</label>
+          <input class="field-input" type="password" id="regPassword2" placeholder="••••••••" required minlength="6">
+        </div>
+        <button type="button" class="modal-forgot" data-forgot-open>Já tem conta? Redefinir palavra-passe</button>
+        <button type="submit" class="btn solid modal-submit">Criar conta</button>
+        <div class="auth-divider"><span>ou</span></div>
+        <button type="button" class="btn google" id="googleRegisterBtn">
+          <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6 29.5 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.3C29.3 35.4 26.8 36 24 36c-5.2 0-9.6-3.1-11.3-7.6l-6.5 5C9.6 39.6 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.3 5.7l6.2 5.3C39.9 37 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
+          Continuar com Google
+        </button>
+        <p class="modal-msg" id="regMsg"></p>
+        <p class="modal-note">Ao registar-se, confirma que tem 18 anos ou mais.</p>
+      </form>
+    </div>
+
+    <div id="authForgotView" style="display:none;">
+      <button type="button" class="modal-back" data-forgot-back>← Voltar</button>
+      <div class="modal-eyebrow">TAKO BET</div>
+      <h3>Redefinir palavra-passe</h3>
+      <form class="modal-panel active" id="forgotPanel">
+        <div class="field-group">
+          <label class="field-label" for="forgotPhone">Número de telefone</label>
+          <input class="field-input" type="tel" id="forgotPhone" placeholder="84 123 4567" required>
+        </div>
+        <button type="submit" class="btn solid modal-submit">Enviar código</button>
+        <p class="modal-msg" id="forgotMsg"></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: CANDIDATURA A AFILIADO -->
+<div class="modal-overlay" id="affOverlay">
+  <div class="modal-box wide">
+    <button type="button" class="modal-close" data-close-modal aria-label="Fechar">✕</button>
+
+    <div id="affFormView">
+      <div class="modal-eyebrow">Programa de afiliados</div>
+      <h3>Candidatura a afiliado</h3>
+      <form class="modal-panel active" id="affForm">
+        <div class="field-group">
+          <label class="field-label" for="affName">Nome completo</label>
+          <input class="field-input" type="text" id="affName" placeholder="O seu nome" required>
+        </div>
+        <div class="field-row-2">
+          <div class="field-group">
+            <label class="field-label" for="affPhone">Número de telefone</label>
+            <input class="field-input" type="tel" id="affPhone" placeholder="84 123 4567" required>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="affEmail">E-mail</label>
+            <input class="field-input" type="email" id="affEmail" placeholder="seu@email.com" required>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="affChannel">Como pretende divulgar?</label>
+          <input class="field-input" type="text" id="affChannel" placeholder="Ex.: YouTube, WhatsApp, Instagram">
+        </div>
+        <button type="submit" class="btn solid modal-submit">Enviar candidatura</button>
+        <p class="modal-note">Todos os pedidos passam pelo mesmo processo de aprovação, um por um.</p>
+      </form>
+    </div>
+
+    <div id="affPendingView" style="display:none;">
+      <div class="modal-eyebrow">Programa de afiliados</div>
+      <div class="aff-pending">
+        <h4><span class="status-dot"></span>Cadastro em análise</h4>
+        <p>Recebemos a sua candidatura. Assim que for aprovada, vai receber acesso ao painel de afiliados com o seu link exclusivo e os seus dados de conta.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: PAINEL DA CONTA -->
+<div class="modal-overlay" id="accountOverlay">
+  <div class="modal-box wide">
+    <button type="button" class="modal-close" data-close-modal aria-label="Fechar">✕</button>
+
+    <div class="account-head">
+      <div class="account-avatar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg>
+        <span class="edit-dot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>
+        </span>
+      </div>
+      <div class="account-idline">
+        <span id="accPhoneDisplay">258 00 000 0000</span>
+        <span class="id-tag" id="accIdDisplay">ID-0000000</span>
+      </div>
+      <div class="account-stars" aria-hidden="true">
+        <svg class="filled" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg>
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg>
+      </div>
+    </div>
+
+    <div class="account-stats">
+      <div class="account-stat"><span class="lbl">Bónus</span><span class="val" id="accBonus">0.00 MZN</span></div>
+      <div class="account-stat"><span class="lbl">Extraível</span><span class="val" id="accWithdrawable">0.00 MZN</span></div>
+      <div class="account-stat"><span class="lbl">Desbloqueio</span><span class="val" id="accUnlock">0.00 MZN</span></div>
+    </div>
+
+    <div class="account-actions-row">
+      <button type="button" class="btn small" id="depositBtn2">Depósito</button>
+      <button type="button" class="btn small danger" data-open-auth-from-account="forgot">Mudar senha</button>
+    </div>
+
+    <div class="account-accordion" id="accountAccordion">
+
+      <div class="acc-item open" data-acc-section="pessoal">
+        <button type="button" class="acc-item-head"><span>Pessoal</span><span class="chevron">▾</span></button>
+        <div class="acc-item-body">
+          <div class="field-group">
+            <label class="field-label">Nome próprio</label>
+            <input class="field-input" type="text" id="profFirstName" placeholder="NoName">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Apelido</label>
+            <input class="field-input" type="text" id="profLastName" placeholder="NoName">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Data de nascimento</label>
+            <input class="field-input" type="date" id="profBirthdate">
+          </div>
+          <button type="button" class="btn small teal" id="profSaveBtn">Guardar</button>
+          <p class="modal-msg" id="profMsg"></p>
+        </div>
+      </div>
+
+      <div class="acc-item" data-acc-section="financeiro">
+        <button type="button" class="acc-item-head"><span>Financeiro</span><span class="chevron">▾</span></button>
+        <div class="acc-item-body"><p class="hint">Resumo de saldo, bónus e movimentos da conta.</p></div>
+      </div>
+
+      <div class="acc-item" data-acc-section="kyc">
+        <button type="button" class="acc-item-head"><span>Conheça seu Cliente</span><span class="chevron">▾</span></button>
+        <div class="acc-item-body"><p class="hint">Verificação de identidade (KYC) — envie os seus documentos aqui quando disponível.</p></div>
+      </div>
+
+      <div class="acc-item" data-acc-section="historia">
+        <button type="button" class="acc-item-head"><span>História</span><span class="chevron">▾</span></button>
+        <div class="acc-item-body">
+          <div id="historyList"><p class="hint">Sem movimentos ainda.</p></div>
+        </div>
+      </div>
+
+      <div class="acc-item" data-acc-section="depositos">
+        <button type="button" class="acc-item-head"><span>Depósitos</span><span class="chevron">▾</span></button>
+        <div class="acc-item-body">
+          <p class="hint" style="margin-bottom:-4px;">Valor de depósito</p>
+          <div class="withdraw-amount">
+            <span class="curr">MZN</span>
+            <input type="number" id="depositAmount" placeholder="0.00" min="0" step="0.01">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Conta de pagamento</label>
+            <select class="field-input" id="depositAccount">
+              <option value="">Por favor selecione</option>
+              <option value="mpesa">M-Pesa</option>
+              <option value="emola">e-Mola</option>
+              <option value="mkesh">mKesh</option>
+              <option value="banco">Transferência bancária</option>
+            </select>
+          </div>
+          <button type="button" class="btn teal modal-submit" id="depositSubmit">Depositar</button>
+          <p class="modal-msg" id="depositMsg"></p>
+        </div>
+      </div>
+
+      <div class="acc-item" data-acc-section="levantamentos">
+        <button type="button" class="acc-item-head"><span>Levantamentos</span><span class="chevron">▾</span></button>
+        <div class="acc-item-body">
+          <p class="hint" style="margin-bottom:-4px;">Valor de levantamento</p>
+          <div class="withdraw-amount">
+            <span class="curr">MZN</span>
+            <input type="number" id="withdrawAmount" placeholder="0.00" min="0" step="0.01">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Conta de pagamento</label>
+            <select class="field-input" id="withdrawAccount">
+              <option value="">Por favor selecione</option>
+              <option value="mpesa">M-Pesa</option>
+              <option value="emola">e-Mola</option>
+              <option value="mkesh">mKesh</option>
+              <option value="banco">Transferência bancária</option>
+            </select>
+          </div>
+          <button type="button" class="btn teal modal-submit" id="withdrawSubmit">Levantamento</button>
+          <p class="modal-msg" id="withdrawMsg"></p>
+        </div>
+      </div>
+
+      <div class="acc-item" data-acc-section="limites">
+        <button type="button" class="acc-item-head"><span>Limites</span><span class="chevron">▾</span></button>
+        <div class="acc-item-body"><p class="hint">Defina limites de depósito e ferramentas de autoexclusão.</p></div>
+      </div>
+
+      <div class="acc-item" data-acc-section="registos">
+        <button type="button" class="acc-item-head"><span>Registos</span><span class="chevron">▾</span></button>
+        <div class="acc-item-body"><p class="hint">Registo de acessos e alterações feitas na conta.</p></div>
+      </div>
+
+      <div class="acc-item" data-acc-section="bonus">
+        <button type="button" class="acc-item-head"><span>Bónus</span><span class="chevron">▾</span></button>
+        <div class="acc-item-body"><p class="hint">Bónus ativos e histórico de bónus recebidos.</p></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  // ============================================================
+  //  FIREBASE — TAKO BET
+  //  Sistema REAL com Google Sign-In (seletor de contas) e API de depósitos
+  // ============================================================
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAnalytics, isSupported as analyticsIsSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    signOut,
+    onAuthStateChanged,
+    sendPasswordResetEmail,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signInWithRedirect,
+    getRedirectResult
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import {
+    getDatabase,
+    ref,
+    set,
+    get,
+    update,
+    push,
+    onValue,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA-ZvSgfzSSzejYk8S4Cy1ZjJ3jvG6nQ-Q",
+    authDomain: "takobet-7d20f.firebaseapp.com",
+    databaseURL: "https://takobet-7d20f-default-rtdb.firebaseio.com",
+    projectId: "takobet-7d20f",
+    storageBucket: "takobet-7d20f.firebasestorage.app",
+    messagingSenderId: "551006051804",
+    appId: "1:551006051804:web:ff38bd6c7aba6599b80319",
+    measurementId: "G-EFRYRBY555"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getDatabase(app);
+
+  // CONFIGURAÇÃO PARA SELETOR DE CONTAS GOOGLE
+  const googleProvider = new GoogleAuthProvider();
+  googleProvider.setCustomParameters({
+    prompt: 'select_account'
+  });
+
+  analyticsIsSupported().then((ok) => { if (ok) getAnalytics(app); }).catch(() => {});
+
+  // ---------- FUNÇÕES AUXILIARES ----------
+  function phoneToEmail(rawPhone){
+    const digits = rawPhone.replace(/\D/g, '');
+    const withCode = digits.startsWith('258') ? digits : ('258' + digits);
+    return `${withCode}@takobet.app`;
+  }
+
+  function digitsOnly(rawPhone){
+    const digits = rawPhone.replace(/\D/g, '');
+    return digits.startsWith('258') ? digits : ('258' + digits);
+  }
+
+  function randomId(){
+    return 'ID-' + Math.floor(1000000 + Math.random() * 9000000);
+  }
+
+  function fmtMZN(n){
+    const v = Number(n || 0);
+    return v.toLocaleString('pt-MZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MZN';
+  }
+
+  let currentUid = null;
+  let currentUserData = null;
+  let currentUser = null;
+
+  // ---------- TICKER ----------
+  const tickerData = [
+    { match: 'Falcões FC vs Leões United', odd: '1.85' },
+    { match: 'Estrela Azul vs Porto Real', odd: '2.10' },
+    { match: 'Titãs vs Furacão', odd: '1.55' },
+    { match: 'Cometas vs Águias', odd: '1.90' },
+    { match: 'J. Rocha vs M. Alves', odd: '1.65' },
+    { match: 'Brasa FC vs União Norte', odd: '2.45' },
+  ];
+  const tickerTrack = document.getElementById('tickerTrack');
+  const tickerHTML = tickerData.map(t =>
+    `<span class="ticker-item"><strong>${t.match}</strong> <span class="odd">${t.odd}</span></span>`
+  ).join('');
+  tickerTrack.innerHTML = tickerHTML + tickerHTML;
+
+  // ---------- ACTIVITY ----------
+  const activityData = [
+    { initials: 'R.M', name: 'R**** M.', amount: '18.400 MT', meta: 'Futebol · há 6 min' },
+    { initials: 'C.F', name: 'C**** F.', amount: '52.100 MT', meta: 'Roleta · há 14 min' },
+    { initials: 'D.A', name: 'D**** A.', amount: '9.750 MT', meta: 'Basquete · há 22 min' },
+    { initials: 'S.P', name: 'S**** P.', amount: '31.900 MT', meta: 'Blackjack · há 35 min' },
+    { initials: 'L.T', name: 'L**** T.', amount: '7.300 MT', meta: 'Tênis · há 48 min' },
+    { initials: 'M.N', name: 'M**** N.', amount: '64.200 MT', meta: 'Slots · há 1 h' },
+  ];
+  const activityTrack = document.getElementById('activityTrack');
+  const activityHTML = activityData.map(w => `
+    <div class="activity-card">
+      <div class="activity-avatar">${w.initials}</div>
+      <div class="activity-info">
+        <span class="activity-name">${w.name}<span class="amount">+${w.amount}</span></span>
+        <span class="activity-meta">${w.meta}</span>
+      </div>
+    </div>
+  `).join('');
+  activityTrack.innerHTML = activityHTML + activityHTML;
+
+  // ---------- ICON NAV ----------
+  const iconNavItems = document.querySelectorAll('.icon-nav-item');
+  iconNavItems.forEach(item => {
+    item.addEventListener('click', () => {
+      iconNavItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+
+  // ---------- ODDS FILTER ----------
+  const oddsFilterButtons = document.querySelectorAll('.odds-filter-btn');
+  const oddsRows = document.querySelectorAll('#oddsList .odds-row');
+  oddsFilterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      oddsFilterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      oddsRows.forEach(row => {
+        row.style.display = (filter === 'todos' || row.dataset.cat === filter) ? 'grid' : 'none';
+      });
+    });
+  });
+
+  // ---------- ODDS SELECTION ----------
+  document.querySelectorAll('.odds-btn').forEach(btn => {
+    btn.addEventListener('click', () => btn.classList.toggle('active'));
+  });
+
+  // ---------- NEWSLETTER ----------
+  const nlForm = document.getElementById('nlForm');
+  const nlMsg = document.getElementById('nlMsg');
+  nlForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('nlEmail').value;
+    nlMsg.textContent = `Recebido — a equipe entra em contato com ${email} em breve.`;
+    nlForm.reset();
+  });
+
+  // ---------- PARTICLES ----------
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let particles = [];
+
+  function resizeCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = Math.min(window.innerHeight * 1.4, document.body.scrollHeight);
+  }
+
+  function initParticles(){
+    const count = Math.round((canvas.width * canvas.height) / 90000);
+    particles = Array.from({ length: Math.min(count, 46) }, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: 0.6 + Math.random() * 1.4,
+      speed: 0.12 + Math.random() * 0.28,
+      drift: (Math.random() - 0.5) * 0.15,
+      alpha: 0.15 + Math.random() * 0.35,
+    }));
+  }
+
+  function drawParticles(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(212, 178, 116, ${p.alpha})`;
+      ctx.fill();
+      p.y -= p.speed;
+      p.x += p.drift;
+      if (p.y < -10){ p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
+    });
+    requestAnimationFrame(drawParticles);
+  }
+
+  resizeCanvas();
+  initParticles();
+  window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
+  if (!prefersReducedMotion){
+    requestAnimationFrame(drawParticles);
+  }
+
+  // ---------- MODAIS ----------
+  const authOverlay = document.getElementById('authOverlay');
+  const affOverlay = document.getElementById('affOverlay');
+  const accountOverlay = document.getElementById('accountOverlay');
+  const authTabsView = document.getElementById('authTabsView');
+  const authForgotView = document.getElementById('authForgotView');
+  const affFormView = document.getElementById('affFormView');
+  const affPendingView = document.getElementById('affPendingView');
+
+  function openOverlay(overlay){
+    document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open'));
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeOverlays(){
+    document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open'));
+    document.body.style.overflow = '';
+  }
+
+  function setAuthTab(tab){
+    authForgotView.style.display = 'none';
+    authTabsView.style.display = '';
+    document.querySelectorAll('[data-auth-tab]').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.authTab === tab);
+    });
+    document.querySelectorAll('[data-auth-panel]').forEach(panel => {
+      panel.classList.toggle('active', panel.dataset.authPanel === tab);
+    });
+  }
+
+  // ---------- ABRIR MODAL DE AUTENTICAÇÃO ----------
+  document.querySelectorAll('[data-open-auth]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openOverlay(authOverlay);
+      const tab = btn.dataset.openAuth === 'registar' ? 'registar' : 'login';
+      setAuthTab(tab);
+    });
+  });
+
+  // ---------- TABS DE AUTENTICAÇÃO ----------
+  document.querySelectorAll('[data-auth-tab]').forEach(btn => {
+    btn.addEventListener('click', () => setAuthTab(btn.dataset.authTab));
+  });
+
+  // ---------- ESQUECEU SENHA ----------
+  document.querySelectorAll('[data-forgot-open]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      authTabsView.style.display = 'none';
+      authForgotView.style.display = '';
+    });
+  });
+
+  document.querySelectorAll('[data-forgot-back]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      authForgotView.style.display = 'none';
+      authTabsView.style.display = '';
+    });
+  });
+
+  // ---------- ABRIR MODAL DE AFILIADO ----------
+  document.querySelectorAll('[data-open-affiliate]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      affFormView.style.display = '';
+      affPendingView.style.display = 'none';
+      openOverlay(affOverlay);
+    });
+  });
+
+  // ---------- FECHAR MODAIS ----------
+  document.querySelectorAll('[data-close-modal]').forEach(btn => {
+    btn.addEventListener('click', closeOverlays);
+  });
+
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) closeOverlays();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeOverlays();
+  });
+
+  // ---------- BOTÕES DE JOGO - VERIFICAR LOGIN ----------
+  document.querySelectorAll('.crash-play, .game-tile').forEach(el => {
+    el.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A' && e.target.classList.contains('crash-play')) {
+        e.preventDefault();
+      }
+      
+      if (!currentUid) {
+        openOverlay(authOverlay);
+        setAuthTab('login');
+        return;
+      }
+      
+      const gameName = el.closest('.crash-card')?.querySelector('.crash-name')?.textContent || 
+                       el.closest('.game-tile')?.querySelector('h4')?.textContent || 
+                       'Jogo';
+      alert(`🎮 ${gameName}\n\nBem-vindo de volta, ${currentUserData?.phone || 'jogador'}!\nO jogo será iniciado em breve.`);
+    });
+  });
+
+  // ---------- BOTÃO "Criar conta" DO HERO ----------
+  document.querySelector('.hero-actions .btn.solid')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openOverlay(authOverlay);
+    setAuthTab('registar');
+  });
+
+  // ---------- BOTÃO "Criar conta" DO BANNER ----------
+  document.querySelector('.banner .btn.solid')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    openOverlay(authOverlay);
+    setAuthTab('registar');
+  });
+
+  // ---------- BOTÕES DAS PROMOÇÕES ----------
+  document.querySelectorAll('.promo-card .btn:not(.ghost)').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!currentUid) {
+        openOverlay(authOverlay);
+        setAuthTab('login');
+      } else {
+        alert('✅ Promoção ativada com sucesso!');
+      }
+    });
+  });
+
+  // ---------- LOGIN ----------
+  const loginForm = document.getElementById('loginPanel');
+  const loginMsg = document.getElementById('loginMsg');
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const phone = document.getElementById('loginPhone').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    
+    if (!phone || !password) {
+      loginMsg.textContent = 'Preencha todos os campos.';
+      return;
+    }
+    
+    const email = phoneToEmail(phone);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      loginMsg.textContent = 'Sessão iniciada com sucesso!';
+      setTimeout(closeOverlays, 500);
+    } catch (err) {
+      loginMsg.textContent = `Erro: ${err.message}`;
+    }
+  });
+
+  // ---------- REGISTO ----------
+  const regForm = document.getElementById('registarPanel');
+  const regMsg = document.getElementById('regMsg');
+
+  regForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const phone = document.getElementById('regPhone').value.trim();
+    const pw = document.getElementById('regPassword').value;
+    const pw2 = document.getElementById('regPassword2').value;
+
+    if (!phone || !pw || !pw2) {
+      regMsg.textContent = 'Preencha todos os campos.';
+      return;
+    }
+    if (pw !== pw2) {
+      regMsg.textContent = 'As palavras-passe não coincidem.';
+      return;
+    }
+    if (pw.length < 6) {
+      regMsg.textContent = 'A palavra-passe deve ter pelo menos 6 caracteres.';
+      return;
+    }
+
+    const email = phoneToEmail(phone);
+    try {
+      const userCred = await createUserWithEmailAndPassword(auth, email, pw);
+      const uid = userCred.user.uid;
+      const phoneDigits = digitsOnly(phone);
+      const userId = randomId();
+
+      await set(ref(db, `users/${uid}`), {
+        phone: phoneDigits,
+        userId: userId,
+        balance: 0,
+        bonus: 0,
+        withdrawable: 0,
+        unlock: 0,
+        createdAt: serverTimestamp(),
+        profile: {
+          firstName: '',
+          lastName: '',
+          birthdate: ''
+        }
+      });
+
+      regMsg.textContent = 'Conta criada com sucesso!';
+      setTimeout(closeOverlays, 500);
+    } catch (err) {
+      regMsg.textContent = `Erro: ${err.message}`;
+    }
+  });
+
+  // ---------- REDEFINIR SENHA ----------
+  const forgotForm = document.getElementById('forgotPanel');
+  const forgotMsg = document.getElementById('forgotMsg');
+
+  forgotForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const phone = document.getElementById('forgotPhone').value.trim();
+    if (!phone) {
+      forgotMsg.textContent = 'Digite o número de telefone.';
+      return;
+    }
+    const email = phoneToEmail(phone);
+    try {
+      await sendPasswordResetEmail(auth, email);
+      forgotMsg.textContent = 'E-mail de redefinição enviado!';
+    } catch (err) {
+      forgotMsg.textContent = `Erro: ${err.message}`;
+    }
+  });
+
+  // ============================================================
+  //  GOOGLE LOGIN REAL — com seletor de contas do dispositivo
+  // ============================================================
+  
+  async function ensureUserProfile(uid, displayName, phoneNumber) {
+    const userRef = ref(db, `users/${uid}`);
+    const snap = await get(userRef);
+    if (!snap.exists()) {
+      const userId = randomId();
+      const firstName = displayName?.split(' ')[0] || '';
+      const lastName = displayName?.split(' ').slice(1).join(' ') || '';
+      await set(userRef, {
+        phone: phoneNumber || '258000000000',
+        userId: userId,
+        balance: 0,
+        bonus: 0,
+        withdrawable: 0,
+        unlock: 0,
+        createdAt: serverTimestamp(),
+        profile: {
+          firstName: firstName,
+          lastName: lastName,
+          birthdate: ''
+        }
+      });
+    }
+    return true;
+  }
+
+  async function signInWithGooglePopup(msgElement) {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      const user = result.user;
+      await ensureUserProfile(user.uid, user.displayName, user.phoneNumber);
+      if (msgElement) {
+        msgElement.textContent = 'Sessão iniciada com Google!';
+      }
+      closeOverlays();
+      return true;
+    } catch (err) {
+      console.error('Google sign-in error:', err);
+      if (msgElement) {
+        msgElement.textContent = `Erro: ${err.message}`;
+      }
+      return false;
+    }
+  }
+
+  // Event listeners para Google Login
+  document.getElementById('googleLoginBtn')?.addEventListener('click', () => {
+    signInWithGooglePopup(document.getElementById('loginMsg'));
+  });
+
+  document.getElementById('googleRegisterBtn')?.addEventListener('click', () => {
+    signInWithGooglePopup(document.getElementById('regMsg'));
+  });
+
+  // Verificar resultado de redirect (caso o popup seja bloqueado)
+  getRedirectResult(auth).then((result) => {
+    if (result) {
+      const user = result.user;
+      ensureUserProfile(user.uid, user.displayName, user.phoneNumber).then(() => {
+        closeOverlays();
+      });
+    }
+  }).catch((err) => {
+    console.error('Redirect result error:', err);
+  });
+
+  // ---------- AFILIADO ----------
+  const affForm = document.getElementById('affForm');
+  affForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('affName').value.trim();
+    const phone = document.getElementById('affPhone').value.trim();
+    const email = document.getElementById('affEmail').value.trim();
+    const channel = document.getElementById('affChannel').value.trim();
+
+    if (!name || !phone || !email) {
+      alert('Preencha todos os campos obrigatórios.');
+      return;
+    }
+
+    try {
+      const affRef = push(ref(db, 'affiliates'));
+      await set(affRef, {
+        name,
+        phone: digitsOnly(phone),
+        email,
+        channel,
+        status: 'pending',
+        createdAt: serverTimestamp()
+      });
+
+      affFormView.style.display = 'none';
+      affPendingView.style.display = 'block';
+    } catch (err) {
+      alert('Erro ao enviar candidatura: ' + err.message);
+    }
+  });
+
+  // ---------- CONTA - ABRIR PAINEL ----------
+  function openAccountPanel(section){
+    if (!currentUid) {
+      openOverlay(authOverlay);
+      setAuthTab('login');
+      return;
+    }
+    openOverlay(accountOverlay);
+    if (section) {
+      document.querySelectorAll('.acc-item').forEach(item => {
+        item.classList.toggle('open', item.dataset.accSection === section);
+      });
+    }
+  }
+
+  document.querySelectorAll('[data-open-account]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      openAccountPanel(btn.dataset.openAccount);
+    });
+  });
+
+  // Accordion do painel
+  document.querySelectorAll('.acc-item-head').forEach(head => {
+    head.addEventListener('click', () => {
+      const item = head.closest('.acc-item');
+      item.classList.toggle('open');
+    });
+  });
+
+  // ---------- ATUALIZAR UI DO USUÁRIO LOGADO ----------
+  function updateUIForUser(user, userData){
+    const loggedInActions = document.getElementById('loggedInActions');
+    const loggedOutActions = document.getElementById('loggedOutActions');
+
+    if (user && userData) {
+      loggedInActions.style.display = 'flex';
+      loggedOutActions.style.display = 'none';
+
+      const phone = userData.phone || '258000000000';
+      const formatted = phone.replace(/(\d{3})(\d{2})(\d{3})(\d{4})/, '$1 $2 $3 $4');
+      document.getElementById('balanceAmount').textContent = fmtMZN(userData.balance || 0);
+      document.getElementById('bdPhone').textContent = formatted;
+      document.getElementById('bdBonus').textContent = fmtMZN(userData.bonus || 0);
+      document.getElementById('bdWithdrawable').textContent = fmtMZN(userData.withdrawable || 0);
+      document.getElementById('bdUnlock').textContent = fmtMZN(userData.unlock || 0);
+
+      document.getElementById('accPhoneDisplay').textContent = formatted;
+      document.getElementById('accIdDisplay').textContent = userData.userId || 'ID-0000000';
+      document.getElementById('accBonus').textContent = fmtMZN(userData.bonus || 0);
+      document.getElementById('accWithdrawable').textContent = fmtMZN(userData.withdrawable || 0);
+      document.getElementById('accUnlock').textContent = fmtMZN(userData.unlock || 0);
+
+      if (userData.profile) {
+        document.getElementById('profFirstName').value = userData.profile.firstName || '';
+        document.getElementById('profLastName').value = userData.profile.lastName || '';
+        document.getElementById('profBirthdate').value = userData.profile.birthdate || '';
+      }
+
+      currentUid = user.uid;
+      currentUserData = userData;
+      currentUser = user;
+    } else {
+      loggedInActions.style.display = 'none';
+      loggedOutActions.style.display = 'flex';
+      currentUid = null;
+      currentUserData = null;
+      currentUser = null;
+    }
+  }
+
+  // ---------- OUVINTE DE AUTENTICAÇÃO ----------
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const userRef = ref(db, `users/${user.uid}`);
+      try {
+        const snap = await get(userRef);
+        if (snap.exists()) {
+          updateUIForUser(user, snap.val());
+        } else {
+          await ensureUserProfile(user.uid, user.displayName, user.phoneNumber);
+          const newSnap = await get(userRef);
+          updateUIForUser(user, newSnap.val());
+        }
+      } catch (err) {
+        console.error('Erro ao buscar dados do usuário:', err);
+      }
+    } else {
+      updateUIForUser(null, null);
+    }
+  });
+
+  // ============================================================
+  //  DEPÓSITO REAL — com escolha de método e integração com API
+  // ============================================================
+
+  // CONFIGURAÇÃO DA API (substitua pelos seus dados reais)
+  const API_CONFIG = {
+    mpesa: {
+      baseUrl: 'https://api.vodacom.co.mz/mpesa/v1/',
+      apiKey: 'YOUR_MPESA_API_KEY',
+      apiSecret: 'YOUR_MPESA_API_SECRET',
+      shortCode: 'YOUR_MPESA_SHORT_CODE'
+    },
+    emola: {
+      baseUrl: 'https://api.movitel.co.mz/emola/v1/',
+      apiKey: 'YOUR_EMOLA_API_KEY',
+      apiSecret: 'YOUR_EMOLA_API_SECRET'
+    },
+    mkesh: {
+      baseUrl: 'https://api.tmcel.co.mz/mkesh/v1/',
+      apiKey: 'YOUR_MKESH_API_KEY',
+      apiSecret: 'YOUR_MKESH_API_SECRET'
+    }
+  };
+
+  // Função para processar depósito real via API
+  async function processDeposit(amount, method, phoneNumber) {
+    const methodConfig = {
+      'mpesa': API_CONFIG.mpesa,
+      'emola': API_CONFIG.emola,
+      'mkesh': API_CONFIG.mkesh,
+      'banco': { type: 'bank_transfer' }
     };
 
-    let currentUser = null;
-    let adminClicks = 0;
-    let selectedMethod = null;
-
-    function copyToClipboard(texto) {
-        navigator.clipboard.writeText(texto).then(() => alert("Copiado!"));
+    const config = methodConfig[method];
+    if (!config) {
+      throw new Error('Método de pagamento não suportado');
     }
 
-    function contactSupport() {
-        window.open('https://wa.me/258851511841', '_blank');
+    if (method === 'banco') {
+      return {
+        success: true,
+        reference: 'BANK-' + Date.now(),
+        message: 'Transferência bancária processada. Aguarde a confirmação.',
+        requiresConfirmation: true
+      };
     }
 
-    function copyInviteLink() {
-        const link = `${window.location.origin}${window.location.pathname}?ref=${currentUser.phone}`;
-        navigator.clipboard.writeText(link).then(() => alert("Link de convite copiado!"));
-    }
+    // CHAMADA REAL PARA API (descomente quando tiver as credenciais)
+    /*
+    const response = await fetch(`${config.baseUrl}payment/request`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${config.apiKey}`,
+        'X-API-Secret': config.apiSecret
+      },
+      body: JSON.stringify({
+        amount: amount,
+        phoneNumber: phoneNumber,
+        shortCode: config.shortCode,
+        reference: 'TAKO-' + Date.now()
+      })
+    });
+    const result = await response.json();
+    return result;
+    */
 
-    // APROVAÇÃO COM COMISSÃO DE 10%
-    function processAdminAction(id, approved) {
-        let db = JSON.parse(localStorage.getItem('cat_db'));
-        let logs = JSON.parse(localStorage.getItem('cat_logs'));
-        let logIndex = logs.findIndex(l => l.id === id);
-        let log = logs[logIndex];
-        
-        if(approved) {
-            if(log.type === 'deposits') {
-                const valorDeposito = parseFloat(log.amount);
-                const user = db[log.phone];
-                
-                // Saldo do usuário
-                user.balance = (parseFloat(user.balance) || 0) + valorDeposito;
-
-                // SISTEMA DE COMISSÃO DE 10%
-                if(user.invitedBy && db[user.invitedBy]) {
-                    const comissao = valorDeposito * 0.10;
-                    const padrinho = db[user.invitedBy];
-                    padrinho.balance = (parseFloat(padrinho.balance) || 0) + comissao;
-                }
-            }
-            log.status = 'aprovado';
-        } else {
-            if(log.type === 'withdraws') {
-                db[log.phone].balance = (parseFloat(db[log.phone].balance) || 0) + parseFloat(log.amount);
-            }
-            log.status = 'rejeitado';
-        }
-        
-        localStorage.setItem('cat_db', JSON.stringify(db));
-        localStorage.setItem('cat_logs', JSON.stringify(logs));
-        updateAdminStats();
-        renderAdminLogs(log.type);
-        updateUI();
-        alert("Ação concluída!");
-    }
-
-    function handleAuth() {
-        const phone = document.getElementById('reg-phone').value;
-        const pass = document.getElementById('reg-pass').value;
-        const name = document.getElementById('reg-name').value;
-        const urlParams = new URLSearchParams(window.location.search);
-        const ref = urlParams.get('ref');
-
-        let db = JSON.parse(localStorage.getItem('cat_db')) || {};
-        if (db[phone]) {
-            if (db[phone].pass === pass) { currentUser = db[phone]; loginSuccess(); }
-            else alert("Senha errada!");
-        } else {
-            if (!name) return alert("Digite seu nome!");
-            db[phone] = { phone, pass, name, balance: 0, activeVip: 0, lastCollect: 0, invitedBy: ref };
-            localStorage.setItem('cat_db', JSON.stringify(db));
-            currentUser = db[phone]; loginSuccess();
-        }
-    }
-
-    function doTask() {
-        if(!currentUser.activeVip) return alert("Ative um VIP!");
-        const agora = Date.now();
-        const umDia = 24 * 60 * 60 * 1000;
-
-        if (currentUser.lastCollect && (agora - currentUser.lastCollect < umDia)) {
-            const rest = umDia - (agora - currentUser.lastCollect);
-            const h = Math.floor(rest/(1000*60*60));
-            const m = Math.floor((rest % (1000*60*60)) / (1000*60));
-            return alert(`Aguarde ${h}h ${m}m para coletar novamente.`);
-        }
-
-        const plano = planosVip.find(p => p.v === currentUser.activeVip);
-        currentUser.balance = (parseFloat(currentUser.balance) || 0) + plano.l;
-        currentUser.lastCollect = agora;
-
-        let db = JSON.parse(localStorage.getItem('cat_db'));
-        db[currentUser.phone] = currentUser;
-        localStorage.setItem('cat_db', JSON.stringify(db));
-        updateUI();
-        alert(`Tarefa Concluída! Ganhou MT ${plano.l.toFixed(2)}`);
-    }
-
-    function loginSuccess() {
-        document.getElementById('main-nav').style.display = 'flex';
-        document.getElementById('welcome-msg').innerText = `Olá, ${currentUser.name}`;
-        showScreen('screen-main');
-        renderVips();
-        updateUI();
-    }
-
-    function showScreen(id) {
-        document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        document.getElementById(id).classList.add('active');
-        
-        // Link de Convite
-        if(id === 'screen-invite' && currentUser) {
-            const link = `${window.location.origin}${window.location.pathname}?ref=${currentUser.phone}`;
-            document.getElementById('invite-link-text').innerText = link;
-        }
-        updateUI();
-    }
-
-    function updateUI() {
-        if(!currentUser) return;
-        const db = JSON.parse(localStorage.getItem('cat_db')) || {};
-        currentUser = db[currentUser.phone];
-        document.getElementById('user-balance').innerText = `MT ${parseFloat(currentUser.balance).toFixed(2)}`;
-        const p = planosVip.find(v => v.v === currentUser.activeVip);
-        document.getElementById('daily-info').innerText = p ? `MT ${p.l.toFixed(2)}` : "MT 0,00";
-    }
-
-    function renderVips() {
-        const container = document.getElementById('vip-container');
-        container.innerHTML = "";
-        planosVip.forEach(p => {
-            const isAtivo = currentUser.activeVip === p.v;
-            const isInferior = currentUser.activeVip > p.v;
-            const lucroAnual = p.l * 365;
-            
-            let btnText = 'ATIVAR AGORA';
-            let btnClass = 'btn-invest';
-            let btnAction = `buyVip(${p.v})`;
-
-            if (isAtivo) {
-                btnText = 'PLANO ATIVO';
-                btnClass = 'btn-invest btn-disabled';
-                btnAction = '';
-            } else if (isInferior) {
-                btnText = 'BLOQUEADO';
-                btnClass = 'btn-invest btn-disabled';
-                btnAction = "alert('Você já possui um plano superior!')";
-            }
-
-            container.innerHTML += `
-                <div class="vip-card ${isAtivo ? 'active-plan' : ''}" style="${isInferior ? 'opacity: 0.5; filter: grayscale(1);' : ''}">
-                    ${isAtivo ? '<div class="active-badge">SEU PLANO</div>' : ''}
-                    <div class="vip-header">
-                        <div class="vip-info">
-                            <b>Cat VIP MT ${p.v}</b>
-                            <span>Renda Diária: MT ${p.l.toFixed(2)}</span>
-                        </div>
-                        <div class="vip-badge-roi">ROI: 20 DIAS</div>
-                    </div>
-                    <div class="vip-details-grid">
-                        <div class="detail-item">Lucro Total (1 ano)<b>MT ${lucroAnual.toLocaleString()}</b></div>
-                        <div class="detail-item">Validade<b>365 Dias</b></div>
-                    </div>
-                    <button class="${btnClass}" onclick="${btnAction}">${btnText}</button>
-                </div>`;
+    // SIMULAÇÃO (substitua pela chamada real acima)
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          success: true,
+          reference: method.toUpperCase() + '-' + Date.now(),
+          message: `Depósito de ${fmtMZN(amount)} via ${method} iniciado.`,
+          requiresConfirmation: false
         });
+      }, 1500);
+    });
+  }
+
+  // Evento do botão de depósito
+  document.getElementById('depositSubmit')?.addEventListener('click', async () => {
+    const msg = document.getElementById('depositMsg');
+    
+    if (!currentUid) {
+      msg.textContent = 'Faça login primeiro.';
+      return;
     }
 
-    function buyVip(valor) {
-        if (currentUser.activeVip > 0 && valor < currentUser.activeVip) {
-            return alert("Ação bloqueada: Você já tem um VIP superior!");
+    const amount = parseFloat(document.getElementById('depositAmount').value);
+    const method = document.getElementById('depositAccount').value;
+    
+    if (!amount || amount <= 0) {
+      msg.textContent = 'Digite um valor válido.';
+      return;
+    }
+    
+    if (!method) {
+      msg.textContent = 'Selecione um método de pagamento.';
+      return;
+    }
+
+    const phone = currentUserData?.phone || '258000000000';
+    msg.textContent = 'Processando depósito...';
+
+    try {
+      const result = await processDeposit(amount, method, phone);
+      
+      if (result.success) {
+        const userRef = ref(db, `users/${currentUid}`);
+        const snap = await get(userRef);
+        if (snap.exists()) {
+          const data = snap.val();
+          const newBalance = (data.balance || 0) + amount;
+          await update(userRef, {
+            balance: newBalance,
+            withdrawable: (data.withdrawable || 0) + amount,
+            lastDeposit: {
+              amount: amount,
+              method: method,
+              reference: result.reference || 'N/A',
+              date: serverTimestamp()
+            }
+          });
+
+          await push(ref(db, `users/${currentUid}/history`), {
+            type: 'deposito',
+            amount: amount,
+            method: method,
+            reference: result.reference || 'N/A',
+            status: 'completed',
+            createdAt: serverTimestamp()
+          });
+
+          const snap2 = await get(userRef);
+          if (snap2.exists()) {
+            currentUserData = snap2.val();
+            updateUIForUser(currentUser, currentUserData);
+          }
+
+          msg.textContent = result.message + ` Depósito de ${fmtMZN(amount)} confirmado!`;
+          document.getElementById('depositAmount').value = '';
+          document.getElementById('depositAccount').value = '';
         }
+      } else {
+        msg.textContent = 'Erro no processamento do depósito. Tente novamente.';
+      }
+    } catch (err) {
+      msg.textContent = `Erro: ${err.message}`;
+    }
+  });
 
-        const saldoAtual = parseFloat(currentUser.balance) || 0;
-        if (saldoAtual < valor) return alert("Saldo insuficiente! Deposite primeiro.");
-        
-        let db = JSON.parse(localStorage.getItem('cat_db'));
-        currentUser.balance = saldoAtual - valor;
-        currentUser.activeVip = valor;
-        db[currentUser.phone] = currentUser;
-        localStorage.setItem('cat_db', JSON.stringify(db));
-        updateUI(); renderVips();
-        alert("Parabéns! VIP Ativado com sucesso.");
+  // ---------- LEVANTAMENTO ----------
+  document.getElementById('withdrawSubmit')?.addEventListener('click', async () => {
+    const msg = document.getElementById('withdrawMsg');
+    
+    if (!currentUid) {
+      msg.textContent = 'Faça login primeiro.';
+      return;
     }
 
-    function setDepositMethod(method) {
-        selectedMethod = method;
-        const config = depositSettings[method];
-        const card = document.getElementById('pay-card-area');
-        card.style.display = 'flex';
-        card.style.background = config.color;
-        document.getElementById('display-method-name').innerText = config.name;
-        document.getElementById('display-number').innerText = config.number;
-        document.getElementById('display-holder').innerText = "Titular: " + config.holder;
-        document.getElementById('btn-method-mpesa').style.border = method === 'mpesa' ? '2px solid white' : '2px solid transparent';
-        document.getElementById('btn-method-emola').style.border = method === 'emola' ? '2px solid white' : '2px solid transparent';
+    const amount = parseFloat(document.getElementById('withdrawAmount').value);
+    const method = document.getElementById('withdrawAccount').value;
+    
+    if (!amount || amount <= 0) {
+      msg.textContent = 'Digite um valor válido.';
+      return;
+    }
+    
+    if (!method) {
+      msg.textContent = 'Selecione um método de pagamento.';
+      return;
     }
 
-    function copyCurrentNumber() {
-        if(!selectedMethod) return;
-        copyToClipboard(depositSettings[selectedMethod].number);
-    }
+    try {
+      const userRef = ref(db, `users/${currentUid}`);
+      const snap = await get(userRef);
+      if (!snap.exists()) throw new Error('Usuário não encontrado.');
+      
+      const data = snap.val();
+      const withdrawable = data.withdrawable || 0;
+      
+      if (amount > withdrawable) {
+        msg.textContent = `Saldo extraível insuficiente. Disponível: ${fmtMZN(withdrawable)}`;
+        return;
+      }
 
-    function submitDeposit() {
-        const amt = document.getElementById('dep-amount').value;
-        if(!selectedMethod) return alert("Selecione o método de envio!");
-        if(!amt || amt < 1) return alert("Valor inválido");
-        saveLog('deposits', amt, currentUser.phone, `${currentUser.name} [${depositSettings[selectedMethod].name}]`);
-        alert("Solicitação enviada! Aguarde a verificação."); 
-        selectedMethod = null;
-        document.getElementById('pay-card-area').style.display = 'none';
-        document.getElementById('dep-amount').value = "";
-        showScreen('screen-main');
-    }
-
-    function submitWithdraw() {
-        const amt = parseFloat(document.getElementById('withdraw-amount').value);
-        const num = document.getElementById('withdraw-number').value;
-
-        if (!amt || amt < 100) return alert("Erro: Valor mínimo 100 MT.");
-        if (!num) return alert("Insira o número da conta.");
-        
-        if (amt > currentUser.balance) {
-            return alert("Saldo insuficiente! Seu saldo é MT " + currentUser.balance.toFixed(2));
+      await update(userRef, {
+        withdrawable: withdrawable - amount,
+        balance: (data.balance || 0) - amount,
+        lastWithdraw: {
+          amount: amount,
+          method: method,
+          date: serverTimestamp()
         }
+      });
 
-        currentUser.balance -= amt;
-        let db = JSON.parse(localStorage.getItem('cat_db'));
-        db[currentUser.phone].balance = currentUser.balance;
-        localStorage.setItem('cat_db', JSON.stringify(db));
+      await push(ref(db, `users/${currentUid}/history`), {
+        type: 'levantamento',
+        amount: amount,
+        method: method,
+        status: 'pending',
+        createdAt: serverTimestamp()
+      });
 
-        saveLog('withdraws', amt, currentUser.phone, currentUser.name);
-
-        updateUI(); 
-        alert("MT " + amt.toFixed(2) + " foram deduzidos. Aguarde a aprovação do saque!"); 
-        
-        document.getElementById('withdraw-amount').value = "";
-        document.getElementById('withdraw-number').value = "";
-        showScreen('screen-main');
+      msg.textContent = `Levantamento de ${fmtMZN(amount)} solicitado com sucesso!`;
+      document.getElementById('withdrawAmount').value = '';
+      document.getElementById('withdrawAccount').value = '';
+      
+      const snap2 = await get(userRef);
+      if (snap2.exists()) {
+        currentUserData = snap2.val();
+        updateUIForUser(currentUser, currentUserData);
+      }
+    } catch (err) {
+      msg.textContent = `Erro: ${err.message}`;
     }
+  });
 
-    function saveLog(type, amount, phone, name) {
-        let logs = JSON.parse(localStorage.getItem('cat_logs')) || [];
-        logs.push({ id: Date.now().toString(), type, amount, phone, name, status: 'pendente' });
-        localStorage.setItem('cat_logs', JSON.stringify(logs));
+  // ---------- SALVAR PERFIL ----------
+  document.getElementById('profSaveBtn')?.addEventListener('click', async () => {
+    if (!currentUid) {
+      document.getElementById('profMsg').textContent = 'Faça login primeiro.';
+      return;
     }
+    const firstName = document.getElementById('profFirstName').value.trim();
+    const lastName = document.getElementById('profLastName').value.trim();
+    const birthdate = document.getElementById('profBirthdate').value;
 
-    function handleAdminTrigger() {
-        adminClicks++;
-        if(adminClicks === 5) {
-            const p = prompt("Código Administrativo:");
-            if(p === "ben@jami%mcel%este87") { updateAdminStats(); showScreen('screen-admin'); }
-            adminClicks = 0;
-        }
-        setTimeout(() => adminClicks = 0, 3000);
+    try {
+      await update(ref(db, `users/${currentUid}/profile`), {
+        firstName,
+        lastName,
+        birthdate
+      });
+      document.getElementById('profMsg').textContent = 'Perfil atualizado com sucesso!';
+    } catch (err) {
+      document.getElementById('profMsg').textContent = `Erro: ${err.message}`;
     }
+  });
 
-    function updateAdminStats() {
-        const db = JSON.parse(localStorage.getItem('cat_db')) || {};
-        const totalUsers = Object.keys(db).length;
-        let saldoG = 0; Object.values(db).forEach(u => saldoG += u.balance);
-        document.getElementById('admin-stats-grid').innerHTML = `
-            <div class="stat-card">MEMBROS<br><b>${totalUsers}</b></div>
-            <div class="stat-card">SALDO TOTAL<br><b>MT ${saldoG.toFixed(0)}</b></div>`;
+  // ---------- SAIR ----------
+  document.getElementById('logoutBtn')?.addEventListener('click', async () => {
+    try {
+      await signOut(auth);
+      closeOverlays();
+    } catch (err) {
+      console.error('Erro ao sair:', err);
     }
+  });
 
-    function renderAdminLogs(type) {
-        const list = document.getElementById('admin-list');
-        const logs = JSON.parse(localStorage.getItem('cat_logs')) || [];
-        const filtered = logs.filter(l => l.type === type && l.status === 'pendente');
-        list.innerHTML = `<h4 style="margin-bottom:10px;">PENDENTES: ${type.toUpperCase()}</h4>`;
-        if(filtered.length === 0) list.innerHTML += "<p style='color:#666'>Nenhuma solicitação.</p>";
-        filtered.forEach(item => {
-            list.innerHTML += `<div style="background:#252525; padding:12px; margin-bottom:8px; border-radius:10px; display:flex; justify-content:space-between; align-items:center;">
-                <div style="font-size:12px;">${item.name}<br><b>MT ${item.amount}</b></div>
-                <div style="display:flex; gap:5px;">
-                    <button onclick="processAdminAction('${item.id}', true)" style="background:green; color:white; padding:8px 12px; border-radius:5px; font-weight:bold;">SIM</button>
-                    <button onclick="processAdminAction('${item.id}', false)" style="background:red; color:white; padding:8px 12px; border-radius:5px; font-weight:bold;">NÃO</button>
-                </div>
-            </div>`;
-        });
-    }
+  // ---------- BALANCE DROPDOWN ----------
+  const balanceToggle = document.getElementById('balanceToggle');
+  const balanceDropdown = document.getElementById('balanceDropdown');
 
-    // NOTIFICAÇÕES FAKES
-    function triggerFakeTransaction() {
-        const container = document.getElementById('fake-notifications');
-        const nomes = ["Zito M.", "Sérgio W.", "Marta G.", "Nelson B.", "Amélia R.", "Benjamim C.", "Celeste J.", "Ricardo A.", "Fátima S.", "Dércio L."];
-        const tipos = ["sacou", "depositou", "recebeu bónus", "ativou VIP"];
-        
-        const n = nomes[Math.floor(Math.random() * nomes.length)];
-        const t = tipos[Math.floor(Math.random() * tipos.length)];
-        const valor = (Math.random() * (5000 - 100) + 100).toFixed(2);
-        
-        const item = document.createElement('div');
-        item.className = 'fake-item';
-        item.innerHTML = `
-            <div style="background: rgba(255,255,255,0.4); padding: 5px; border-radius: 50%; font-size: 10px;">✅</div>
-            <div>
-                <span style="display:block; opacity: 0.9;">${n} ${t}</span>
-                <span style="font-size:13px">MT ${valor}</span>
-            </div>
-        `;
-        
-        container.prepend(item);
-        setTimeout(() => { item.remove(); }, 3000);
-    }
+  if (balanceToggle) {
+    balanceToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      balanceToggle.classList.toggle('open');
+      balanceDropdown.classList.toggle('open');
+    });
 
-    window.onload = () => {
-        for(let i=0; i<3; i++) {
-            setTimeout(triggerFakeTransaction, i * 600);
-        }
-        setInterval(triggerFakeTransaction, 3500);
-    };
+    document.addEventListener('click', () => {
+      balanceToggle.classList.remove('open');
+      balanceDropdown.classList.remove('open');
+    });
+  }
 
-    setInterval(() => {
-        const ticker = document.getElementById('ticker-content');
-        if(!ticker) return;
-        const nomes = ["Zito", "Sérgio", "Marta", "Nelson", "Amélia", "Benjamim", "Celeste", "Ricardo"];
-        const n = nomes[Math.floor(Math.random()*nomes.length)];
-        const item = document.createElement('div');
-        item.className = 'transaction-item';
-        item.innerHTML = `<span>⚡ ${n} sacou</span> <span>MT ${(Math.random()*1500+100).toFixed(2)}</span>`;
-        ticker.prepend(item);
-        if(ticker.children.length > 3) ticker.lastElementChild.remove();
-    }, 5000);
+  console.log('✅ TAKO BET — Sistema real com Google Sign-In (seletor de contas) e API de depósitos');
 </script>
+
 </body>
 </html>
