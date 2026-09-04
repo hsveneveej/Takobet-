@@ -22,10 +22,8 @@
     --muted: #8E9488;
     --green-live: #74B98B;
   }
-
   *{ box-sizing: border-box; margin:0; padding:0; }
   html{ scroll-behavior: smooth; }
-
   body{
     background: var(--void);
     color: var(--text);
@@ -34,23 +32,18 @@
     overflow-x: hidden;
     position: relative;
   }
-
   h1, h2, h3, .brand, .display{
     font-family: 'Fraunces', serif;
     font-weight: 500;
     letter-spacing: -0.01em;
   }
-
   a{ color: inherit; text-decoration: none; }
   ul{ list-style: none; }
   button{ font-family: inherit; }
   img, svg{ display:block; max-width:100%; }
-
   ::selection{ background: var(--gold); color: #060706; }
   :focus-visible{ outline: 1.5px solid var(--gold-light); outline-offset: 3px; }
-
   .wrap{ max-width: 1180px; margin: 0 auto; padding: 0 24px; }
-
   .grain{
     position: fixed; inset:0; z-index: 1; pointer-events:none;
     opacity: 0.045; mix-blend-mode: overlay;
@@ -58,7 +51,6 @@
   #particles{
     position: fixed; inset:0; z-index: 0; pointer-events:none;
   }
-
   header{
     position: sticky; top: 0; z-index: 60;
     background: rgba(6,7,6,0.82);
@@ -66,20 +58,9 @@
     -webkit-backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--hairline);
   }
-  .nav{ display:flex; align-items:center; justify-content: space-between; padding: 16px 0; position:relative; }
   .brand{ font-size: 1.3rem; display:flex; align-items:center; gap: 10px; }
   .brand .mark{ width: 24px; height: 24px; flex-shrink: 0; }
   .brand .mark path, .brand .mark circle{ stroke: var(--gold); }
-  .nav-links{ display:flex; gap: 30px; font-size: 0.88rem; color: var(--muted); }
-  .nav-links a{ position:relative; transition: color 0.2s ease; }
-  .nav-links a::after{
-    content:""; position:absolute; left:0; right:0; bottom:-6px; height:1px;
-    background: var(--gold); transform: scaleX(0); transform-origin: left;
-    transition: transform 0.25s ease;
-  }
-  .nav-links a:hover{ color: var(--text); }
-  .nav-links a:hover::after{ transform: scaleX(1); }
-
   .btn{
     display:inline-flex; align-items:center; gap:8px;
     padding: 12px 22px;
@@ -95,24 +76,26 @@
   }
   .btn.solid:hover{ transform: translateY(-1px); filter: brightness(1.06); }
   .btn.small{ padding: 8px 15px; font-size: 0.76rem; }
-
-  .menu-toggle{
-    display:none; background:none; border:1px solid var(--hairline); color:var(--text);
-    font-size:0.8rem; cursor:pointer; padding:8px 12px;
+  .btn.ghost{
+    background: transparent; border: 1px solid var(--hairline);
+    color: var(--text); font-weight: 700;
   }
-
+  .btn.ghost:hover{ border-color: var(--gold); color: var(--gold-light); }
+  .btn.teal{ background: linear-gradient(135deg, #8FD6AE, var(--green-live)); border:none; color: #0B1F14; }
+  .btn.teal:hover{ filter: brightness(1.06); transform: translateY(-1px); }
+  .btn.danger{ background: linear-gradient(135deg, #C9424F, var(--wine)); border:none; color: var(--text); }
+  .btn.danger:hover{ filter: brightness(1.08); transform: translateY(-1px); }
+  .btn.google{
+    width:100%; justify-content:center; background: #fff; color:#3c3c3c; border:none;
+  }
+  .btn.google:hover{ filter: brightness(0.97); transform: translateY(-1px); }
+  .btn.google svg{ width:18px; height:18px; }
   .header-top{ background: var(--void); }
   .header-top-inner{
     display:flex; align-items:center; justify-content:space-between;
     padding: 14px 0;
   }
   .header-actions{ display:flex; align-items:center; gap: 10px; }
-  .btn.ghost{
-    background: transparent; border: 1px solid var(--hairline);
-    color: var(--text); font-weight: 700;
-  }
-  .btn.ghost:hover{ border-color: var(--gold); color: var(--gold-light); }
-
   .icon-nav{
     background: var(--ink);
     border-top: 1px solid var(--hairline);
@@ -152,11 +135,6 @@
   .icon-nav-item.c-slots svg{ color:#FB923C; }
   .icon-nav-item.c-promo svg{ color:#A3E635; }
   .icon-nav-item.c-afiliados svg{ color:#F3D58B; }
-
-  @media (max-width: 620px){
-    .utility-left span:not(:first-child){ display:none; }
-  }
-
   .hero{
     position: relative; z-index: 2;
     padding: 90px 0 70px;
@@ -183,7 +161,6 @@
     margin-top: 34px; font-size: 0.78rem; color: var(--muted);
     border-left: 2px solid var(--wine); padding-left: 14px; max-width: 44ch;
   }
-
   .hero-panel-wrap{ perspective: 1400px; }
   .hero-panel{
     background: linear-gradient(155deg, rgba(25,31,25,0.9), rgba(14,18,14,0.85));
@@ -215,8 +192,6 @@
   }
   .mini-odd .lbl{ font-size: 0.64rem; color: var(--muted); display:block; margin-bottom:3px; }
   .mini-odd .val{ font-size: 0.92rem; font-weight: 700; color: var(--text); }
-  .hero-panel-demo{ margin-top:16px; font-size: 0.68rem; color: var(--muted); text-align:center; }
-
   .ticker{
     position: relative; z-index: 2;
     background: var(--ink);
@@ -233,13 +208,11 @@
   .ticker-item .odd{ color: var(--gold-light); font-weight: 700; }
   @keyframes tickerScroll{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce){ .ticker-track{ animation: none; overflow-x: auto; } }
-
   section{ position: relative; z-index: 2; }
   .section-head{ margin-bottom: 40px; max-width: 62ch; }
   .section-head .eyebrow-line{ margin-bottom: 16px; }
   .section-head h2{ font-size: clamp(1.7rem, 3vw, 2.1rem); }
   .section-head p{ color: var(--muted); margin-top: 14px; font-size: 0.96rem; }
-
   .games-showcase{ padding: 80px 0 92px; border-bottom: 1px solid var(--hairline); }
   .crash-grid{
     display:flex;
@@ -272,15 +245,12 @@
   .crash-card:hover.gold{ box-shadow: 0 24px 60px -20px rgba(243,213,139,0.35); }
   .crash-card:hover.wine{ box-shadow: 0 24px 60px -20px rgba(201,90,110,0.32); }
   .crash-card:hover.forest{ box-shadow: 0 24px 60px -20px rgba(122,190,138,0.28); }
-
   .crash-top{ display:flex; justify-content:space-between; align-items:flex-start; position: relative; z-index:2; }
   .crash-badge{
     font-size: 0.66rem; font-weight: 700; letter-spacing: 0.02em;
     padding: 4px 9px; border: 1px solid rgba(255,255,255,0.18); color: var(--text);
     background: rgba(0,0,0,0.25);
   }
-  .crash-live{ display:inline-flex; align-items:center; gap:5px; font-size:0.66rem; font-weight:700; color: var(--green-live); }
-
   .crash-icon{
     width: 46px; height:46px; border-radius: 50%;
     display:flex; align-items:center; justify-content:center;
@@ -290,11 +260,9 @@
   .crash-card.wine .crash-icon{ background: rgba(232,169,180,0.16); color: #E8A9B4; }
   .crash-card.forest .crash-icon{ background: rgba(116,185,139,0.16); color: var(--green-live); }
   .crash-icon svg{ width:100%; height:100%; }
-
   .crash-mid{ position: relative; z-index:2; margin-top: 18px; }
   .crash-name{ font-size: 1.3rem; margin-bottom: 4px; }
   .crash-sub{ font-size: 0.78rem; color: var(--muted); }
-
   .crash-multiplier{
     position: relative; z-index:2; margin-top: 16px;
     font-family: 'Fraunces', serif; font-size: 2.1rem; font-weight: 600;
@@ -304,14 +272,12 @@
   .crash-card.gold .crash-multiplier{ color: var(--gold-light); }
   .crash-card.wine .crash-multiplier{ color: #E8A9B4; }
   .crash-card.forest .crash-multiplier{ color: var(--green-live); }
-
   .crash-foot{ position: relative; z-index:2; display:flex; justify-content:space-between; align-items:center; margin-top: 18px; }
   .crash-play{
     font-size: 0.78rem; font-weight: 700; padding: 8px 16px;
     background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16); color: var(--text);
   }
   .crash-max{ font-size: 0.68rem; color: var(--muted); }
-
   .games-other-grid{
     display:flex;
     gap: 14px;
@@ -337,7 +303,6 @@
   }
   .game-tile h4{ font-family:'Fraunces', serif; font-size: 1.02rem; font-weight: 500; }
   .game-tile p{ font-size: 0.8rem; color: var(--muted); }
-
   .tako-live{ padding: 92px 0; border-bottom: 1px solid var(--hairline); }
   .live-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .live-card{
@@ -356,11 +321,6 @@
   .live-score{ font-family:'Fraunces', serif; font-size: 1.4rem; color: var(--gold-light); }
   .live-card-foot{ display:flex; justify-content:space-between; align-items:center; margin-top: 6px; }
   .live-card-foot a{ font-size: 0.82rem; color: var(--gold); }
-  .demo-chip{
-    font-size: 0.62rem; letter-spacing: 0.04em; color: var(--muted);
-    border: 1px solid var(--hairline); padding: 3px 8px;
-  }
-
   .odds{ padding: 92px 0; border-bottom: 1px solid var(--hairline); }
   .odds-filters{ display:flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
   .odds-filter-btn{
@@ -370,7 +330,6 @@
   }
   .odds-filter-btn:hover{ color: var(--text); border-color: var(--gold); }
   .odds-filter-btn.active{ background: var(--gold); border-color: var(--gold); color: #17130A; }
-
   .odds-list{ display:flex; flex-direction:column; gap: 12px; }
   .odds-row{
     display:grid;
@@ -404,13 +363,6 @@
   .odds-btn:hover{ border-color: var(--gold); box-shadow: 0 0 16px -6px rgba(201,164,92,0.5); }
   .odds-btn.active{ background: linear-gradient(135deg, var(--gold-light), var(--gold)); border-color: var(--gold); }
   .odds-btn.active span.val, .odds-btn.active span.lbl{ color: #17130A; }
-  .odds-disclaimer{ margin-top: 22px; font-size: 0.78rem; color: var(--muted); }
-
-  @media (max-width: 700px){
-    .odds-row{ grid-template-columns: 1fr; }
-    .odds-values{ flex-wrap: wrap; }
-  }
-
   .promotions{ padding: 92px 0; border-bottom: 1px solid var(--hairline); }
   .promo-grid{ display:grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 18px; }
   .promo-card{
@@ -426,18 +378,14 @@
   .promo-card h3{ font-size: 1.2rem; margin-bottom: 10px; }
   .promo-card p{ color: var(--muted); font-size: 0.88rem; flex-grow: 1; }
   .promo-card .btn{ margin-top: 22px; align-self: flex-start; }
-
   @media (max-width: 900px){ .promo-grid{ grid-template-columns: 1fr; } }
-
   .pillars{ padding: 92px 0; border-bottom: 1px solid var(--hairline); }
   .pillars-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); }
   .pillar{ background: var(--void); padding: 38px 30px; }
   .pillar h3{ font-size: 1.15rem; margin-bottom: 10px; }
   .pillar p{ color: var(--muted); font-size: 0.9rem; }
   .pillar .icon{ width: 30px; height: 30px; color: var(--gold); margin-bottom: 20px; }
-
   @media (max-width: 900px){ .pillars-grid{ grid-template-columns: 1fr; } }
-
   .experience{ padding: 92px 0; border-bottom: 1px solid var(--hairline); }
   .exp-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items:center; }
   .exp-panel{
@@ -453,12 +401,7 @@
   .exp-list{ margin-top: 28px; display:flex; flex-direction: column; gap: 16px; }
   .exp-list li{ display:flex; gap: 14px; align-items:flex-start; font-size: 0.94rem; }
   .exp-list li .mark{ color: var(--gold); font-family:'Fraunces', serif; font-style: italic; flex-shrink:0; }
-
-  @media (max-width: 900px){
-    .exp-grid{ grid-template-columns: 1fr; }
-    .exp-panel{ order: -1; max-width: 420px; }
-  }
-
+  @media (max-width: 900px){ .exp-grid{ grid-template-columns: 1fr; } .exp-panel{ order: -1; max-width: 420px; } }
   .payments{ padding: 76px 0; border-bottom: 1px solid var(--hairline); }
   .payments-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; }
   .payment-card{
@@ -470,8 +413,6 @@
   .payment-card .p-name{ font-size: 0.94rem; }
   .payment-status{ display:flex; align-items:center; gap: 7px; font-size: 0.76rem; color: var(--muted); }
   .payment-status .dotstat{ width:6px; height:6px; border-radius:50%; background: var(--green-live); }
-  .payments-note{ margin-top: 20px; font-size: 0.78rem; color: var(--muted); max-width: 60ch; }
-
   .activity{ padding: 76px 0; border-bottom: 1px solid var(--hairline); background: var(--ink); }
   .activity-marquee{
     overflow: hidden; white-space: nowrap; position: relative;
@@ -496,14 +437,11 @@
   .activity-name .amount{ color: var(--green-live); font-weight: 700; }
   .activity-meta{ font-size: 0.72rem; color: var(--muted); }
   @media (prefers-reduced-motion: reduce){ .activity-track{ animation: none; overflow-x: auto; } }
-
   .banner{ padding: 76px 0; border-bottom: 1px solid var(--hairline); background: linear-gradient(120deg, var(--ink), var(--void)); }
   .banner-inner{ display:grid; grid-template-columns: 1fr auto; align-items:center; gap: 24px; }
   .banner h2{ font-size: clamp(1.5rem, 2.6vw, 1.9rem); max-width: 20ch; }
   .banner p{ color: var(--muted); margin-top: 10px; max-width: 46ch; }
-
   @media (max-width: 700px){ .banner-inner{ grid-template-columns: 1fr; } }
-
   .newsletter{ padding: 92px 0; }
   .nl-box{
     background: linear-gradient(155deg, rgba(25,31,25,0.7), rgba(14,18,14,0.55));
@@ -519,10 +457,8 @@
   }
   .nl-form input::placeholder{ color: var(--muted); }
   .nl-msg{ margin-top: 12px; font-size: 0.82rem; color: var(--gold-light); min-height: 1em; }
-
   @media (max-width: 900px){ .nl-box{ grid-template-columns: 1fr; padding: 36px; } }
   @media (max-width: 620px){ .nl-form{ flex-direction:column; } }
-
   footer{
     position:relative; z-index:2; border-top: 1px solid var(--hairline);
     padding: 260px 0 32px; overflow: hidden;
@@ -546,14 +482,8 @@
   .responsible-note ul{ margin-top: 10px; padding-left: 18px; list-style: disc; }
   .responsible-note ul li{ margin-bottom: 4px; }
   .foot-legal{ font-size:0.76rem; color:var(--muted); max-width:80ch; margin-bottom:20px; }
-  .foot-bottom{
-    display:flex; justify-content: space-between; padding-top: 24px;
-    border-top: 1px solid var(--hairline); color: var(--muted); font-size: 0.8rem; flex-wrap: wrap; gap: 10px;
-  }
-
   @media (max-width: 900px){ .foot-grid{ grid-template-columns: 1fr 1fr; } }
   @media (max-width: 620px){ .foot-grid{ grid-template-columns: 1fr; } }
-
   .footer-info-band{
     position: relative; z-index:1;
     border-bottom: 1px solid var(--hairline);
@@ -571,7 +501,6 @@
   .footer-lang-flag svg{ width:100%; height:100%; }
   .footer-lang span.label{ font-size: 0.78rem; color: var(--text); letter-spacing: 0.03em; }
   .footer-lang .chevron{ color: var(--muted); font-size: 0.7rem; }
-
   .footer-age{ display:flex; flex-direction:column; align-items:center; gap: 10px; max-width: 360px; text-align:center; }
   .footer-age-badge{
     width: 52px; height: 52px; border-radius: 50%;
@@ -580,7 +509,6 @@
     font-family:'Fraunces', serif; font-weight: 700; font-size: 0.92rem; color: #EE1D23;
   }
   .footer-age p{ font-size: 0.78rem; color: var(--muted); }
-
   .footer-social{ display:flex; gap: 16px; }
   .footer-social a{
     width: 36px; height: 36px; border: 1px solid var(--hairline);
@@ -589,7 +517,6 @@
   }
   .footer-social a:hover{ color: var(--gold-light); border-color: var(--gold); }
   .footer-social svg{ width: 17px; height: 17px; }
-
   .footer-payments-row{
     display:flex; align-items:center; gap: 16px; flex-wrap: wrap;
     padding: 26px 0;
@@ -612,11 +539,7 @@
   .footer-op-badge.emola .net{ background: linear-gradient(135deg,#F7941E,#C25E0A); }
   .footer-op-badge.mkesh .net{ background: linear-gradient(135deg,#FFD400,#C79A10); color:#1A1503; }
   .footer-op-badge.visa{ padding: 10px 18px; font-weight:700; font-size:0.82rem; color:#fff; background: linear-gradient(135deg,#1A56DB,#0B2E7A); }
-
-  @media (max-width: 700px){
-    .footer-info-inner{ flex-direction: column; text-align:center; }
-  }
-
+  @media (max-width: 700px){ .footer-info-inner{ flex-direction: column; text-align:center; } }
   .footer-brand-band{
     position: relative; z-index:1;
     background: var(--void);
@@ -632,36 +555,12 @@
   .footer-brand-tagline{ font-size: 0.8rem; color: var(--muted); margin-bottom: 26px; }
   .footer-brand-band .foot-legal{ margin: 0 auto 18px; text-align:center; }
   .footer-brand-copyright{ font-size: 0.78rem; color: var(--muted); }
-
   @keyframes riseIn{ from{ opacity:0; transform: translateY(16px); } to{ opacity:1; transform: translateY(0); } }
   .hero-grid > *{ animation: riseIn 0.7s ease both; }
   .hero-grid > *:nth-child(2){ animation-delay: 0.1s; }
-
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior: auto; }
-    .hero-grid > *{ animation: none; }
-  }
-
-  @media (max-width: 900px){
-    .hero-grid{ grid-template-columns: 1fr; }
-    .hero-panel{ transform:none; }
-    .hero-panel-wrap:hover .hero-panel{ transform:none; }
-  }
-
-  @media (max-width: 620px){
-    .nav-links{ display:none; }
-    .menu-toggle{ display:block; }
-    .nav-links.open{
-      display:flex; flex-direction:column; position:absolute;
-      top: 100%; left:0; right:0; background: var(--void);
-      border-bottom: 1px solid var(--hairline); padding: 20px 24px; gap: 18px; z-index: 70;
-    }
-    .hero{ padding: 60px 0 50px; }
-    .odds-row{ padding: 16px; }
-    footer{ padding-top: 180px; }
-    .footer-players-bg{ height: 170px; }
-  }
-
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } .hero-grid > *{ animation: none; } }
+  @media (max-width: 900px){ .hero-grid{ grid-template-columns: 1fr; } .hero-panel{ transform:none; } .hero-panel-wrap:hover .hero-panel{ transform:none; } }
+  @media (max-width: 620px){ .hero{ padding: 60px 0 50px; } .odds-row{ padding: 16px; } footer{ padding-top: 180px; } .footer-players-bg{ height: 170px; } }
   .modal-overlay{
     position: fixed; inset: 0; z-index: 200;
     background: rgba(6,7,6,0.78);
@@ -727,7 +626,6 @@
     padding: 0; margin-bottom: 18px; display:inline-flex; align-items:center; gap:6px;
   }
   .modal-back:hover{ color: var(--gold-light); }
-
   .aff-steps{ display:flex; flex-direction:column; gap: 14px; margin-bottom: 24px; }
   .aff-step{ display:flex; gap: 14px; align-items:flex-start; }
   .aff-step-num{
@@ -744,12 +642,7 @@
   .aff-pending .status-dot{ width:8px; height:8px; border-radius:50%; background: var(--gold-light); display:inline-block; margin-right:7px; animation: pulseDot 1.8s ease-in-out infinite; }
   .aff-pending h4{ font-family:'Fraunces', serif; font-size: 1.05rem; margin-bottom: 8px; }
   .aff-pending p{ font-size: 0.84rem; color: var(--muted); }
-
-  @media (max-width: 480px){
-    .modal-box{ padding: 30px 22px 26px; }
-    .field-row-2{ grid-template-columns: 1fr; }
-  }
-
+  @media (max-width: 480px){ .modal-box{ padding: 30px 22px 26px; } .field-row-2{ grid-template-columns: 1fr; } }
   .balance-actions{ position: relative; }
   .balance-wrap{ position: relative; }
   .balance-btn{
@@ -783,7 +676,6 @@
   .bd-link:hover{ color: var(--gold-light); background: rgba(201,164,92,0.08); }
   .bd-link.bd-exit{ color: #E88A93; }
   .bd-link.bd-exit:hover{ color: #F3A9B0; }
-
   .account-head{ display:flex; flex-direction:column; align-items:center; text-align:center; gap: 6px; margin-bottom: 24px; }
   .account-avatar{
     width: 84px; height: 84px; border-radius: 50%;
@@ -806,17 +698,12 @@
   .account-stars{ display:flex; gap: 3px; color: var(--hairline-soft); margin-top: 2px; }
   .account-stars svg{ width: 15px; height: 15px; }
   .account-stars .filled{ color: var(--gold); }
-
   .account-stats{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 22px; }
   .account-stat{ text-align:center; padding: 14px 8px; background: rgba(201,164,92,0.05); border: 1px solid var(--hairline); }
   .account-stat .lbl{ font-size: 0.66rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; display:block; margin-bottom: 5px; }
   .account-stat .val{ font-size: 0.94rem; font-weight: 700; color: var(--gold-light); }
-
   .account-actions-row{ display:flex; gap: 10px; margin-bottom: 26px; }
   .account-actions-row .btn{ flex:1; justify-content:center; }
-  .btn.danger{ background: linear-gradient(135deg, #C9424F, var(--wine)); border:none; color: var(--text); }
-  .btn.danger:hover{ filter: brightness(1.08); transform: translateY(-1px); }
-
   .account-accordion{ display:flex; flex-direction:column; border-top: 1px solid var(--hairline); }
   .acc-item{ border-bottom: 1px solid var(--hairline); }
   .acc-item-head{
@@ -834,17 +721,9 @@
   .withdraw-amount input{ flex:1; border:none; background:none; color: var(--text); padding: 13px 12px; font-size: 0.94rem; }
   .withdraw-amount input:focus{ outline:none; }
   select.field-input{ appearance:none; }
-  .btn.teal{ background: linear-gradient(135deg, #8FD6AE, var(--green-live)); border:none; color: #0B1F14; }
-  .btn.teal:hover{ filter: brightness(1.06); transform: translateY(-1px); }
-
   .auth-divider{ display:flex; align-items:center; gap: 12px; margin: 4px 0; }
   .auth-divider::before, .auth-divider::after{ content:""; flex:1; height:1px; background: var(--hairline); }
   .auth-divider span{ font-size: 0.72rem; color: var(--muted); }
-  .btn.google{
-    width:100%; justify-content:center; background: #fff; color:#3c3c3c; border:none;
-  }
-  .btn.google:hover{ filter: brightness(0.97); transform: translateY(-1px); }
-  .btn.google svg{ width:18px; height:18px; }
 </style>
 </head>
 <body>
@@ -897,437 +776,117 @@
       </div>
     </div>
   </div>
-
   <div class="icon-nav">
     <div class="icon-nav-track" id="iconNavTrack">
-      <a href="#odds" class="icon-nav-item c-sport active" data-target="odds">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 6l3 3-1.2 3.7H10.2L9 9z"/><path d="M12 3v3M4.5 8.5l2.7 1M18.9 9.5l-2.7 0M6.3 18.5l2.4-2.3M17.7 18.5l-2.4-2.3"/></svg>
-        <span>Desportos</span>
-      </a>
-      <a href="#tako-live" class="icon-nav-item c-live" data-target="tako-live">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2"/><path d="M9 2h6M12 2v2"/></svg>
-        <span>Ao vivo</span>
-      </a>
-      <a href="#jogos" class="icon-nav-item c-rocket" data-target="jogos">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2c2 3 4 7 4 10a4 4 0 01-8 0c0-3 2-7 4-10z"/><path d="M9 15l-3 5 4-1M15 15l3 5-4-1"/></svg>
-        <span>Foguete</span>
-      </a>
-      <a href="#jogos" class="icon-nav-item c-zonax" data-target="jogos">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
-        <span>Zona X</span>
-      </a>
-      <a href="#jogos" class="icon-nav-item c-tower" data-target="jogos">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="4" y="14" width="4" height="6"/><rect x="10" y="9" width="4" height="11"/><rect x="16" y="4" width="4" height="16"/></svg>
-        <span>Torre</span>
-      </a>
-      <a href="#jogos" class="icon-nav-item c-jackpot" data-target="jogos">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
-        <span>Jackpot</span>
-      </a>
-      <a href="#jogos" class="icon-nav-item c-roulette" data-target="jogos">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/></svg>
-        <span>Roleta</span>
-      </a>
-      <a href="#jogos" class="icon-nav-item c-blackjack" data-target="jogos">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 10h18"/></svg>
-        <span>Blackjack</span>
-      </a>
-      <a href="#jogos" class="icon-nav-item c-slots" data-target="jogos">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v16M15 4v16M4 9h16M4 15h16"/></svg>
-        <span>Slots</span>
-      </a>
-      <a href="#promocoes" class="icon-nav-item c-promo" data-target="promocoes">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2v20M5 8l7-6 7 6M5 16l7 6 7-6"/></svg>
-        <span>Promoções</span>
-      </a>
-      <a href="#afiliados" class="icon-nav-item c-afiliados" data-target="afiliados">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.6 3-5.6 5.5-5.6s4.9 2 5.5 5.6"/><circle cx="17.5" cy="9" r="2.6"/><path d="M15.8 14.7c1.9.3 3.6 1.9 4.1 5"/></svg>
-        <span>Afiliados</span>
-      </a>
+      <a href="#odds" class="icon-nav-item c-sport active" data-target="odds"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 6l3 3-1.2 3.7H10.2L9 9z"/><path d="M12 3v3M4.5 8.5l2.7 1M18.9 9.5l-2.7 0M6.3 18.5l2.4-2.3M17.7 18.5l-2.4-2.3"/></svg><span>Desportos</span></a>
+      <a href="#tako-live" class="icon-nav-item c-live" data-target="tako-live"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2"/><path d="M9 2h6M12 2v2"/></svg><span>Ao vivo</span></a>
+      <a href="#jogos" class="icon-nav-item c-rocket" data-target="jogos"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2c2 3 4 7 4 10a4 4 0 01-8 0c0-3 2-7 4-10z"/><path d="M9 15l-3 5 4-1M15 15l3 5-4-1"/></svg><span>Foguete</span></a>
+      <a href="#jogos" class="icon-nav-item c-zonax" data-target="jogos"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg><span>Zona X</span></a>
+      <a href="#jogos" class="icon-nav-item c-tower" data-target="jogos"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="4" y="14" width="4" height="6"/><rect x="10" y="9" width="4" height="11"/><rect x="16" y="4" width="4" height="16"/></svg><span>Torre</span></a>
+      <a href="#jogos" class="icon-nav-item c-jackpot" data-target="jogos"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg><span>Jackpot</span></a>
+      <a href="#jogos" class="icon-nav-item c-roulette" data-target="jogos"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/></svg><span>Roleta</span></a>
+      <a href="#jogos" class="icon-nav-item c-blackjack" data-target="jogos"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 10h18"/></svg><span>Blackjack</span></a>
+      <a href="#jogos" class="icon-nav-item c-slots" data-target="jogos"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v16M15 4v16M4 9h16M4 15h16"/></svg><span>Slots</span></a>
+      <a href="#promocoes" class="icon-nav-item c-promo" data-target="promocoes"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M12 2v20M5 8l7-6 7 6M5 16l7 6 7-6"/></svg><span>Promoções</span></a>
+      <a href="#afiliados" class="icon-nav-item c-afiliados" data-target="afiliados"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20c.6-3.6 3-5.6 5.5-5.6s4.9 2 5.5 5.6"/><circle cx="17.5" cy="9" r="2.6"/><path d="M15.8 14.7c1.9.3 3.6 1.9 4.1 5"/></svg><span>Afiliados</span></a>
     </div>
   </div>
 </header>
 
 <section class="games-showcase" id="jogos">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow-line"><span class="bar"></span>Prévia dos jogos</div>
-      <h2>Escolha o seu jogo</h2>
-      <p>Uma prévia da categoria crash e de outros jogos da casa. Deslize para o lado para ver todos.</p>
-    </div>
-
+    <div class="section-head"><div class="eyebrow-line"><span class="bar"></span>Prévia dos jogos</div><h2>Escolha o seu jogo</h2><p>Uma prévia da categoria crash e de outros jogos da casa. Deslize para o lado para ver todos.</p></div>
     <div class="crash-grid">
-
-      <div class="crash-card gold">
-        <div class="crash-top">
-          <span class="crash-badge">CRASH</span>
-        </div>
-        <div class="crash-mid">
-          <div class="crash-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2c2 3 4 7 4 10a4 4 0 01-8 0c0-3 2-7 4-10z"/><path d="M9 15l-3 5 4-1M15 15l3 5-4-1"/></svg>
-          </div>
-          <div class="crash-name">Foguete Dourado</div>
-          <div class="crash-sub">Retire antes que o foguete exploda</div>
-        </div>
-        <div class="crash-multiplier"><span class="mult-val">2.47</span><span class="x">×</span></div>
-        <div class="crash-foot">
-          <a href="#contato" class="crash-play">Jogar</a>
-          <span class="crash-max">até 500×</span>
-        </div>
-      </div>
-
-      <div class="crash-card wine">
-        <div class="crash-top">
-          <span class="crash-badge">CRASH</span>
-        </div>
-        <div class="crash-mid">
-          <div class="crash-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
-          </div>
-          <div class="crash-name">Zona X</div>
-          <div class="crash-sub">O multiplicador acelera sem aviso</div>
-        </div>
-        <div class="crash-multiplier"><span class="mult-val">8.12</span><span class="x">×</span></div>
-        <div class="crash-foot">
-          <a href="#contato" class="crash-play">Jogar</a>
-          <span class="crash-max">até 1000×</span>
-        </div>
-      </div>
-
-      <div class="crash-card forest">
-        <div class="crash-top">
-          <span class="crash-badge">CRASH</span>
-        </div>
-        <div class="crash-mid">
-          <div class="crash-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="14" width="4" height="6"/><rect x="10" y="9" width="4" height="11"/><rect x="16" y="4" width="4" height="16"/></svg>
-          </div>
-          <div class="crash-name">Torre Dourada</div>
-          <div class="crash-sub">Cada andar multiplica o valor</div>
-        </div>
-        <div class="crash-multiplier"><span class="mult-val">1.00</span><span class="x">×</span></div>
-        <div class="crash-foot">
-          <a href="#contato" class="crash-play">Jogar</a>
-          <span class="crash-max">até 250×</span>
-        </div>
-      </div>
-
+      <div class="crash-card gold"><div class="crash-top"><span class="crash-badge">CRASH</span></div><div class="crash-mid"><div class="crash-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2c2 3 4 7 4 10a4 4 0 01-8 0c0-3 2-7 4-10z"/><path d="M9 15l-3 5 4-1M15 15l3 5-4-1"/></svg></div><div class="crash-name">Foguete Dourado</div><div class="crash-sub">Retire antes que o foguete exploda</div></div><div class="crash-multiplier"><span class="mult-val">2.47</span><span class="x">×</span></div><div class="crash-foot"><a href="#contato" class="crash-play">Jogar</a><span class="crash-max">até 500×</span></div></div>
+      <div class="crash-card wine"><div class="crash-top"><span class="crash-badge">CRASH</span></div><div class="crash-mid"><div class="crash-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg></div><div class="crash-name">Zona X</div><div class="crash-sub">O multiplicador acelera sem aviso</div></div><div class="crash-multiplier"><span class="mult-val">8.12</span><span class="x">×</span></div><div class="crash-foot"><a href="#contato" class="crash-play">Jogar</a><span class="crash-max">até 1000×</span></div></div>
+      <div class="crash-card forest"><div class="crash-top"><span class="crash-badge">CRASH</span></div><div class="crash-mid"><div class="crash-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="14" width="4" height="6"/><rect x="10" y="9" width="4" height="11"/><rect x="16" y="4" width="4" height="16"/></svg></div><div class="crash-name">Torre Dourada</div><div class="crash-sub">Cada andar multiplica o valor</div></div><div class="crash-multiplier"><span class="mult-val">1.00</span><span class="x">×</span></div><div class="crash-foot"><a href="#contato" class="crash-play">Jogar</a><span class="crash-max">até 250×</span></div></div>
     </div>
-
     <div class="games-other-grid">
-      <div class="game-tile">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/></svg>
-        <h4>Roleta ao vivo</h4>
-        <p>Mesa com crupiê real, transmitida em tempo integral.</p>
-      </div>
-      <div class="game-tile">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 10h18"/></svg>
-        <h4>Blackjack</h4>
-        <p>Mesas clássicas e mesas de alta aposta, 24 horas.</p>
-      </div>
-      <div class="game-tile">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v16M15 4v16M4 9h16M4 15h16"/></svg>
-        <h4>Slots</h4>
-        <p>Centenas de máquinas, de clássicas a temáticas.</p>
-      </div>
-      <div class="game-tile">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
-        <h4>Jackpot</h4>
-        <p>Prêmio acumulado, cresce a cada rodada da casa.</p>
-      </div>
+      <div class="game-tile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/></svg><h4>Roleta ao vivo</h4><p>Mesa com crupiê real, transmitida em tempo integral.</p></div>
+      <div class="game-tile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 10h18"/></svg><h4>Blackjack</h4><p>Mesas clássicas e mesas de alta aposta, 24 horas.</p></div>
+      <div class="game-tile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 4v16M15 4v16M4 9h16M4 15h16"/></svg><h4>Slots</h4><p>Centenas de máquinas, de clássicas a temáticas.</p></div>
+      <div class="game-tile"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg><h4>Jackpot</h4><p>Prêmio acumulado, cresce a cada rodada da casa.</p></div>
     </div>
   </div>
 </section>
 
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track" id="tickerTrack"></div>
-</div>
+<div class="ticker" aria-hidden="true"><div class="ticker-track" id="tickerTrack"></div></div>
 
 <section class="hero" id="top">
   <div class="wrap hero-grid">
-    <div class="hero-inner">
-      <div class="eyebrow-line"><span class="bar"></span>Somente para maiores de 18 anos</div>
-      <h1>TAKO BET.<br>O jogo encontra <em>uma nova dimensão.</em></h1>
-      <p>Uma casa pensada para quem valoriza discrição, pagamentos claros e suporte de verdade — sem promessas de vitória garantida.</p>
-      <div class="hero-actions">
-        <a href="#contato" class="btn solid">Criar conta</a>
-        <a href="#odds" class="btn">Ver odds do dia</a>
-      </div>
-      <p class="hero-note">O jogo deve ser uma escolha consciente. Jogue com responsabilidade e defina limites antes de começar.</p>
-    </div>
-
-    <div class="hero-panel-wrap">
-      <div class="hero-panel">
-        <div class="hero-panel-top">
-          <span class="live-badge"><span class="live-dot"></span>AO VIVO</span>
-          <span class="hero-panel-cat">Futebol</span>
-        </div>
-        <div class="hero-panel-match">
-          <span class="team">Falcões FC</span>
-          <span class="team-score">1</span>
-        </div>
-        <div class="hero-panel-match">
-          <span class="team">Leões United</span>
-          <span class="team-score">0</span>
-        </div>
-        <div class="hero-panel-odds">
-          <div class="mini-odd"><span class="lbl">Casa</span><span class="val">1.85</span></div>
-          <div class="mini-odd"><span class="lbl">Empate</span><span class="val">3.40</span></div>
-          <div class="mini-odd"><span class="lbl">Fora</span><span class="val">4.10</span></div>
-        </div>
-      </div>
-    </div>
+    <div class="hero-inner"><div class="eyebrow-line"><span class="bar"></span>Somente para maiores de 18 anos</div><h1>TAKO BET.<br>O jogo encontra <em>uma nova dimensão.</em></h1><p>Uma casa pensada para quem valoriza discrição, pagamentos claros e suporte de verdade — sem promessas de vitória garantida.</p><div class="hero-actions"><a href="#contato" class="btn solid">Criar conta</a><a href="#odds" class="btn">Ver odds do dia</a></div><p class="hero-note">O jogo deve ser uma escolha consciente. Jogue com responsabilidade e defina limites antes de começar.</p></div>
+    <div class="hero-panel-wrap"><div class="hero-panel"><div class="hero-panel-top"><span class="live-badge"><span class="live-dot"></span>AO VIVO</span><span class="hero-panel-cat">Futebol</span></div><div class="hero-panel-match"><span class="team">Falcões FC</span><span class="team-score">1</span></div><div class="hero-panel-match"><span class="team">Leões United</span><span class="team-score">0</span></div><div class="hero-panel-odds"><div class="mini-odd"><span class="lbl">Casa</span><span class="val">1.85</span></div><div class="mini-odd"><span class="lbl">Empate</span><span class="val">3.40</span></div><div class="mini-odd"><span class="lbl">Fora</span><span class="val">4.10</span></div></div></div></div>
   </div>
 </section>
 
 <section class="tako-live" id="tako-live">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow-line"><span class="bar"></span>Tako Live</div>
-      <h2>Eventos acontecendo agora</h2>
-      <p>Placares e odds acompanhando a partida em tempo real.</p>
-    </div>
+    <div class="section-head"><div class="eyebrow-line"><span class="bar"></span>Tako Live</div><h2>Eventos acontecendo agora</h2><p>Placares e odds acompanhando a partida em tempo real.</p></div>
     <div class="live-grid">
-
-      <div class="live-card">
-        <div class="live-card-top">
-          <span class="live-badge"><span class="live-dot"></span>AO VIVO</span>
-        </div>
-        <span class="live-sport">Futebol</span>
-        <div class="live-teams">
-          <div class="live-team-row"><span>Falcões FC</span><span class="live-score">1</span></div>
-          <div class="live-team-row"><span>Leões United</span><span class="live-score">0</span></div>
-        </div>
-        <div class="live-card-foot"><span style="font-size:0.78rem;color:var(--muted);">67'</span><a href="#odds">Ver odds →</a></div>
-      </div>
-
-      <div class="live-card">
-        <div class="live-card-top">
-          <span class="live-badge"><span class="live-dot"></span>AO VIVO</span>
-        </div>
-        <span class="live-sport">Basquete</span>
-        <div class="live-teams">
-          <div class="live-team-row"><span>Titãs</span><span class="live-score">84</span></div>
-          <div class="live-team-row"><span>Furacão</span><span class="live-score">79</span></div>
-        </div>
-        <div class="live-card-foot"><span style="font-size:0.78rem;color:var(--muted);">3º período</span><a href="#odds">Ver odds →</a></div>
-      </div>
-
-      <div class="live-card">
-        <div class="live-card-top">
-          <span class="live-badge"><span class="live-dot"></span>AO VIVO</span>
-        </div>
-        <span class="live-sport">Tênis</span>
-        <div class="live-teams">
-          <div class="live-team-row"><span>J. Rocha</span><span class="live-score">2</span></div>
-          <div class="live-team-row"><span>M. Alves</span><span class="live-score">1</span></div>
-        </div>
-        <div class="live-card-foot"><span style="font-size:0.78rem;color:var(--muted);">3º set</span><a href="#odds">Ver odds →</a></div>
-      </div>
-
+      <div class="live-card"><div class="live-card-top"><span class="live-badge"><span class="live-dot"></span>AO VIVO</span></div><span class="live-sport">Futebol</span><div class="live-teams"><div class="live-team-row"><span>Falcões FC</span><span class="live-score">1</span></div><div class="live-team-row"><span>Leões United</span><span class="live-score">0</span></div></div><div class="live-card-foot"><span style="font-size:0.78rem;color:var(--muted);">67'</span><a href="#odds">Ver odds →</a></div></div>
+      <div class="live-card"><div class="live-card-top"><span class="live-badge"><span class="live-dot"></span>AO VIVO</span></div><span class="live-sport">Basquete</span><div class="live-teams"><div class="live-team-row"><span>Titãs</span><span class="live-score">84</span></div><div class="live-team-row"><span>Furacão</span><span class="live-score">79</span></div></div><div class="live-card-foot"><span style="font-size:0.78rem;color:var(--muted);">3º período</span><a href="#odds">Ver odds →</a></div></div>
+      <div class="live-card"><div class="live-card-top"><span class="live-badge"><span class="live-dot"></span>AO VIVO</span></div><span class="live-sport">Tênis</span><div class="live-teams"><div class="live-team-row"><span>J. Rocha</span><span class="live-score">2</span></div><div class="live-team-row"><span>M. Alves</span><span class="live-score">1</span></div></div><div class="live-card-foot"><span style="font-size:0.78rem;color:var(--muted);">3º set</span><a href="#odds">Ver odds →</a></div></div>
     </div>
   </div>
 </section>
 
 <section class="odds" id="odds">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow-line"><span class="bar"></span>Quadro de odds</div>
-      <h2>As odds de hoje</h2>
-      <p>Valores atualizados por rodada. Toque numa odd para adicionar ao seu boletim — é só uma pré-visualização, nada é confirmado até você revisar.</p>
-    </div>
-
-    <div class="odds-filters" id="oddsFilters">
-      <button class="odds-filter-btn active" data-filter="todos">Todos</button>
-      <button class="odds-filter-btn" data-filter="futebol">Futebol</button>
-      <button class="odds-filter-btn" data-filter="basquete">Basquete</button>
-      <button class="odds-filter-btn" data-filter="tenis">Tênis</button>
-    </div>
-
+    <div class="section-head"><div class="eyebrow-line"><span class="bar"></span>Quadro de odds</div><h2>As odds de hoje</h2><p>Valores atualizados por rodada. Toque numa odd para adicionar ao seu boletim — é só uma pré-visualização, nada é confirmado até você revisar.</p></div>
+    <div class="odds-filters" id="oddsFilters"><button class="odds-filter-btn active" data-filter="todos">Todos</button><button class="odds-filter-btn" data-filter="futebol">Futebol</button><button class="odds-filter-btn" data-filter="basquete">Basquete</button><button class="odds-filter-btn" data-filter="tenis">Tênis</button></div>
     <div class="odds-list" id="oddsList">
-
-      <div class="odds-row" data-cat="futebol" data-live="true">
-        <span class="odds-cat"><span class="live-dot"></span>Futebol</span>
-        <div class="odds-match">Falcões FC vs Leões United<span class="odds-time">Ao vivo · 67'</span></div>
-        <div class="odds-values">
-          <button class="odds-btn"><span class="lbl">Casa</span><span class="val">1.85</span></button>
-          <button class="odds-btn"><span class="lbl">Empate</span><span class="val">3.40</span></button>
-          <button class="odds-btn"><span class="lbl">Fora</span><span class="val">4.10</span></button>
-        </div>
-      </div>
-
-      <div class="odds-row" data-cat="futebol">
-        <span class="odds-cat">Futebol</span>
-        <div class="odds-match">Estrela Azul vs Porto Real<span class="odds-time">Hoje · 21:30</span></div>
-        <div class="odds-values">
-          <button class="odds-btn"><span class="lbl">Casa</span><span class="val">2.10</span></button>
-          <button class="odds-btn"><span class="lbl">Empate</span><span class="val">3.20</span></button>
-          <button class="odds-btn"><span class="lbl">Fora</span><span class="val">3.05</span></button>
-        </div>
-      </div>
-
-      <div class="odds-row" data-cat="basquete" data-live="true">
-        <span class="odds-cat"><span class="live-dot"></span>Basquete</span>
-        <div class="odds-match">Titãs vs Furacão<span class="odds-time">Ao vivo · 3º período</span></div>
-        <div class="odds-values">
-          <button class="odds-btn"><span class="lbl">Casa</span><span class="val">1.55</span></button>
-          <button class="odds-btn"><span class="lbl">Fora</span><span class="val">2.35</span></button>
-        </div>
-      </div>
-
-      <div class="odds-row" data-cat="basquete">
-        <span class="odds-cat">Basquete</span>
-        <div class="odds-match">Cometas vs Águias<span class="odds-time">Amanhã · 22:15</span></div>
-        <div class="odds-values">
-          <button class="odds-btn"><span class="lbl">Casa</span><span class="val">1.90</span></button>
-          <button class="odds-btn"><span class="lbl">Fora</span><span class="val">1.85</span></button>
-        </div>
-      </div>
-
-      <div class="odds-row" data-cat="tenis">
-        <span class="odds-cat">Tênis</span>
-        <div class="odds-match">J. Rocha vs M. Alves<span class="odds-time">Sáb · 14:00</span></div>
-        <div class="odds-values">
-          <button class="odds-btn"><span class="lbl">Rocha</span><span class="val">1.65</span></button>
-          <button class="odds-btn"><span class="lbl">Alves</span><span class="val">2.20</span></button>
-        </div>
-      </div>
-
+      <div class="odds-row" data-cat="futebol" data-live="true"><span class="odds-cat"><span class="live-dot"></span>Futebol</span><div class="odds-match">Falcões FC vs Leões United<span class="odds-time">Ao vivo · 67'</span></div><div class="odds-values"><button class="odds-btn"><span class="lbl">Casa</span><span class="val">1.85</span></button><button class="odds-btn"><span class="lbl">Empate</span><span class="val">3.40</span></button><button class="odds-btn"><span class="lbl">Fora</span><span class="val">4.10</span></button></div></div>
+      <div class="odds-row" data-cat="futebol"><span class="odds-cat">Futebol</span><div class="odds-match">Estrela Azul vs Porto Real<span class="odds-time">Hoje · 21:30</span></div><div class="odds-values"><button class="odds-btn"><span class="lbl">Casa</span><span class="val">2.10</span></button><button class="odds-btn"><span class="lbl">Empate</span><span class="val">3.20</span></button><button class="odds-btn"><span class="lbl">Fora</span><span class="val">3.05</span></button></div></div>
+      <div class="odds-row" data-cat="basquete" data-live="true"><span class="odds-cat"><span class="live-dot"></span>Basquete</span><div class="odds-match">Titãs vs Furacão<span class="odds-time">Ao vivo · 3º período</span></div><div class="odds-values"><button class="odds-btn"><span class="lbl">Casa</span><span class="val">1.55</span></button><button class="odds-btn"><span class="lbl">Fora</span><span class="val">2.35</span></button></div></div>
+      <div class="odds-row" data-cat="basquete"><span class="odds-cat">Basquete</span><div class="odds-match">Cometas vs Águias<span class="odds-time">Amanhã · 22:15</span></div><div class="odds-values"><button class="odds-btn"><span class="lbl">Casa</span><span class="val">1.90</span></button><button class="odds-btn"><span class="lbl">Fora</span><span class="val">1.85</span></button></div></div>
+      <div class="odds-row" data-cat="tenis"><span class="odds-cat">Tênis</span><div class="odds-match">J. Rocha vs M. Alves<span class="odds-time">Sáb · 14:00</span></div><div class="odds-values"><button class="odds-btn"><span class="lbl">Rocha</span><span class="val">1.65</span></button><button class="odds-btn"><span class="lbl">Alves</span><span class="val">2.20</span></button></div></div>
     </div>
   </div>
 </section>
 
 <section class="promotions" id="promocoes">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow-line"><span class="bar"></span>Promoções</div>
-      <h2>Benefícios ativos agora</h2>
-      <p>Sem letras miúdas escondidas — cada promoção mostra a condição completa antes de você aceitar.</p>
-    </div>
+    <div class="section-head"><div class="eyebrow-line"><span class="bar"></span>Promoções</div><h2>Benefícios ativos agora</h2><p>Sem letras miúdas escondidas — cada promoção mostra a condição completa antes de você aceitar.</p></div>
     <div class="promo-grid">
-      <div class="promo-card tall">
-        <span class="promo-tier">Novo jogador</span>
-        <h3>Bônus de boas-vindas</h3>
-        <p>Um crédito sobre o primeiro depósito, até um teto definido, liberado em etapas conforme a movimentação da conta. Termos completos disponíveis antes da ativação.</p>
-        <a href="#contato" class="btn small">Ativar</a>
-      </div>
-      <div class="promo-card">
-        <span class="promo-tier">Toda semana</span>
-        <h3>Cashback de sexta</h3>
-        <p>Uma parte do saldo líquido perdido na semana volta para sua conta, sem precisar solicitar nada.</p>
-        <a href="#contato" class="btn small">Saber mais</a>
-      </div>
-      <div class="promo-card">
-        <span class="promo-tier">Nível VIP</span>
-        <h3>Mesas exclusivas</h3>
-        <p>A partir de um determinado volume de conta, você recebe acesso a limites maiores e atendimento dedicado.</p>
-        <a href="#contato" class="btn small">Ver critérios</a>
-      </div>
+      <div class="promo-card tall"><span class="promo-tier">Novo jogador</span><h3>Bônus de boas-vindas</h3><p>Um crédito sobre o primeiro depósito, até um teto definido, liberado em etapas conforme a movimentação da conta. Termos completos disponíveis antes da ativação.</p><a href="#contato" class="btn small">Ativar</a></div>
+      <div class="promo-card"><span class="promo-tier">Toda semana</span><h3>Cashback de sexta</h3><p>Uma parte do saldo líquido perdido na semana volta para sua conta, sem precisar solicitar nada.</p><a href="#contato" class="btn small">Saber mais</a></div>
+      <div class="promo-card"><span class="promo-tier">Nível VIP</span><h3>Mesas exclusivas</h3><p>A partir de um determinado volume de conta, você recebe acesso a limites maiores e atendimento dedicado.</p><a href="#contato" class="btn small">Ver critérios</a></div>
     </div>
   </div>
 </section>
 
 <section class="promotions" id="afiliados" style="border-bottom: 1px solid var(--hairline);">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow-line"><span class="bar"></span>Programa de afiliados</div>
-      <h2>Ganhe indicando jogadores</h2>
-      <p>Torne-se afiliado TAKO BET, receba um link exclusivo e acompanhe suas indicações no seu próprio painel — depois que o seu cadastro for aprovado.</p>
-    </div>
+    <div class="section-head"><div class="eyebrow-line"><span class="bar"></span>Programa de afiliados</div><h2>Ganhe indicando jogadores</h2><p>Torne-se afiliado TAKO BET, receba um link exclusivo e acompanhe suas indicações no seu próprio painel — depois que o seu cadastro for aprovado.</p></div>
     <div class="promo-grid">
-      <div class="promo-card tall">
-        <span class="promo-tier">Como funciona</span>
-        <h3>Do cadastro ao painel</h3>
-        <div class="aff-steps" style="margin-top:6px;">
-          <div class="aff-step">
-            <span class="aff-step-num">1</span>
-            <div><strong>Preencha o formulário</strong><p>Nome, número de contacto e demais dados do afiliado.</p></div>
-          </div>
-          <div class="aff-step">
-            <span class="aff-step-num">2</span>
-            <div><strong>Aguarde a aprovação</strong><p>A equipa TAKO BET analisa o pedido antes de liberar o acesso.</p></div>
-          </div>
-          <div class="aff-step">
-            <span class="aff-step-num">3</span>
-            <div><strong>Acesse o seu painel</strong><p>Depois de aprovado, você recebe o link e acompanha suas indicações e comissões.</p></div>
-          </div>
-        </div>
-        <a href="#" class="btn small" data-open-affiliate>Candidatar-me a afiliado</a>
-      </div>
-      <div class="promo-card">
-        <span class="promo-tier">Para quem já é afiliado</span>
-        <h3>Painel de afiliados</h3>
-        <p>Se o seu cadastro já foi aprovado, aceda ao seu painel para ver o seu link e os seus dados.</p>
-        <a href="#" class="btn small ghost" data-open-auth="login">Aceder ao painel</a>
-      </div>
-      <div class="promo-card">
-        <span class="promo-tier">Estado do pedido</span>
-        <h3>Cadastro em análise</h3>
-        <p>Cada candidatura passa pelo mesmo processo — sem exceções — até ser aprovada individualmente.</p>
-        <a href="#" class="btn small ghost" data-open-affiliate>Ver processo</a>
-      </div>
+      <div class="promo-card tall"><span class="promo-tier">Como funciona</span><h3>Do cadastro ao painel</h3><div class="aff-steps" style="margin-top:6px;"><div class="aff-step"><span class="aff-step-num">1</span><div><strong>Preencha o formulário</strong><p>Nome, número de contacto e demais dados do afiliado.</p></div></div><div class="aff-step"><span class="aff-step-num">2</span><div><strong>Aguarde a aprovação</strong><p>A equipa TAKO BET analisa o pedido antes de liberar o acesso.</p></div></div><div class="aff-step"><span class="aff-step-num">3</span><div><strong>Acesse o seu painel</strong><p>Depois de aprovado, você recebe o link e acompanha suas indicações e comissões.</p></div></div></div><a href="#" class="btn small" data-open-affiliate>Candidatar-me a afiliado</a></div>
+      <div class="promo-card"><span class="promo-tier">Para quem já é afiliado</span><h3>Painel de afiliados</h3><p>Se o seu cadastro já foi aprovado, aceda ao seu painel para ver o seu link e os seus dados.</p><a href="#" class="btn small ghost" data-open-auth="login">Aceder ao painel</a></div>
+      <div class="promo-card"><span class="promo-tier">Estado do pedido</span><h3>Cadastro em análise</h3><p>Cada candidatura passa pelo mesmo processo — sem exceções — até ser aprovada individualmente.</p><a href="#" class="btn small ghost" data-open-affiliate>Ver processo</a></div>
     </div>
   </div>
 </section>
 
 <section class="pillars" id="vantagens">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow-line"><span class="bar"></span>Por que TAKO BET</div>
-      <h2>O que sustenta a casa</h2>
-      <p>Compromissos que só afirmamos quando já são realidade na operação — não promessas de marketing.</p>
-    </div>
+    <div class="section-head"><div class="eyebrow-line"><span class="bar"></span>Por que TAKO BET</div><h2>O que sustenta a casa</h2><p>Compromissos que só afirmamos quando já são realidade na operação — não promessas de marketing.</p></div>
     <div class="pillars-grid">
-      <div class="pillar">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v20M5 8l7-6 7 6M5 16l7 6 7-6"/></svg>
-        <h3>Processos de pagamento claros</h3>
-        <p>Prazos informados com antecedência para cada método — sem surpresas entre o pedido e a confirmação.</p>
-      </div>
-      <div class="pillar">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9M8 12l3 3 5-6"/></svg>
-        <h3>Suporte humano</h3>
-        <p>Uma equipe disponível todos os dias, em português, para resolver de verdade — sem script repetido.</p>
-      </div>
-      <div class="pillar">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
-        <h3>Conta sob seu controle</h3>
-        <p>Verificação de identidade, limites de depósito e autoexclusão disponíveis a qualquer momento, direto na conta.</p>
-      </div>
+      <div class="pillar"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v20M5 8l7-6 7 6M5 16l7 6 7-6"/></svg><h3>Processos de pagamento claros</h3><p>Prazos informados com antecedência para cada método — sem surpresas entre o pedido e a confirmação.</p></div>
+      <div class="pillar"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 12c0-5 4-9 9-9s9 4 9 9-4 9-9 9M8 12l3 3 5-6"/></svg><h3>Suporte humano</h3><p>Uma equipe disponível todos os dias, em português, para resolver de verdade — sem script repetido.</p></div>
+      <div class="pillar"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="10" width="16" height="10" rx="1"/><path d="M8 10V7a4 4 0 018 0v3"/></svg><h3>Conta sob seu controle</h3><p>Verificação de identidade, limites de depósito e autoexclusão disponíveis a qualquer momento, direto na conta.</p></div>
     </div>
   </div>
 </section>
 
 <section class="experience" id="experiencia">
   <div class="wrap exp-grid">
-    <div class="exp-panel">
-      <div class="exp-figure">
-        <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="50" cy="50" r="46" stroke="#C9A45C" stroke-width="0.6"/>
-          <circle cx="50" cy="50" r="34" stroke="#C9A45C" stroke-width="0.6"/>
-          <circle cx="50" cy="50" r="3" fill="#F3D58B"/>
-          <line x1="50" y1="4" x2="50" y2="96" stroke="#C9A45C" stroke-width="0.4"/>
-          <line x1="4" y1="50" x2="96" y2="50" stroke="#C9A45C" stroke-width="0.4"/>
-        </svg>
-      </div>
-    </div>
-    <div class="exp-text">
-      <h2>Uma experiência, não uma promessa</h2>
-      <p>Não vendemos garantia de resultado — vendemos uma casa onde as regras são claras, os prazos são cumpridos e você sempre sabe exatamente onde está o seu dinheiro.</p>
-      <ul class="exp-list">
-        <li><span class="mark">—</span>Conta verificada em minutos, sem burocracia excessiva.</li>
-        <li><span class="mark">—</span>Histórico completo de transações, sempre visível para você.</li>
-        <li><span class="mark">—</span>Ferramentas de limite de depósito e autoexclusão, disponíveis a qualquer momento.</li>
-      </ul>
-    </div>
+    <div class="exp-panel"><div class="exp-figure"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="46" stroke="#C9A45C" stroke-width="0.6"/><circle cx="50" cy="50" r="34" stroke="#C9A45C" stroke-width="0.6"/><circle cx="50" cy="50" r="3" fill="#F3D58B"/><line x1="50" y1="4" x2="50" y2="96" stroke="#C9A45C" stroke-width="0.4"/><line x1="4" y1="50" x2="96" y2="50" stroke="#C9A45C" stroke-width="0.4"/></svg></div></div>
+    <div class="exp-text"><h2>Uma experiência, não uma promessa</h2><p>Não vendemos garantia de resultado — vendemos uma casa onde as regras são claras, os prazos são cumpridos e você sempre sabe exatamente onde está o seu dinheiro.</p><ul class="exp-list"><li><span class="mark">—</span>Conta verificada em minutos, sem burocracia excessiva.</li><li><span class="mark">—</span>Histórico completo de transações, sempre visível para você.</li><li><span class="mark">—</span>Ferramentas de limite de depósito e autoexclusão, disponíveis a qualquer momento.</li></ul></div>
   </div>
 </section>
 
 <section class="payments">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow-line"><span class="bar"></span>Pagamentos</div>
-      <h2>Formas de depósito e saque</h2>
-    </div>
+    <div class="section-head"><div class="eyebrow-line"><span class="bar"></span>Pagamentos</div><h2>Formas de depósito e saque</h2></div>
     <div class="payments-grid">
       <div class="payment-card"><span class="p-name">M-Pesa</span><span class="payment-status"><span class="dotstat"></span>Disponível</span></div>
       <div class="payment-card"><span class="p-name">e-Mola</span><span class="payment-status"><span class="dotstat"></span>Disponível</span></div>
@@ -1341,1227 +900,376 @@
 
 <section class="activity">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow-line"><span class="bar"></span>Atividade</div>
-      <h2>Atividade da plataforma</h2>
-      <p>Exemplos de como a atividade recente aparece na interface.</p>
-    </div>
-    <div class="activity-marquee">
-      <div class="activity-track" id="activityTrack"></div>
-    </div>
+    <div class="section-head"><div class="eyebrow-line"><span class="bar"></span>Atividade</div><h2>Atividade da plataforma</h2><p>Exemplos de como a atividade recente aparece na interface.</p></div>
+    <div class="activity-marquee"><div class="activity-track" id="activityTrack"></div></div>
   </div>
 </section>
 
 <section class="banner">
-  <div class="wrap banner-inner">
-    <div>
-      <h2>Sua conta, em menos de cinco minutos</h2>
-      <p>Verificação simples, primeiro depósito protegido e suporte disponível desde o primeiro clique.</p>
-    </div>
-    <a href="#contato" class="btn solid">Criar conta</a>
-  </div>
+  <div class="wrap banner-inner"><div><h2>Sua conta, em menos de cinco minutos</h2><p>Verificação simples, primeiro depósito protegido e suporte disponível desde o primeiro clique.</p></div><a href="#contato" class="btn solid">Criar conta</a></div>
 </section>
 
 <section class="newsletter" id="contato">
   <div class="wrap">
-    <div class="nl-box">
-      <div>
-        <h2>Fale com a equipe</h2>
-        <p>Deixe seu e-mail e alguém do suporte entra em contato — sem fila de robô, sem resposta pronta.</p>
-      </div>
-      <div>
-        <form class="nl-form" id="nlForm">
-          <input type="email" placeholder="seu@email.com" id="nlEmail" required aria-label="Seu e-mail">
-          <button type="submit" class="btn solid">Enviar</button>
-        </form>
-        <p class="nl-msg" id="nlMsg"></p>
-      </div>
-    </div>
+    <div class="nl-box"><div><h2>Fale com a equipe</h2><p>Deixe seu e-mail e alguém do suporte entra em contato — sem fila de robô, sem resposta pronta.</p></div><div><form class="nl-form" id="nlForm"><input type="email" placeholder="seu@email.com" id="nlEmail" required aria-label="Seu e-mail"><button type="submit" class="btn solid">Enviar</button></form><p class="nl-msg" id="nlMsg"></p></div></div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-players-bg" aria-hidden="true">
-    <svg viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-      <g fill="none" stroke="#C9A45C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
-        <g transform="translate(70,60)">
-          <circle cx="30" cy="18" r="14"/>
-          <path d="M30 32v58"/>
-          <path d="M30 46l-30-34"/>
-          <path d="M30 46l30-34"/>
-          <path d="M30 90l-20 40"/>
-          <path d="M30 90l20 40"/>
-        </g>
-        <g transform="translate(210,96)">
-          <circle cx="34" cy="16" r="13"/>
-          <path d="M34 29v40"/>
-          <path d="M34 40h30M34 40h-30"/>
-          <path d="M34 69l-22 34"/>
-          <path d="M34 69l22 34"/>
-          <rect x="52" y="34" width="16" height="10" rx="2"/>
-        </g>
-        <g transform="translate(380,50)">
-          <circle cx="26" cy="16" r="13"/>
-          <path d="M26 29v66"/>
-          <path d="M26 44l-18 20"/>
-          <path d="M26 44l18-8"/>
-          <path d="M26 95l-16 44"/>
-          <path d="M26 95l16 44"/>
-        </g>
-        <g transform="translate(540,64)">
-          <circle cx="24" cy="16" r="13"/>
-          <path d="M24 29v58"/>
-          <path d="M24 42l-24-12"/>
-          <path d="M24 42l26-30"/>
-          <path d="M24 87l-14 42"/>
-          <path d="M24 87l18 42"/>
-          <circle cx="86" cy="8" r="13"/>
-          <path d="M86 21v58"/>
-          <path d="M86 34l24-14"/>
-          <path d="M86 34l-24 4"/>
-          <path d="M86 79l14 42"/>
-          <path d="M86 79l-16 42"/>
-        </g>
-        <g transform="translate(740,100)">
-          <circle cx="26" cy="16" r="13"/>
-          <path d="M26 29v36"/>
-          <path d="M26 40h26M26 40h-22"/>
-          <path d="M26 65l-18 30"/>
-          <path d="M26 65l24 30"/>
-        </g>
-        <g transform="translate(880,54)">
-          <circle cx="26" cy="16" r="13"/>
-          <path d="M26 29v62"/>
-          <path d="M26 42l-26 26"/>
-          <path d="M26 42l24-38"/>
-          <path d="M26 91l-16 40"/>
-          <path d="M26 91l18 40"/>
-        </g>
-        <g transform="translate(1010,84)">
-          <circle cx="22" cy="16" r="12"/>
-          <path d="M22 28v44"/>
-          <path d="M22 40l16 10"/>
-          <path d="M22 40l-16 4"/>
-          <path d="M22 72l-14 36"/>
-          <path d="M22 72l16 36"/>
-          <circle cx="70" cy="20" r="12"/>
-          <path d="M70 32v40"/>
-          <path d="M70 44l-16 6"/>
-          <path d="M70 44l16-2"/>
-          <path d="M70 72l-14 34"/>
-          <path d="M70 72l14 34"/>
-        </g>
-      </g>
-    </svg>
-  </div>
+  <div class="footer-players-bg" aria-hidden="true"><svg viewBox="0 0 1200 260" preserveAspectRatio="xMidYMax slice"><g fill="none" stroke="#C9A45C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"><g transform="translate(70,60)"><circle cx="30" cy="18" r="14"/><path d="M30 32v58"/><path d="M30 46l-30-34"/><path d="M30 46l30-34"/><path d="M30 90l-20 40"/><path d="M30 90l20 40"/></g><g transform="translate(210,96)"><circle cx="34" cy="16" r="13"/><path d="M34 29v40"/><path d="M34 40h30M34 40h-30"/><path d="M34 69l-22 34"/><path d="M34 69l22 34"/><rect x="52" y="34" width="16" height="10" rx="2"/></g><g transform="translate(380,50)"><circle cx="26" cy="16" r="13"/><path d="M26 29v66"/><path d="M26 44l-18 20"/><path d="M26 44l18-8"/><path d="M26 95l-16 44"/><path d="M26 95l16 44"/></g><g transform="translate(540,64)"><circle cx="24" cy="16" r="13"/><path d="M24 29v58"/><path d="M24 42l-24-12"/><path d="M24 42l26-30"/><path d="M24 87l-14 42"/><path d="M24 87l18 42"/><circle cx="86" cy="8" r="13"/><path d="M86 21v58"/><path d="M86 34l24-14"/><path d="M86 34l-24 4"/><path d="M86 79l14 42"/><path d="M86 79l-16 42"/></g><g transform="translate(740,100)"><circle cx="26" cy="16" r="13"/><path d="M26 29v36"/><path d="M26 40h26M26 40h-22"/><path d="M26 65l-18 30"/><path d="M26 65l24 30"/></g><g transform="translate(880,54)"><circle cx="26" cy="16" r="13"/><path d="M26 29v62"/><path d="M26 42l-26 26"/><path d="M26 42l24-38"/><path d="M26 91l-16 40"/><path d="M26 91l18 40"/></g><g transform="translate(1010,84)"><circle cx="22" cy="16" r="12"/><path d="M22 28v44"/><path d="M22 40l16 10"/><path d="M22 40l-16 4"/><path d="M22 72l-14 36"/><path d="M22 72l16 36"/><circle cx="70" cy="20" r="12"/><path d="M70 32v40"/><path d="M70 44l-16 6"/><path d="M70 44l16-2"/><path d="M70 72l-14 34"/><path d="M70 72l14 34"/></g></g></svg></div>
 
   <div class="footer-info-band">
     <div class="wrap footer-info-inner">
-      <div class="footer-lang">
-        <div class="footer-lang-row">
-          <span class="footer-lang-flag">
-            <svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0 0h900v600H0z" fill="#009639"/>
-              <path d="M0 0l520 300L0 600z" fill="#000"/>
-              <path d="M0 60l430 240L0 540z" fill="#FCD116"/>
-              <path d="M0 120l320 180L0 480z" fill="#DE2910"/>
-            </svg>
-          </span>
-          <span class="label">PORTUGUÊS</span>
-          <span class="chevron">▾</span>
-        </div>
-      </div>
-
-      <div class="footer-age">
-        <div class="footer-age-badge">+18</div>
-        <p>Deve ter 18 anos ou mais para se inscrever ou jogar na TAKO BET.</p>
-      </div>
-
-      <div class="footer-social">
-        <a href="#" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h2V4h-3a4 4 0 00-4 4v3H7v4h3v9h4v-9h3l1-4h-4V8a1 1 0 011-1z"/></svg>
-        </a>
-        <a href="#" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
-        </a>
-      </div>
+      <div class="footer-lang"><div class="footer-lang-row"><span class="footer-lang-flag"><svg viewBox="0 0 900 600"><path d="M0 0h900v600H0z" fill="#009639"/><path d="M0 0l520 300L0 600z" fill="#000"/><path d="M0 60l430 240L0 540z" fill="#FCD116"/><path d="M0 120l320 180L0 480z" fill="#DE2910"/></svg></span><span class="label">PORTUGUÊS</span><span class="chevron">▾</span></div></div>
+      <div class="footer-age"><div class="footer-age-badge">+18</div><p>Deve ter 18 anos ou mais para se inscrever ou jogar na TAKO BET.</p></div>
+      <div class="footer-social"><a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 8h2V4h-3a4 4 0 00-4 4v3H7v4h3v9h4v-9h3l1-4h-4V8a1 1 0 011-1z"/></svg></a><a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a></div>
     </div>
-
     <div class="wrap footer-payments-row">
       <span class="p-label">Operadoras:</span>
-      <span class="footer-op-badge mpesa">
-        <span class="net">VODACOM</span>
-        <span class="svc"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>M-Pesa</span>
-      </span>
-      <span class="footer-op-badge emola">
-        <span class="net">MOVITEL</span>
-        <span class="svc"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>e-Mola</span>
-      </span>
-      <span class="footer-op-badge mkesh">
-        <span class="net">TMCEL</span>
-        <span class="svc"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>mKesh</span>
-      </span>
+      <span class="footer-op-badge mpesa"><span class="net">VODACOM</span><span class="svc"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>M-Pesa</span></span>
+      <span class="footer-op-badge emola"><span class="net">MOVITEL</span><span class="svc"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>e-Mola</span></span>
+      <span class="footer-op-badge mkesh"><span class="net">TMCEL</span><span class="svc"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>mKesh</span></span>
       <span class="footer-op-badge visa">Visa / Mastercard</span>
     </div>
   </div>
 
   <div class="wrap">
-    <div class="responsible-note">
-      <strong>Jogo responsável:</strong> este site é destinado exclusivamente a maiores de 18 anos.
-      <ul>
-        <li>Defina limites de tempo e valor antes de jogar.</li>
-        <li>Use as ferramentas de autoexclusão disponíveis na conta a qualquer momento.</li>
-        <li>Se sentir que o jogo deixou de ser uma escolha, procure ajuda especializada.</li>
-      </ul>
-    </div>
-    <div class="foot-grid">
-      <div>
-        <a href="#top" class="brand">TAKO BET</a>
-        <p>Uma casa pensada para durar — regras claras, suporte real e limites que você controla.</p>
-      </div>
-      <div>
-        <h4>Navegar</h4>
-        <ul>
-          <li><a href="#tako-live">Ao vivo</a></li>
-          <li><a href="#odds">Odds</a></li>
-          <li><a href="#promocoes">Promoções</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="#top">Termos de uso</a></li>
-          <li><a href="#top">Privacidade</a></li>
-          <li><a href="#top">Jogo responsável</a></li>
-          <li><a href="#top">Política de KYC/AML</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contato</h4>
-        <ul>
-          <li><a href="#contato">Suporte</a></li>
-          <li><a href="#contato">Parcerias</a></li>
-        </ul>
-      </div>
-    </div>
+    <div class="responsible-note"><strong>Jogo responsável:</strong> este site é destinado exclusivamente a maiores de 18 anos.<ul><li>Defina limites de tempo e valor antes de jogar.</li><li>Use as ferramentas de autoexclusão disponíveis na conta a qualquer momento.</li><li>Se sentir que o jogo deixou de ser uma escolha, procure ajuda especializada.</li></ul></div>
+    <div class="foot-grid"><div><a href="#top" class="brand">TAKO BET</a><p>Uma casa pensada para durar — regras claras, suporte real e limites que você controla.</p></div><div><h4>Navegar</h4><ul><li><a href="#tako-live">Ao vivo</a></li><li><a href="#odds">Odds</a></li><li><a href="#promocoes">Promoções</a></li></ul></div><div><h4>Legal</h4><ul><li><a href="#top">Termos de uso</a></li><li><a href="#top">Privacidade</a></li><li><a href="#top">Jogo responsável</a></li><li><a href="#top">Política de KYC/AML</a></li></ul></div><div><h4>Contato</h4><ul><li><a href="#contato">Suporte</a></li><li><a href="#contato">Parcerias</a></li></ul></div></div>
   </div>
 
   <div class="footer-brand-band">
-    <div class="wrap">
-      <a href="#top" class="brand">
-        <svg class="mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="17" r="9" stroke-width="1.6"/>
-          <path d="M11 21c-1 4-3 5-4 9 3-1 5-3 6-6" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M15 24c0 4-1 6-2 10 3-2 4-4 5-7" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M20 25c1 4 1 6 1 10 2-2 2-5 2-8" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M25 24c1 3 3 4 5 7-1-4 0-6-1-10" stroke-width="1.6" stroke-linecap="round"/>
-          <path d="M29 21c2 3 4 4 6 6-2-4-1-6-3-9" stroke-width="1.6" stroke-linecap="round"/>
-        </svg>
-        TAKO BET
-      </a>
-      <p class="footer-brand-tagline">Plataforma de apostas online — Moçambique</p>
-      <p class="foot-legal">
-        TAKO BET é atualmente um projeto de demonstração visual. Operação sujeita à legislação de jogos e apostas vigente na jurisdição do usuário; número de licença, entidade reguladora e jurisdições autorizadas serão publicados aqui antes de qualquer operação com dinheiro real.
-      </p>
-      <p class="footer-brand-copyright">© 2026 TAKO BET. Todos os direitos reservados. · +18 · Jogue com responsabilidade.</p>
-    </div>
+    <div class="wrap"><a href="#top" class="brand"><svg class="mark" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="17" r="9" stroke-width="1.6"/><path d="M11 21c-1 4-3 5-4 9 3-1 5-3 6-6" stroke-width="1.6" stroke-linecap="round"/><path d="M15 24c0 4-1 6-2 10 3-2 4-4 5-7" stroke-width="1.6" stroke-linecap="round"/><path d="M20 25c1 4 1 6 1 10 2-2 2-5 2-8" stroke-width="1.6" stroke-linecap="round"/><path d="M25 24c1 3 3 4 5 7-1-4 0-6-1-10" stroke-width="1.6" stroke-linecap="round"/><path d="M29 21c2 3 4 4 6 6-2-4-1-6-3-9" stroke-width="1.6" stroke-linecap="round"/></svg>TAKO BET</a><p class="footer-brand-tagline">Plataforma de apostas online — Moçambique</p><p class="foot-legal">TAKO BET é atualmente um projeto de demonstração visual. Operação sujeita à legislação de jogos e apostas vigente na jurisdição do usuário; número de licença, entidade reguladora e jurisdições autorizadas serão publicados aqui antes de qualquer operação com dinheiro real.</p><p class="footer-brand-copyright">© 2026 TAKO BET. Todos os direitos reservados. · +18 · Jogue com responsabilidade.</p></div>
   </div>
 </footer>
 
-<!-- ---------- MODAL: LOGIN / REGISTAR / REDEFINIR PALAVRA-PASSE ---------- -->
+<!-- ====== MODAIS ====== -->
 <div class="modal-overlay" id="authOverlay">
   <div class="modal-box">
-    <button type="button" class="modal-close" data-close-modal aria-label="Fechar">✕</button>
-
+    <button type="button" class="modal-close" data-close-modal>✕</button>
     <div id="authTabsView">
       <div class="modal-eyebrow">TAKO BET</div>
-      <div class="modal-tabs">
-        <button type="button" class="modal-tab" data-auth-tab="login">Iniciar sessão</button>
-        <button type="button" class="modal-tab" data-auth-tab="registar">Registar</button>
-      </div>
-
+      <div class="modal-tabs"><button type="button" class="modal-tab" data-auth-tab="login">Iniciar sessão</button><button type="button" class="modal-tab" data-auth-tab="registar">Registar</button></div>
       <form class="modal-panel" id="loginPanel" data-auth-panel="login">
-        <div class="field-group">
-          <label class="field-label" for="loginPhone">Número de telefone</label>
-          <input class="field-input" type="tel" id="loginPhone" placeholder="84 123 4567" required>
-        </div>
-        <div class="field-group">
-          <label class="field-label" for="loginPassword">Palavra-passe</label>
-          <input class="field-input" type="password" id="loginPassword" placeholder="••••••••" required>
-        </div>
+        <div class="field-group"><label class="field-label" for="loginPhone">Número de telefone</label><input class="field-input" type="tel" id="loginPhone" placeholder="84 123 4567" required></div>
+        <div class="field-group"><label class="field-label" for="loginPassword">Palavra-passe</label><input class="field-input" type="password" id="loginPassword" placeholder="••••••••" required></div>
         <button type="button" class="modal-forgot" data-forgot-open>Esqueceu a palavra-passe?</button>
         <button type="submit" class="btn solid modal-submit">Iniciar sessão</button>
         <div class="auth-divider"><span>ou</span></div>
-        <button type="button" class="btn google" id="googleLoginBtn">
-          <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6 29.5 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.3C29.3 35.4 26.8 36 24 36c-5.2 0-9.6-3.1-11.3-7.6l-6.5 5C9.6 39.6 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.3 5.7l6.2 5.3C39.9 37 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
-          Continuar com Google
-        </button>
+        <button type="button" class="btn google" id="googleLoginBtn"><svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6 29.5 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.3C29.3 35.4 26.8 36 24 36c-5.2 0-9.6-3.1-11.3-7.6l-6.5 5C9.6 39.6 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.3 5.7l6.2 5.3C39.9 37 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>Continuar com Google</button>
         <p class="modal-msg" id="loginMsg"></p>
       </form>
-
       <form class="modal-panel" id="registarPanel" data-auth-panel="registar">
-        <div class="field-group">
-          <label class="field-label" for="regPhone">Número de telefone</label>
-          <input class="field-input" type="tel" id="regPhone" placeholder="84 123 4567" required>
-        </div>
-        <div class="field-group">
-          <label class="field-label" for="regPassword">Palavra-passe</label>
-          <input class="field-input" type="password" id="regPassword" placeholder="••••••••" required minlength="6">
-        </div>
-        <div class="field-group">
-          <label class="field-label" for="regPassword2">Confirmar palavra-passe</label>
-          <input class="field-input" type="password" id="regPassword2" placeholder="••••••••" required minlength="6">
-        </div>
+        <div class="field-group"><label class="field-label" for="regPhone">Número de telefone</label><input class="field-input" type="tel" id="regPhone" placeholder="84 123 4567" required></div>
+        <div class="field-group"><label class="field-label" for="regPassword">Palavra-passe</label><input class="field-input" type="password" id="regPassword" placeholder="••••••••" required minlength="6"></div>
+        <div class="field-group"><label class="field-label" for="regPassword2">Confirmar palavra-passe</label><input class="field-input" type="password" id="regPassword2" placeholder="••••••••" required minlength="6"></div>
         <button type="button" class="modal-forgot" data-forgot-open>Já tem conta? Redefinir palavra-passe</button>
         <button type="submit" class="btn solid modal-submit">Criar conta</button>
         <div class="auth-divider"><span>ou</span></div>
-        <button type="button" class="btn google" id="googleRegisterBtn">
-          <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6 29.5 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.3C29.3 35.4 26.8 36 24 36c-5.2 0-9.6-3.1-11.3-7.6l-6.5 5C9.6 39.6 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.3 5.7l6.2 5.3C39.9 37 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>
-          Continuar com Google
-        </button>
-        <p class="modal-msg" id="regMsg"></p>
-        <p class="modal-note">Ao registar-se, confirma que tem 18 anos ou mais.</p>
+        <button type="button" class="btn google" id="googleRegisterBtn"><svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.9 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6 29.5 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.7-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.5 6 29.5 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.5-5.2l-6.2-5.3C29.3 35.4 26.8 36 24 36c-5.2 0-9.6-3.1-11.3-7.6l-6.5 5C9.6 39.6 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.3 5.7l6.2 5.3C39.9 37 44 31 44 24c0-1.3-.1-2.7-.4-3.5z"/></svg>Continuar com Google</button>
+        <p class="modal-msg" id="regMsg"></p><p class="modal-note">Ao registar-se, confirma que tem 18 anos ou mais.</p>
       </form>
     </div>
-
-    <div id="authForgotView" style="display:none;">
-      <button type="button" class="modal-back" data-forgot-back>← Voltar</button>
-      <div class="modal-eyebrow">TAKO BET</div>
-      <h3>Redefinir palavra-passe</h3>
-      <form class="modal-panel active" id="forgotPanel">
-        <div class="field-group">
-          <label class="field-label" for="forgotPhone">Número de telefone</label>
-          <input class="field-input" type="tel" id="forgotPhone" placeholder="84 123 4567" required>
-        </div>
-        <button type="submit" class="btn solid modal-submit">Enviar código</button>
-        <p class="modal-msg" id="forgotMsg"></p>
-      </form>
-    </div>
+    <div id="authForgotView" style="display:none;"><button type="button" class="modal-back" data-forgot-back>← Voltar</button><div class="modal-eyebrow">TAKO BET</div><h3>Redefinir palavra-passe</h3><form class="modal-panel active" id="forgotPanel"><div class="field-group"><label class="field-label" for="forgotPhone">Número de telefone</label><input class="field-input" type="tel" id="forgotPhone" placeholder="84 123 4567" required></div><button type="submit" class="btn solid modal-submit">Enviar código</button><p class="modal-msg" id="forgotMsg"></p></form></div>
   </div>
 </div>
 
-<!-- ---------- MODAL: CANDIDATURA A AFILIADO ---------- -->
 <div class="modal-overlay" id="affOverlay">
   <div class="modal-box wide">
-    <button type="button" class="modal-close" data-close-modal aria-label="Fechar">✕</button>
-
-    <div id="affFormView">
-      <div class="modal-eyebrow">Programa de afiliados</div>
-      <h3>Candidatura a afiliado</h3>
-      <form class="modal-panel active" id="affForm">
-        <div class="field-group">
-          <label class="field-label" for="affName">Nome completo</label>
-          <input class="field-input" type="text" id="affName" placeholder="O seu nome" required>
-        </div>
-        <div class="field-row-2">
-          <div class="field-group">
-            <label class="field-label" for="affPhone">Número de telefone</label>
-            <input class="field-input" type="tel" id="affPhone" placeholder="84 123 4567" required>
-          </div>
-          <div class="field-group">
-            <label class="field-label" for="affEmail">E-mail</label>
-            <input class="field-input" type="email" id="affEmail" placeholder="seu@email.com" required>
-          </div>
-        </div>
-        <div class="field-group">
-          <label class="field-label" for="affChannel">Como pretende divulgar?</label>
-          <input class="field-input" type="text" id="affChannel" placeholder="Ex.: YouTube, WhatsApp, Instagram">
-        </div>
-        <button type="submit" class="btn solid modal-submit">Enviar candidatura</button>
-        <p class="modal-note">Todos os pedidos passam pelo mesmo processo de aprovação, um por um.</p>
-      </form>
-    </div>
-
-    <div id="affPendingView" style="display:none;">
-      <div class="modal-eyebrow">Programa de afiliados</div>
-      <div class="aff-pending">
-        <h4><span class="status-dot"></span>Cadastro em análise</h4>
-        <p>Recebemos a sua candidatura. Assim que for aprovada, vai receber acesso ao painel de afiliados com o seu link exclusivo e os seus dados de conta.</p>
-      </div>
-    </div>
+    <button type="button" class="modal-close" data-close-modal>✕</button>
+    <div id="affFormView"><div class="modal-eyebrow">Programa de afiliados</div><h3>Candidatura a afiliado</h3><form class="modal-panel active" id="affForm"><div class="field-group"><label class="field-label" for="affName">Nome completo</label><input class="field-input" type="text" id="affName" placeholder="O seu nome" required></div><div class="field-row-2"><div class="field-group"><label class="field-label" for="affPhone">Número de telefone</label><input class="field-input" type="tel" id="affPhone" placeholder="84 123 4567" required></div><div class="field-group"><label class="field-label" for="affEmail">E-mail</label><input class="field-input" type="email" id="affEmail" placeholder="seu@email.com" required></div></div><div class="field-group"><label class="field-label" for="affChannel">Como pretende divulgar?</label><input class="field-input" type="text" id="affChannel" placeholder="Ex.: YouTube, WhatsApp, Instagram"></div><button type="submit" class="btn solid modal-submit">Enviar candidatura</button><p class="modal-note">Todos os pedidos passam pelo mesmo processo de aprovação, um por um.</p></form></div>
+    <div id="affPendingView" style="display:none;"><div class="modal-eyebrow">Programa de afiliados</div><div class="aff-pending"><h4><span class="status-dot"></span>Cadastro em análise</h4><p>Recebemos a sua candidatura. Assim que for aprovada, vai receber acesso ao painel de afiliados com o seu link exclusivo e os seus dados de conta.</p></div></div>
   </div>
 </div>
 
-<!-- ---------- MODAL: PAINEL DA CONTA (perfil, financeiro, levantamentos...) ---------- -->
 <div class="modal-overlay" id="accountOverlay">
   <div class="modal-box wide">
-    <button type="button" class="modal-close" data-close-modal aria-label="Fechar">✕</button>
-
-    <div class="account-head">
-      <div class="account-avatar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg>
-        <span class="edit-dot">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg>
-        </span>
-      </div>
-      <div class="account-idline">
-        <span id="accPhoneDisplay">258 00 000 0000</span>
-        <span class="id-tag" id="accIdDisplay">ID-0000000</span>
-      </div>
-      <div class="account-stars" aria-hidden="true">
-        <svg class="filled" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg>
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg>
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg>
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg>
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg>
-      </div>
-    </div>
-
-    <div class="account-stats">
-      <div class="account-stat"><span class="lbl">Bónus</span><span class="val" id="accBonus">0.00 MZN</span></div>
-      <div class="account-stat"><span class="lbl">Extraível</span><span class="val" id="accWithdrawable">0.00 MZN</span></div>
-      <div class="account-stat"><span class="lbl">Desbloqueio</span><span class="val" id="accUnlock">0.00 MZN</span></div>
-    </div>
-
-    <div class="account-actions-row">
-      <button type="button" class="btn small" id="depositBtn2">Depósito</button>
-      <button type="button" class="btn small danger" data-open-auth-from-account="forgot">Mudar senha</button>
-    </div>
-
+    <button type="button" class="modal-close" data-close-modal>✕</button>
+    <div class="account-head"><div class="account-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg><span class="edit-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></span></div><div class="account-idline"><span id="accPhoneDisplay">258 00 000 0000</span><span class="id-tag" id="accIdDisplay">ID-0000000</span></div><div class="account-stars" aria-hidden="true"><svg class="filled" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.7 7-6.3-3.8-6.3 3.8 1.7-7L2 9.2l7.1-.6z"/></svg></div></div>
+    <div class="account-stats"><div class="account-stat"><span class="lbl">Bónus</span><span class="val" id="accBonus">0.00 MZN</span></div><div class="account-stat"><span class="lbl">Extraível</span><span class="val" id="accWithdrawable">0.00 MZN</span></div><div class="account-stat"><span class="lbl">Desbloqueio</span><span class="val" id="accUnlock">0.00 MZN</span></div></div>
+    <div class="account-actions-row"><button type="button" class="btn small" id="depositBtn2">Depósito</button><button type="button" class="btn small danger" data-open-auth-from-account="forgot">Mudar senha</button></div>
     <div class="account-accordion" id="accountAccordion">
-
-      <div class="acc-item open" data-acc-section="pessoal">
-        <button type="button" class="acc-item-head"><span>Pessoal</span><span class="chevron">▾</span></button>
-        <div class="acc-item-body">
-          <div class="field-group">
-            <label class="field-label">Nome próprio</label>
-            <input class="field-input" type="text" id="profFirstName" placeholder="NoName">
-          </div>
-          <div class="field-group">
-            <label class="field-label">Apelido</label>
-            <input class="field-input" type="text" id="profLastName" placeholder="NoName">
-          </div>
-          <div class="field-group">
-            <label class="field-label">Data de nascimento</label>
-            <input class="field-input" type="date" id="profBirthdate">
-          </div>
-          <button type="button" class="btn small teal" id="profSaveBtn">Guardar</button>
-          <p class="modal-msg" id="profMsg"></p>
-        </div>
-      </div>
-
-      <div class="acc-item" data-acc-section="financeiro">
-        <button type="button" class="acc-item-head"><span>Financeiro</span><span class="chevron">▾</span></button>
-        <div class="acc-item-body"><p class="hint">Resumo de saldo, bónus e movimentos da conta.</p></div>
-      </div>
-
-      <div class="acc-item" data-acc-section="kyc">
-        <button type="button" class="acc-item-head"><span>Conheça seu Cliente</span><span class="chevron">▾</span></button>
-        <div class="acc-item-body"><p class="hint">Verificação de identidade (KYC) — envie os seus documentos aqui quando disponível.</p></div>
-      </div>
-
-      <div class="acc-item" data-acc-section="historia">
-        <button type="button" class="acc-item-head"><span>História</span><span class="chevron">▾</span></button>
-        <div class="acc-item-body">
-          <div id="historyList"><p class="hint">Sem movimentos ainda.</p></div>
-        </div>
-      </div>
-
-      <div class="acc-item" data-acc-section="depositos">
-        <button type="button" class="acc-item-head"><span>Depósitos</span><span class="chevron">▾</span></button>
-        <div class="acc-item-body">
-          <p class="hint" style="margin-bottom:-4px;">Valor de depósito</p>
-          <div class="withdraw-amount">
-            <span class="curr">MZN</span>
-            <input type="number" id="depositAmount" placeholder="0.00" min="0" step="0.01">
-          </div>
-          <div class="field-group">
-            <label class="field-label">Conta de pagamento</label>
-            <select class="field-input" id="depositAccount">
-              <option value="">Por favor selecione</option>
-              <option value="mpesa">M-Pesa</option>
-              <option value="emola">e-Mola</option>
-              <option value="mkesh">mKesh</option>
-              <option value="banco">Transferência bancária</option>
-              <option value="zumbopay">ZumboPay</option>
-            </select>
-          </div>
-          <button type="button" class="btn teal modal-submit" id="depositSubmit">Depositar</button>
-          <p class="modal-msg" id="depositMsg"></p>
-        </div>
-      </div>
-
-      <div class="acc-item" data-acc-section="levantamentos">
-        <button type="button" class="acc-item-head"><span>Levantamentos</span><span class="chevron">▾</span></button>
-        <div class="acc-item-body">
-          <p class="hint" style="margin-bottom:-4px;">Valor de levantamento</p>
-          <div class="withdraw-amount">
-            <span class="curr">MZN</span>
-            <input type="number" id="withdrawAmount" placeholder="0.00" min="0" step="0.01">
-          </div>
-          <div class="field-group">
-            <label class="field-label">Conta de pagamento</label>
-            <select class="field-input" id="withdrawAccount">
-              <option value="">Por favor selecione</option>
-              <option value="mpesa">M-Pesa</option>
-              <option value="emola">e-Mola</option>
-              <option value="mkesh">mKesh</option>
-              <option value="banco">Transferência bancária</option>
-            </select>
-          </div>
-          <button type="button" class="btn teal modal-submit" id="withdrawSubmit">Levantamento</button>
-          <p class="modal-msg" id="withdrawMsg"></p>
-        </div>
-      </div>
-
-      <div class="acc-item" data-acc-section="limites">
-        <button type="button" class="acc-item-head"><span>Limites</span><span class="chevron">▾</span></button>
-        <div class="acc-item-body"><p class="hint">Defina limites de depósito e ferramentas de autoexclusão.</p></div>
-      </div>
-
-      <div class="acc-item" data-acc-section="registos">
-        <button type="button" class="acc-item-head"><span>Registos</span><span class="chevron">▾</span></button>
-        <div class="acc-item-body"><p class="hint">Registo de acessos e alterações feitas na conta.</p></div>
-      </div>
-
-      <div class="acc-item" data-acc-section="bonus">
-        <button type="button" class="acc-item-head"><span>Bónus</span><span class="chevron">▾</span></button>
-        <div class="acc-item-body"><p class="hint">Bónus ativos e histórico de bónus recebidos.</p></div>
-      </div>
-
+      <div class="acc-item open" data-acc-section="pessoal"><button type="button" class="acc-item-head"><span>Pessoal</span><span class="chevron">▾</span></button><div class="acc-item-body"><div class="field-group"><label class="field-label">Nome próprio</label><input class="field-input" type="text" id="profFirstName" placeholder="NoName"></div><div class="field-group"><label class="field-label">Apelido</label><input class="field-input" type="text" id="profLastName" placeholder="NoName"></div><div class="field-group"><label class="field-label">Data de nascimento</label><input class="field-input" type="date" id="profBirthdate"></div><button type="button" class="btn small teal" id="profSaveBtn">Guardar</button><p class="modal-msg" id="profMsg"></p></div></div>
+      <div class="acc-item" data-acc-section="financeiro"><button type="button" class="acc-item-head"><span>Financeiro</span><span class="chevron">▾</span></button><div class="acc-item-body"><p class="hint">Resumo de saldo, bónus e movimentos da conta.</p></div></div>
+      <div class="acc-item" data-acc-section="kyc"><button type="button" class="acc-item-head"><span>Conheça seu Cliente</span><span class="chevron">▾</span></button><div class="acc-item-body"><p class="hint">Verificação de identidade (KYC) — envie os seus documentos aqui quando disponível.</p></div></div>
+      <div class="acc-item" data-acc-section="historia"><button type="button" class="acc-item-head"><span>História</span><span class="chevron">▾</span></button><div class="acc-item-body"><div id="historyList"><p class="hint">Sem movimentos ainda.</p></div></div></div>
+      <div class="acc-item" data-acc-section="depositos"><button type="button" class="acc-item-head"><span>Depósitos</span><span class="chevron">▾</span></button><div class="acc-item-body"><p class="hint" style="margin-bottom:-4px;">Valor de depósito</p><div class="withdraw-amount"><span class="curr">MZN</span><input type="number" id="depositAmount" placeholder="0.00" min="0" step="0.01"></div><div class="field-group"><label class="field-label">Conta de pagamento</label><select class="field-input" id="depositAccount"><option value="">Por favor selecione</option><option value="mpesa">M-Pesa</option><option value="emola">e-Mola</option><option value="mkesh">mKesh</option><option value="banco">Transferência bancária</option><option value="zumbopay">ZumboPay</option></select></div><button type="button" class="btn teal modal-submit" id="depositSubmit">Depositar</button><p class="modal-msg" id="depositMsg"></p></div></div>
+      <div class="acc-item" data-acc-section="levantamentos"><button type="button" class="acc-item-head"><span>Levantamentos</span><span class="chevron">▾</span></button><div class="acc-item-body"><p class="hint" style="margin-bottom:-4px;">Valor de levantamento</p><div class="withdraw-amount"><span class="curr">MZN</span><input type="number" id="withdrawAmount" placeholder="0.00" min="0" step="0.01"></div><div class="field-group"><label class="field-label">Conta de pagamento</label><select class="field-input" id="withdrawAccount"><option value="">Por favor selecione</option><option value="mpesa">M-Pesa</option><option value="emola">e-Mola</option><option value="mkesh">mKesh</option><option value="banco">Transferência bancária</option></select></div><button type="button" class="btn teal modal-submit" id="withdrawSubmit">Levantamento</button><p class="modal-msg" id="withdrawMsg"></p></div></div>
+      <div class="acc-item" data-acc-section="limites"><button type="button" class="acc-item-head"><span>Limites</span><span class="chevron">▾</span></button><div class="acc-item-body"><p class="hint">Defina limites de depósito e ferramentas de autoexclusão.</p></div></div>
+      <div class="acc-item" data-acc-section="registos"><button type="button" class="acc-item-head"><span>Registos</span><span class="chevron">▾</span></button><div class="acc-item-body"><p class="hint">Registo de acessos e alterações feitas na conta.</p></div></div>
+      <div class="acc-item" data-acc-section="bonus"><button type="button" class="acc-item-head"><span>Bónus</span><span class="chevron">▾</span></button><div class="acc-item-body"><p class="hint">Bónus ativos e histórico de bónus recebidos.</p></div></div>
     </div>
   </div>
 </div>
 
 <script type="module">
-  // ============================================================
-  //  FIREBASE — TAKO BET
-  //  Autenticação (Auth) + Base de dados em tempo real (Realtime DB)
-  // ============================================================
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAnalytics, isSupported as analyticsIsSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
-  import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    signOut,
-    onAuthStateChanged,
-    sendPasswordResetEmail,
-    GoogleAuthProvider,
-    signInWithPopup
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-  import {
-    getDatabase,
-    ref,
-    set,
-    get,
-    update,
-    push,
-    onValue,
-    serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAnalytics, isSupported as analyticsIsSupported } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getDatabase, ref, set, get, update, push, onValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyA-ZvSgfzSSzejYk8S4Cy1ZjJ3jvG6nQ-Q",
-    authDomain: "takobet-7d20f.firebaseapp.com",
-    databaseURL: "https://takobet-7d20f-default-rtdb.firebaseio.com",
-    projectId: "takobet-7d20f",
-    storageBucket: "takobet-7d20f.firebasestorage.app",
-    messagingSenderId: "551006051804",
-    appId: "1:551006051804:web:ff38bd6c7aba6599b80319",
-    measurementId: "G-EFRYRBY555"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyA-ZvSgfzSSzejYk8S4Cy1ZjJ3jvG6nQ-Q",
+  authDomain: "takobet-7d20f.firebaseapp.com",
+  databaseURL: "https://takobet-7d20f-default-rtdb.firebaseio.com",
+  projectId: "takobet-7d20f",
+  storageBucket: "takobet-7d20f.firebasestorage.app",
+  messagingSenderId: "551006051804",
+  appId: "1:551006051804:web:ff38bd6c7aba6599b80319",
+  measurementId: "G-EFRYRBY555"
+};
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getDatabase(app);
-  const googleProvider = new GoogleAuthProvider();
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getDatabase(app);
+const googleProvider = new GoogleAuthProvider();
+analyticsIsSupported().then((ok) => { if (ok) getAnalytics(app); }).catch(() => {});
 
-  analyticsIsSupported().then((ok) => { if (ok) getAnalytics(app); }).catch(() => {});
+function phoneToEmail(rawPhone){ const digits = rawPhone.replace(/\D/g, ''); const withCode = digits.startsWith('258') ? digits : ('258' + digits); return `${withCode}@takobet.app`; }
+function digitsOnly(rawPhone){ const digits = rawPhone.replace(/\D/g, ''); return digits.startsWith('258') ? digits : ('258' + digits); }
+function randomId(){ return 'ID-' + Math.floor(1000000 + Math.random() * 9000000); }
+function fmtMZN(n){ const v = Number(n || 0); return v.toLocaleString('pt-MZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MZN'; }
 
-  function phoneToEmail(rawPhone){
-    const digits = rawPhone.replace(/\D/g, '');
-    const withCode = digits.startsWith('258') ? digits : ('258' + digits);
-    return `${withCode}@takobet.app`;
-  }
-  function digitsOnly(rawPhone){
-    const digits = rawPhone.replace(/\D/g, '');
-    return digits.startsWith('258') ? digits : ('258' + digits);
-  }
-  function randomId(){
-    return 'ID-' + Math.floor(1000000 + Math.random() * 9000000);
-  }
-  function fmtMZN(n){
-    const v = Number(n || 0);
-    return v.toLocaleString('pt-MZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + ' MZN';
-  }
+let currentUid = null;
+let currentPhone = null;
 
-  let currentUid = null;
-  let currentPhone = null;
+// Ticker
+const tickerData = [{ match: 'Falcões FC vs Leões United', odd: '1.85' }, { match: 'Estrela Azul vs Porto Real', odd: '2.10' }, { match: 'Titãs vs Furacão', odd: '1.55' }, { match: 'Cometas vs Águias', odd: '1.90' }, { match: 'J. Rocha vs M. Alves', odd: '1.65' }, { match: 'Brasa FC vs União Norte', odd: '2.45' }];
+const tickerTrack = document.getElementById('tickerTrack');
+tickerTrack.innerHTML = tickerData.map(t => `<span class="ticker-item"><strong>${t.match}</strong> <span class="odd">${t.odd}</span></span>`).join('') + tickerData.map(t => `<span class="ticker-item"><strong>${t.match}</strong> <span class="odd">${t.odd}</span></span>`).join('');
 
-  // ---------- Ticker ----------
-  const tickerData = [
-    { match: 'Falcões FC vs Leões United', odd: '1.85' },
-    { match: 'Estrela Azul vs Porto Real', odd: '2.10' },
-    { match: 'Titãs vs Furacão', odd: '1.55' },
-    { match: 'Cometas vs Águias', odd: '1.90' },
-    { match: 'J. Rocha vs M. Alves', odd: '1.65' },
-    { match: 'Brasa FC vs União Norte', odd: '2.45' },
-  ];
-  const tickerTrack = document.getElementById('tickerTrack');
-  const tickerHTML = tickerData.map(t =>
-    `<span class="ticker-item"><strong>${t.match}</strong> <span class="odd">${t.odd}</span></span>`
-  ).join('');
-  tickerTrack.innerHTML = tickerHTML + tickerHTML;
+// Activity
+const activityData = [{ initials: 'R.M', name: 'R**** M.', amount: '18.400 MT', meta: 'Futebol · há 6 min' }, { initials: 'C.F', name: 'C**** F.', amount: '52.100 MT', meta: 'Roleta · há 14 min' }, { initials: 'D.A', name: 'D**** A.', amount: '9.750 MT', meta: 'Basquete · há 22 min' }, { initials: 'S.P', name: 'S**** P.', amount: '31.900 MT', meta: 'Blackjack · há 35 min' }, { initials: 'L.T', name: 'L**** T.', amount: '7.300 MT', meta: 'Tênis · há 48 min' }, { initials: 'M.N', name: 'M**** N.', amount: '64.200 MT', meta: 'Slots · há 1 h' }];
+const activityTrack = document.getElementById('activityTrack');
+activityTrack.innerHTML = activityData.map(w => `<div class="activity-card"><div class="activity-avatar">${w.initials}</div><div class="activity-info"><span class="activity-name">${w.name}<span class="amount">+${w.amount}</span></span><span class="activity-meta">${w.meta}</span></div></div>`).join('') + activityData.map(w => `<div class="activity-card"><div class="activity-avatar">${w.initials}</div><div class="activity-info"><span class="activity-name">${w.name}<span class="amount">+${w.amount}</span></span><span class="activity-meta">${w.meta}</span></div></div>`).join('');
 
-  // ---------- Activity ----------
-  const activityData = [
-    { initials: 'R.M', name: 'R**** M.', amount: '18.400 MT', meta: 'Futebol · há 6 min' },
-    { initials: 'C.F', name: 'C**** F.', amount: '52.100 MT', meta: 'Roleta · há 14 min' },
-    { initials: 'D.A', name: 'D**** A.', amount: '9.750 MT', meta: 'Basquete · há 22 min' },
-    { initials: 'S.P', name: 'S**** P.', amount: '31.900 MT', meta: 'Blackjack · há 35 min' },
-    { initials: 'L.T', name: 'L**** T.', amount: '7.300 MT', meta: 'Tênis · há 48 min' },
-    { initials: 'M.N', name: 'M**** N.', amount: '64.200 MT', meta: 'Slots · há 1 h' },
-  ];
-  const activityTrack = document.getElementById('activityTrack');
-  const activityHTML = activityData.map(w => `
-    <div class="activity-card">
-      <div class="activity-avatar">${w.initials}</div>
-      <div class="activity-info">
-        <span class="activity-name">${w.name}<span class="amount">+${w.amount}</span></span>
-        <span class="activity-meta">${w.meta}</span>
-      </div>
-    </div>
-  `).join('');
-  activityTrack.innerHTML = activityHTML + activityHTML;
+// Icon nav
+document.querySelectorAll('.icon-nav-item').forEach(item => { item.addEventListener('click', () => { document.querySelectorAll('.icon-nav-item').forEach(i => i.classList.remove('active')); item.classList.add('active'); }); });
 
-  // ---------- Icon nav ----------
-  const iconNavItems = document.querySelectorAll('.icon-nav-item');
-  iconNavItems.forEach(item => {
-    item.addEventListener('click', () => {
-      iconNavItems.forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-    });
-  });
+// Odds filter
+document.querySelectorAll('.odds-filter-btn').forEach(btn => { btn.addEventListener('click', () => { document.querySelectorAll('.odds-filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); const filter = btn.dataset.filter; document.querySelectorAll('#oddsList .odds-row').forEach(row => { row.style.display = (filter === 'todos' || row.dataset.cat === filter) ? 'grid' : 'none'; }); }); });
+document.querySelectorAll('.odds-btn').forEach(btn => { btn.addEventListener('click', () => btn.classList.toggle('active')); });
 
-  // ---------- Odds filter ----------
-  const oddsFilterButtons = document.querySelectorAll('.odds-filter-btn');
-  const oddsRows = document.querySelectorAll('#oddsList .odds-row');
-  oddsFilterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      oddsFilterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      oddsRows.forEach(row => {
-        row.style.display = (filter === 'todos' || row.dataset.cat === filter) ? 'grid' : 'none';
-      });
-    });
-  });
+// Newsletter
+document.getElementById('nlForm').addEventListener('submit', (e) => { e.preventDefault(); const email = document.getElementById('nlEmail').value; document.getElementById('nlMsg').textContent = `Recebido — a equipe entra em contato com ${email} em breve.`; document.getElementById('nlForm').reset(); });
 
-  // ---------- Odds selection ----------
-  document.querySelectorAll('.odds-btn').forEach(btn => {
-    btn.addEventListener('click', () => btn.classList.toggle('active'));
-  });
+// Particles
+const canvas = document.getElementById('particles'); const ctx = canvas.getContext('2d'); const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches; let particles = [];
+function resizeCanvas(){ canvas.width = window.innerWidth; canvas.height = Math.min(window.innerHeight * 1.4, document.body.scrollHeight); }
+function initParticles(){ const count = Math.round((canvas.width * canvas.height) / 90000); particles = Array.from({ length: Math.min(count, 46) }, () => ({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, r: 0.6 + Math.random() * 1.4, speed: 0.12 + Math.random() * 0.28, drift: (Math.random() - 0.5) * 0.15, alpha: 0.15 + Math.random() * 0.35 })); }
+function drawParticles(){ ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = `rgba(212, 178, 116, ${p.alpha})`; ctx.fill(); p.y -= p.speed; p.x += p.drift; if (p.y < -10){ p.y = canvas.height + 10; p.x = Math.random() * canvas.width; } }); requestAnimationFrame(drawParticles); }
+resizeCanvas(); initParticles(); window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
+if (!prefersReducedMotion) requestAnimationFrame(drawParticles);
+else { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fillStyle = `rgba(212, 178, 116, ${p.alpha})`; ctx.fill(); }); }
 
-  // ---------- Newsletter ----------
-  const nlForm = document.getElementById('nlForm');
-  const nlMsg = document.getElementById('nlMsg');
-  nlForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const email = document.getElementById('nlEmail').value;
-    nlMsg.textContent = `Recebido — a equipe entra em contato com ${email} em breve.`;
-    nlForm.reset();
-  });
+// Modals
+const authOverlay = document.getElementById('authOverlay'); const affOverlay = document.getElementById('affOverlay'); const accountOverlay = document.getElementById('accountOverlay'); const authTabsView = document.getElementById('authTabsView'); const authForgotView = document.getElementById('authForgotView'); const affFormView = document.getElementById('affFormView'); const affPendingView = document.getElementById('affPendingView');
 
-  // ---------- Particles ----------
-  const canvas = document.getElementById('particles');
-  const ctx = canvas.getContext('2d');
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let particles = [];
+function openOverlay(overlay){ document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open')); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeOverlays(){ document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open')); document.body.style.overflow = ''; }
+function setAuthTab(tab){ authForgotView.style.display = 'none'; authTabsView.style.display = ''; document.querySelectorAll('[data-auth-tab]').forEach(btn => btn.classList.toggle('active', btn.dataset.authTab === tab)); document.querySelectorAll('[data-auth-panel]').forEach(panel => panel.classList.toggle('active', panel.dataset.authPanel === tab)); }
 
-  function resizeCanvas(){
-    canvas.width = window.innerWidth;
-    canvas.height = Math.min(window.innerHeight * 1.4, document.body.scrollHeight);
-  }
+document.querySelectorAll('[data-open-auth]').forEach(btn => { btn.addEventListener('click', (e) => { e.preventDefault(); openOverlay(authOverlay); setAuthTab(btn.dataset.openAuth === 'registar' ? 'registar' : 'login'); }); });
+document.querySelectorAll('[data-auth-tab]').forEach(btn => { btn.addEventListener('click', () => setAuthTab(btn.dataset.authTab)); });
+document.querySelectorAll('[data-forgot-open]').forEach(btn => { btn.addEventListener('click', () => { authTabsView.style.display = 'none'; authForgotView.style.display = ''; }); });
+document.querySelectorAll('[data-forgot-back]').forEach(btn => { btn.addEventListener('click', () => { authForgotView.style.display = 'none'; authTabsView.style.display = ''; }); });
+document.querySelectorAll('[data-open-affiliate]').forEach(btn => { btn.addEventListener('click', (e) => { e.preventDefault(); affFormView.style.display = ''; affPendingView.style.display = 'none'; openOverlay(affOverlay); }); });
+document.querySelectorAll('[data-close-modal]').forEach(btn => btn.addEventListener('click', closeOverlays));
+document.querySelectorAll('.modal-overlay').forEach(overlay => overlay.addEventListener('click', (e) => { if (e.target === overlay) closeOverlays(); }));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOverlays(); });
 
-  function initParticles(){
-    const count = Math.round((canvas.width * canvas.height) / 90000);
-    particles = Array.from({ length: Math.min(count, 46) }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      r: 0.6 + Math.random() * 1.4,
-      speed: 0.12 + Math.random() * 0.28,
-      drift: (Math.random() - 0.5) * 0.15,
-      alpha: 0.15 + Math.random() * 0.35,
-    }));
-  }
+// Auth state
+const loggedOutActions = document.getElementById('loggedOutActions'); const loggedInActions = document.getElementById('loggedInActions');
+function applyUserData(uid, data){ const balance = data?.balance ?? 0; const bonus = data?.bonus ?? 0; const withdrawable = data?.withdrawable ?? 0; const unlock = data?.unlockRemaining ?? 0; const phone = data?.phone ?? '—'; const publicId = data?.publicId ?? 'ID-0000000'; document.getElementById('balanceAmount').textContent = fmtMZN(balance); document.getElementById('bdPhone').textContent = phone; document.getElementById('bdBonus').textContent = fmtMZN(bonus); document.getElementById('bdWithdrawable').textContent = fmtMZN(withdrawable); document.getElementById('bdUnlock').textContent = fmtMZN(unlock); document.getElementById('accPhoneDisplay').textContent = phone; document.getElementById('accIdDisplay').textContent = publicId; document.getElementById('accBonus').textContent = fmtMZN(bonus); document.getElementById('accWithdrawable').textContent = fmtMZN(withdrawable); document.getElementById('accUnlock').textContent = fmtMZN(unlock); document.getElementById('profFirstName').value = data?.firstName ?? ''; document.getElementById('profLastName').value = data?.lastName ?? ''; document.getElementById('profBirthdate').value = data?.birthdate ?? ''; }
 
-  function drawParticles(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(212, 178, 116, ${p.alpha})`;
-      ctx.fill();
-      p.y -= p.speed;
-      p.x += p.drift;
-      if (p.y < -10){ p.y = canvas.height + 10; p.x = Math.random() * canvas.width; }
-    });
-    requestAnimationFrame(drawParticles);
-  }
+onAuthStateChanged(auth, (user) => { if (user){ currentUid = user.uid; loggedOutActions.style.display = 'none'; loggedInActions.style.display = 'flex'; closeOverlays(); onValue(ref(db, `users/${currentUid}`), (snapshot) => { const data = snapshot.val(); currentPhone = data?.phone ?? null; applyUserData(currentUid, data); }); } else { currentUid = null; currentPhone = null; loggedOutActions.style.display = 'flex'; loggedInActions.style.display = 'none'; } });
 
-  resizeCanvas();
-  initParticles();
-  window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
-  if (!prefersReducedMotion){
-    requestAnimationFrame(drawParticles);
-  } else {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(212, 178, 116, ${p.alpha})`;
-      ctx.fill();
-    });
-  }
+async function ensureUserProfile(uid, extra = {}){ const snap = await get(ref(db, `users/${uid}`)); if (!snap.exists()) await set(ref(db, `users/${uid}`), { phone: extra.phone ?? '', publicId: randomId(), firstName: extra.firstName ?? '', lastName: '', birthdate: '', balance: 0, bonus: 0, withdrawable: 0, unlockRemaining: 0, createdAt: serverTimestamp() }); }
 
-  // ---------- Modais ----------
-  const authOverlay = document.getElementById('authOverlay');
-  const affOverlay = document.getElementById('affOverlay');
-  const accountOverlay = document.getElementById('accountOverlay');
-  const authTabsView = document.getElementById('authTabsView');
-  const authForgotView = document.getElementById('authForgotView');
-  const affFormView = document.getElementById('affFormView');
-  const affPendingView = document.getElementById('affPendingView');
+// Register
+document.getElementById('registarPanel').addEventListener('submit', async (e) => { e.preventDefault(); const msg = document.getElementById('regMsg'); const rawPhone = document.getElementById('regPhone').value; const p1 = document.getElementById('regPassword').value; const p2 = document.getElementById('regPassword2').value; if (p1 !== p2){ msg.textContent = 'As palavras-passe não coincidem — tente novamente.'; return; } if (p1.length < 6){ msg.textContent = 'A palavra-passe deve ter pelo menos 6 caracteres.'; return; } const email = phoneToEmail(rawPhone); const phoneDigits = digitsOnly(rawPhone); msg.textContent = 'A criar a sua conta...'; try { const cred = await createUserWithEmailAndPassword(auth, email, p1); const uid = cred.user.uid; await set(ref(db, `users/${uid}`), { phone: phoneDigits, publicId: randomId(), firstName: '', lastName: '', birthdate: '', balance: 0, bonus: 0, withdrawable: 0, unlockRemaining: 0, createdAt: serverTimestamp() }); msg.textContent = 'Conta criada com sucesso — sessão iniciada.'; document.getElementById('registarPanel').reset(); } catch (err) { msg.textContent = traduzErroFirebase(err); } });
 
-  function openOverlay(overlay){
-    document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open'));
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeOverlays(){
-    document.querySelectorAll('.modal-overlay.open').forEach(o => o.classList.remove('open'));
-    document.body.style.overflow = '';
-  }
+// Login
+document.getElementById('loginPanel').addEventListener('submit', async (e) => { e.preventDefault(); const msg = document.getElementById('loginMsg'); const rawPhone = document.getElementById('loginPhone').value; const password = document.getElementById('loginPassword').value; const email = phoneToEmail(rawPhone); msg.textContent = 'A iniciar sessão...'; try { await signInWithEmailAndPassword(auth, email, password); msg.textContent = 'Sessão iniciada com sucesso.'; document.getElementById('loginPanel').reset(); } catch (err) { msg.textContent = traduzErroFirebase(err); } });
 
-  function setAuthTab(tab){
-    authForgotView.style.display = 'none';
-    authTabsView.style.display = '';
-    document.querySelectorAll('[data-auth-tab]').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.authTab === tab);
-    });
-    document.querySelectorAll('[data-auth-panel]').forEach(panel => {
-      panel.classList.toggle('active', panel.dataset.authPanel === tab);
-    });
-  }
+// Google
+async function handleGoogleAuth(msgEl){ try { const cred = await signInWithPopup(auth, googleProvider); await ensureUserProfile(cred.user.uid, { phone: '', firstName: cred.user.displayName ?? '' }); if (msgEl) msgEl.textContent = 'Sessão iniciada com Google.'; } catch (err) { if (msgEl) msgEl.textContent = traduzErroFirebase(err); } }
+document.getElementById('googleLoginBtn').addEventListener('click', () => handleGoogleAuth(document.getElementById('loginMsg')));
+document.getElementById('googleRegisterBtn').addEventListener('click', () => handleGoogleAuth(document.getElementById('regMsg')));
 
-  document.querySelectorAll('[data-open-auth]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      openOverlay(authOverlay);
-      setAuthTab(btn.dataset.openAuth === 'registar' ? 'registar' : 'login');
-    });
-  });
+// Forgot password
+document.getElementById('forgotPanel').addEventListener('submit', async (e) => { e.preventDefault(); const msg = document.getElementById('forgotMsg'); const rawPhone = document.getElementById('forgotPhone').value; const email = phoneToEmail(rawPhone); msg.textContent = 'A processar o pedido...'; try { await sendPasswordResetEmail(auth, email); msg.textContent = 'Se a conta existir, o código foi enviado.'; } catch (err) { msg.textContent = traduzErroFirebase(err); } });
+document.querySelectorAll('[data-open-auth-from-account]').forEach(btn => { btn.addEventListener('click', () => { closeOverlays(); openOverlay(authOverlay); authTabsView.style.display = 'none'; authForgotView.style.display = ''; if (currentPhone) document.getElementById('forgotPhone').value = currentPhone; }); });
 
-  document.querySelectorAll('[data-auth-tab]').forEach(btn => {
-    btn.addEventListener('click', () => setAuthTab(btn.dataset.authTab));
-  });
+// Logout
+document.getElementById('logoutBtn').addEventListener('click', async () => { await signOut(auth); document.getElementById('balanceDropdown').classList.remove('open'); });
 
-  document.querySelectorAll('[data-forgot-open]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      authTabsView.style.display = 'none';
-      authForgotView.style.display = '';
-    });
-  });
-  document.querySelectorAll('[data-forgot-back]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      authForgotView.style.display = 'none';
-      authTabsView.style.display = '';
-    });
-  });
+// Balance dropdown
+const balanceToggle = document.getElementById('balanceToggle'); const balanceDropdown = document.getElementById('balanceDropdown');
+balanceToggle.addEventListener('click', (e) => { e.stopPropagation(); balanceDropdown.classList.toggle('open'); balanceToggle.classList.toggle('open'); });
+document.addEventListener('click', (e) => { if (!balanceDropdown.contains(e.target) && e.target !== balanceToggle){ balanceDropdown.classList.remove('open'); balanceToggle.classList.remove('open'); } });
 
-  document.querySelectorAll('[data-open-affiliate]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      affFormView.style.display = '';
-      affPendingView.style.display = 'none';
-      openOverlay(affOverlay);
-    });
-  });
+// Account panel
+function openAccountSection(section){ if (!currentUid){ openOverlay(authOverlay); setAuthTab('login'); return; } openOverlay(accountOverlay); balanceDropdown.classList.remove('open'); balanceToggle.classList.remove('open'); if (section){ document.querySelectorAll('.acc-item').forEach(item => item.classList.toggle('open', item.dataset.accSection === section)); const target = document.querySelector(`.acc-item[data-acc-section="${section}"]`); if (target) target.scrollIntoView({ block: 'nearest' }); } }
+document.querySelectorAll('[data-open-account]').forEach(btn => btn.addEventListener('click', () => openAccountSection(btn.dataset.openAccount)));
+document.getElementById('depositBtn').addEventListener('click', () => openAccountSection('depositos'));
+document.getElementById('depositBtn2').addEventListener('click', () => openAccountSection('depositos'));
+document.querySelectorAll('.acc-item-head').forEach(head => { head.addEventListener('click', () => head.closest('.acc-item').classList.toggle('open')); });
 
-  document.querySelectorAll('[data-close-modal]').forEach(btn => {
-    btn.addEventListener('click', closeOverlays);
-  });
-  document.querySelectorAll('.modal-overlay').forEach(overlay => {
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeOverlays(); });
-  });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOverlays(); });
+// Save profile
+document.getElementById('profSaveBtn').addEventListener('click', async () => { const msg = document.getElementById('profMsg'); if (!currentUid){ msg.textContent = 'Sessão não iniciada.'; return; } const firstName = document.getElementById('profFirstName').value; const lastName = document.getElementById('profLastName').value; const birthdate = document.getElementById('profBirthdate').value; try { await update(ref(db, `users/${currentUid}`), { firstName, lastName, birthdate }); msg.textContent = 'Perfil atualizado.'; } catch (err) { msg.textContent = traduzErroFirebase(err); } });
 
-  // ---------- Login / Logout ----------
-  const loggedOutActions = document.getElementById('loggedOutActions');
-  const loggedInActions = document.getElementById('loggedInActions');
+// ============================================================
+//  ZUMBOPAY — INTEGRAÇÃO COMPLETA COM CONFIRMAÇÃO
+// ============================================================
 
-  function applyUserData(uid, data){
-    const balance = data?.balance ?? 0;
-    const bonus = data?.bonus ?? 0;
-    const withdrawable = data?.withdrawable ?? 0;
-    const unlock = data?.unlockRemaining ?? 0;
-    const phone = data?.phone ?? '—';
-    const publicId = data?.publicId ?? 'ID-0000000';
+const ZUMBOPAY = {
+  merchantId: 'MCH_F327FA8A17',
+  apiKey: 'zk_live_8b666806256767420369244716c851d0a55e3a50e1c3b814',
+  walletId: '783237',
+  baseUrl: 'https://api.zumbopay.co.mz/v1'
+};
 
-    document.getElementById('balanceAmount').textContent = fmtMZN(balance);
-    document.getElementById('bdPhone').textContent = phone;
-    document.getElementById('bdBonus').textContent = fmtMZN(bonus);
-    document.getElementById('bdWithdrawable').textContent = fmtMZN(withdrawable);
-    document.getElementById('bdUnlock').textContent = fmtMZN(unlock);
-
-    document.getElementById('accPhoneDisplay').textContent = phone;
-    document.getElementById('accIdDisplay').textContent = publicId;
-    document.getElementById('accBonus').textContent = fmtMZN(bonus);
-    document.getElementById('accWithdrawable').textContent = fmtMZN(withdrawable);
-    document.getElementById('accUnlock').textContent = fmtMZN(unlock);
-
-    document.getElementById('profFirstName').value = data?.firstName ?? '';
-    document.getElementById('profLastName').value = data?.lastName ?? '';
-    document.getElementById('profBirthdate').value = data?.birthdate ?? '';
-  }
-
-  onAuthStateChanged(auth, (user) => {
-    if (user){
-      currentUid = user.uid;
-      loggedOutActions.style.display = 'none';
-      loggedInActions.style.display = 'flex';
-      closeOverlays();
-
-      onValue(ref(db, `users/${currentUid}`), (snapshot) => {
-        const data = snapshot.val();
-        currentPhone = data?.phone ?? null;
-        applyUserData(currentUid, data);
-      });
-    } else {
-      currentUid = null;
-      currentPhone = null;
-      loggedOutActions.style.display = 'flex';
-      loggedInActions.style.display = 'none';
-    }
-  });
-
-  async function ensureUserProfile(uid, extra = {}){
-    const snap = await get(ref(db, `users/${uid}`));
-    if (!snap.exists()){
-      await set(ref(db, `users/${uid}`), {
-        phone: extra.phone ?? '',
-        publicId: randomId(),
-        firstName: extra.firstName ?? '',
-        lastName: extra.lastName ?? '',
-        birthdate: '',
-        balance: 0,
-        bonus: 0,
-        withdrawable: 0,
-        unlockRemaining: 0,
-        createdAt: serverTimestamp()
-      });
-    }
-  }
-
-  // ---------- Registo ----------
-  document.getElementById('registarPanel').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const msg = document.getElementById('regMsg');
-    const rawPhone = document.getElementById('regPhone').value;
-    const p1 = document.getElementById('regPassword').value;
-    const p2 = document.getElementById('regPassword2').value;
-
-    if (p1 !== p2){
-      msg.textContent = 'As palavras-passe não coincidem — tente novamente.';
-      return;
-    }
-    if (p1.length < 6){
-      msg.textContent = 'A palavra-passe deve ter pelo menos 6 caracteres.';
-      return;
-    }
-
-    const email = phoneToEmail(rawPhone);
-    const phoneDigits = digitsOnly(rawPhone);
-    msg.textContent = 'A criar a sua conta...';
-
-    try {
-      const cred = await createUserWithEmailAndPassword(auth, email, p1);
-      const uid = cred.user.uid;
-
-      await set(ref(db, `users/${uid}`), {
-        phone: phoneDigits,
-        publicId: randomId(),
-        firstName: '',
-        lastName: '',
-        birthdate: '',
-        balance: 0,
-        bonus: 0,
-        withdrawable: 0,
-        unlockRemaining: 0,
-        createdAt: serverTimestamp()
-      });
-
-      msg.textContent = 'Conta criada com sucesso — sessão iniciada.';
-      document.getElementById('registarPanel').reset();
-    } catch (err) {
-      msg.textContent = traduzErroFirebase(err);
-    }
-  });
-
-  // ---------- Login ----------
-  document.getElementById('loginPanel').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const msg = document.getElementById('loginMsg');
-    const rawPhone = document.getElementById('loginPhone').value;
-    const password = document.getElementById('loginPassword').value;
-    const email = phoneToEmail(rawPhone);
-
-    msg.textContent = 'A iniciar sessão...';
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      msg.textContent = 'Sessão iniciada com sucesso.';
-      document.getElementById('loginPanel').reset();
-    } catch (err) {
-      msg.textContent = traduzErroFirebase(err);
-    }
-  });
-
-  // ---------- Google ----------
-  async function handleGoogleAuth(msgEl){
-    try {
-      const cred = await signInWithPopup(auth, googleProvider);
-      await ensureUserProfile(cred.user.uid, { phone: '', firstName: cred.user.displayName ?? '' });
-      if (msgEl) msgEl.textContent = 'Sessão iniciada com Google.';
-    } catch (err) {
-      if (msgEl) msgEl.textContent = traduzErroFirebase(err);
-    }
-  }
-  document.getElementById('googleLoginBtn').addEventListener('click', () => {
-    handleGoogleAuth(document.getElementById('loginMsg'));
-  });
-  document.getElementById('googleRegisterBtn').addEventListener('click', () => {
-    handleGoogleAuth(document.getElementById('regMsg'));
-  });
-
-  // ---------- Redefinir senha ----------
-  document.getElementById('forgotPanel').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const msg = document.getElementById('forgotMsg');
-    const rawPhone = document.getElementById('forgotPhone').value;
-    const email = phoneToEmail(rawPhone);
-    msg.textContent = 'A processar o pedido...';
-    try {
-      await sendPasswordResetEmail(auth, email);
-      msg.textContent = 'Se a conta existir, o código foi enviado.';
-    } catch (err) {
-      msg.textContent = traduzErroFirebase(err);
-    }
-  });
-
-  document.querySelectorAll('[data-open-auth-from-account]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      closeOverlays();
-      openOverlay(authOverlay);
-      authTabsView.style.display = 'none';
-      authForgotView.style.display = '';
-      if (currentPhone) document.getElementById('forgotPhone').value = currentPhone;
-    });
-  });
-
-  // ---------- Logout ----------
-  document.getElementById('logoutBtn').addEventListener('click', async () => {
-    await signOut(auth);
-    document.getElementById('balanceDropdown').classList.remove('open');
-  });
-
-  // ---------- Balance dropdown ----------
-  const balanceToggle = document.getElementById('balanceToggle');
-  const balanceDropdown = document.getElementById('balanceDropdown');
-  balanceToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    balanceDropdown.classList.toggle('open');
-    balanceToggle.classList.toggle('open');
-  });
-  document.addEventListener('click', (e) => {
-    if (!balanceDropdown.contains(e.target) && e.target !== balanceToggle){
-      balanceDropdown.classList.remove('open');
-      balanceToggle.classList.remove('open');
-    }
-  });
-
-  // ---------- Account panel ----------
-  function openAccountSection(section){
-    if (!currentUid){
-      openOverlay(authOverlay);
-      setAuthTab('login');
-      return;
-    }
-    openOverlay(accountOverlay);
-    balanceDropdown.classList.remove('open');
-    balanceToggle.classList.remove('open');
-    if (section){
-      document.querySelectorAll('.acc-item').forEach(item => {
-        item.classList.toggle('open', item.dataset.accSection === section);
-      });
-      const target = document.querySelector(`.acc-item[data-acc-section="${section}"]`);
-      if (target) target.scrollIntoView({ block: 'nearest' });
-    }
-  }
-
-  document.querySelectorAll('[data-open-account]').forEach(btn => {
-    btn.addEventListener('click', () => openAccountSection(btn.dataset.openAccount));
-  });
-  document.getElementById('depositBtn').addEventListener('click', () => openAccountSection('depositos'));
-  document.getElementById('depositBtn2').addEventListener('click', () => openAccountSection('depositos'));
-
-  document.querySelectorAll('.acc-item-head').forEach(head => {
-    head.addEventListener('click', () => {
-      head.closest('.acc-item').classList.toggle('open');
-    });
-  });
-
-  // ---------- Salvar perfil ----------
-  document.getElementById('profSaveBtn').addEventListener('click', async () => {
-    const msg = document.getElementById('profMsg');
-    if (!currentUid){ msg.textContent = 'Sessão não iniciada.'; return; }
-    const firstName = document.getElementById('profFirstName').value;
-    const lastName = document.getElementById('profLastName').value;
-    const birthdate = document.getElementById('profBirthdate').value;
-    try {
-      await update(ref(db, `users/${currentUid}`), { firstName, lastName, birthdate });
-      msg.textContent = 'Perfil atualizado.';
-    } catch (err) {
-      msg.textContent = traduzErroFirebase(err);
-    }
-  });
-
-  // ---------- Depósito / Levantamento ----------
-  document.getElementById('depositSubmit').addEventListener('click', async () => {
+async function processZumboPayDeposit(amount, phoneNumber) {
+  try {
+    const reference = `TAKO-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
     const msg = document.getElementById('depositMsg');
-    if (!currentUid){ msg.textContent = 'Sessão não iniciada.'; return; }
-    const amount = parseFloat(document.getElementById('depositAmount').value);
-    const account = document.getElementById('depositAccount').value;
-    if (!amount || amount <= 0){ msg.textContent = 'Indique um valor válido.'; return; }
-    if (!account){ msg.textContent = 'Selecione uma conta de pagamento.'; return; }
+    console.log(`💰 Depósito ZumboPay: ${amount} MZN para ${phoneNumber}`);
+    if (msg) { msg.textContent = '📱 A enviar pedido para o seu telefone...'; msg.style.color = '#F3D58B'; }
+    const response = await fetch(`${ZUMBOPAY.baseUrl}/payments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Merchant-Id': ZUMBOPAY.merchantId, 'Authorization': `Bearer ${ZUMBOPAY.apiKey}` },
+      body: JSON.stringify({ amount, currency: 'MZN', phoneNumber: phoneNumber.replace(/\D/g, ''), walletId: ZUMBOPAY.walletId, reference, callbackUrl: window.location.href, description: `Depósito TAKO BET - ${reference}` })
+    });
+    const data = await response.json();
+    console.log('✅ ZumboPay:', data);
+    if (!response.ok || !data.transactionId) throw new Error(data.message || 'Erro ao iniciar pagamento');
+    if (msg) { const formattedPhone = phoneNumber.replace(/\D/g, '').replace(/(\d{3})(\d{2})(\d{3})(\d{4})/, '$1 $2 $3 $4'); msg.textContent = `📱 Pedido enviado para ${formattedPhone}. Confirme no seu celular.`; msg.style.color = '#74B98B'; }
+    return await waitForZumboPayConfirmation(data.transactionId, amount);
+  } catch (error) {
+    console.error('❌ Erro ZumboPay:', error);
+    const msg = document.getElementById('depositMsg');
+    if (msg) { msg.textContent = '❌ ' + (error.message || 'Erro ao processar pagamento'); msg.style.color = '#E88A93'; }
+    return { success: false, error: error.message };
+  }
+}
 
-    // ============================================================
-    //  SE FOR ZUMBOPAY, USA O SISTEMA ESPECIAL
-    // ============================================================
-    if (account === 'zumbopay') {
-      await processZumboPayDeposit(amount, currentPhone || '258000000000');
-      return;
-    }
-
-    // ============================================================
-    //  MÉTODOS NORMAIS (M-Pesa, e-Mola, etc.)
-    // ============================================================
-    try {
-      const snap = await get(ref(db, `users/${currentUid}/balance`));
-      const newBalance = (snap.val() || 0) + amount;
-      await update(ref(db, `users/${currentUid}`), { balance: newBalance });
-      await push(ref(db, `users/${currentUid}/history`), {
-        type: 'deposito', amount, account, createdAt: serverTimestamp()
-      });
-      msg.textContent = `Depósito de ${fmtMZN(amount)} registado.`;
-      document.getElementById('depositAmount').value = '';
-    } catch (err) {
-      msg.textContent = traduzErroFirebase(err);
-    }
-  });
-
-  document.getElementById('withdrawSubmit').addEventListener('click', async () => {
-    const msg = document.getElementById('withdrawMsg');
-    if (!currentUid){ msg.textContent = 'Sessão não iniciada.'; return; }
-    const amount = parseFloat(document.getElementById('withdrawAmount').value);
-    const account = document.getElementById('withdrawAccount').value;
-    if (!amount || amount <= 0){ msg.textContent = 'Indique um valor válido.'; return; }
-    if (!account){ msg.textContent = 'Selecione uma conta de pagamento.'; return; }
-
-    try {
-      const snap = await get(ref(db, `users/${currentUid}/balance`));
-      const currentBalance = snap.val() || 0;
-      if (amount > currentBalance){ msg.textContent = 'Saldo insuficiente.'; return; }
-      const newBalance = currentBalance - amount;
-      await update(ref(db, `users/${currentUid}`), { balance: newBalance });
-      await push(ref(db, `users/${currentUid}/history`), {
-        type: 'levantamento', amount, account, createdAt: serverTimestamp()
-      });
-      msg.textContent = `Pedido de levantamento de ${fmtMZN(amount)} enviado.`;
-      document.getElementById('withdrawAmount').value = '';
-    } catch (err) {
-      msg.textContent = traduzErroFirebase(err);
-    }
-  });
-
-  // ============================================================
-  //  ZUMBOPAY — INTEGRAÇÃO COMPLETA
-  // ============================================================
-  
-  const ZUMBOPAY = {
-      merchantId: 'MCH_F327FA8A17',
-      apiKey: 'zk_live_8b666806256767420369244716c851d0a55e3a50e1c3b814',
-      walletId: '783237',
-      baseUrl: 'https://api.zumbopay.co.mz/v1'
-  };
-
-  async function processZumboPayDeposit(amount, phoneNumber) {
+async function waitForZumboPayConfirmation(transactionId, amount) {
+  const msg = document.getElementById('depositMsg');
+  let attempts = 0; const maxAttempts = 30;
+  return new Promise((resolve) => {
+    const interval = setInterval(async () => {
+      attempts++;
       try {
-          const reference = `TAKO-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
-          
-          console.log(`💰 Depósito ZumboPay: ${amount} MZN para ${phoneNumber}`);
-          console.log(`📌 Referência: ${reference}`);
-
-          const msg = document.getElementById('depositMsg');
-          if (msg) {
-              msg.textContent = '🔄 Processando pagamento ZumboPay...';
-              msg.style.color = '#F3D58B';
-          }
-
-          const response = await fetch(`${ZUMBOPAY.baseUrl}/payments`, {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-                  'X-Merchant-Id': ZUMBOPAY.merchantId,
-                  'Authorization': `Bearer ${ZUMBOPAY.apiKey}`
-              },
-              body: JSON.stringify({
-                  amount: amount,
-                  currency: 'MZN',
-                  phoneNumber: phoneNumber.replace(/\D/g, ''),
-                  walletId: ZUMBOPAY.walletId,
-                  reference: reference,
-                  callbackUrl: window.location.href,
-                  description: `Depósito TAKO BET - ${reference}`
-              })
-          });
-
-          const data = await response.json();
-          console.log('✅ Resposta ZumboPay:', data);
-
-          if (response.ok && data.transactionId) {
-              if (msg) {
-                  msg.textContent = '✅ Pagamento iniciado! Aguarde confirmação...';
-                  msg.style.color = '#74B98B';
-              }
-
-              await checkZumboPayStatus(data.transactionId, amount);
-              return { success: true, transactionId: data.transactionId };
-          } else {
-              throw new Error(data.message || 'Erro ao processar pagamento');
-          }
-
+        const response = await fetch(`${ZUMBOPAY.baseUrl}/payments/${transactionId}`, {
+          headers: { 'X-Merchant-Id': ZUMBOPAY.merchantId, 'Authorization': `Bearer ${ZUMBOPAY.apiKey}` }
+        });
+        const data = await response.json();
+        const status = data.status || data.state || '';
+        if (status === 'completed' || status === 'paid' || status === 'confirmed') {
+          clearInterval(interval);
+          if (msg) { msg.textContent = `✅ Depósito de ${fmtMZN(amount)} confirmado!`; msg.style.color = '#74B98B'; }
+          await updateZumboPayBalance(amount);
+          setTimeout(closeOverlays, 3000);
+          resolve({ success: true, status: 'completed' });
+          return;
+        }
+        if (status === 'failed' || status === 'cancelled' || status === 'rejected') {
+          clearInterval(interval);
+          if (msg) { msg.textContent = '❌ Pagamento não confirmado. Tente novamente.'; msg.style.color = '#E88A93'; }
+          resolve({ success: false, status: 'failed' });
+          return;
+        }
+        if (attempts >= maxAttempts) {
+          clearInterval(interval);
+          if (msg) { msg.textContent = '⏳ Tempo esgotado. Verifique seu saldo no celular.'; msg.style.color = '#FFC93C'; }
+          resolve({ success: false, status: 'timeout' });
+          return;
+        }
+        if (attempts % 3 === 0 && msg) {
+          msg.textContent = `⏳ Aguardando confirmação no seu celular... (${Math.round(attempts/3)}s)`;
+          msg.style.color = '#F3D58B';
+        }
       } catch (error) {
-          console.error('❌ Erro ZumboPay:', error);
-          const msg = document.getElementById('depositMsg');
-          if (msg) {
-              msg.textContent = '❌ ' + (error.message || 'Erro ao processar pagamento');
-              msg.style.color = '#E88A93';
-          }
-          return { success: false, error: error.message };
+        console.error('Erro ao verificar status:', error);
+        if (attempts >= maxAttempts) { clearInterval(interval); resolve({ success: false, status: 'error' }); }
       }
-  }
+    }, 3000);
+  });
+}
 
-  async function checkZumboPayStatus(transactionId, amount) {
-      const msg = document.getElementById('depositMsg');
-      let attempts = 0;
-      const maxAttempts = 20;
+async function updateZumboPayBalance(amount) {
+  if (!currentUid) return;
+  try {
+    const userRef = ref(db, `users/${currentUid}`);
+    const snap = await get(userRef);
+    if (snap.exists()) {
+      const data = snap.val();
+      await update(userRef, { balance: (data.balance || 0) + amount, withdrawable: (data.withdrawable || 0) + amount, lastDeposit: { amount, method: 'zumbopay', date: serverTimestamp() } });
+      console.log('✅ Saldo atualizado:', amount);
+    }
+  } catch (error) { console.error('❌ Erro ao atualizar saldo:', error); }
+}
 
-      return new Promise((resolve) => {
-          const interval = setInterval(async () => {
-              attempts++;
+// ============================================================
+//  DEPÓSITO — COM SUPORTE PARA ZUMBOPAY
+// ============================================================
 
-              try {
-                  const response = await fetch(`${ZUMBOPAY.baseUrl}/payments/${transactionId}`, {
-                      headers: {
-                          'X-Merchant-Id': ZUMBOPAY.merchantId,
-                          'Authorization': `Bearer ${ZUMBOPAY.apiKey}`
-                      }
-                  });
+document.getElementById('depositSubmit').addEventListener('click', async () => {
+  const msg = document.getElementById('depositMsg');
+  if (!currentUid){ msg.textContent = 'Sessão não iniciada.'; return; }
+  const amount = parseFloat(document.getElementById('depositAmount').value);
+  const account = document.getElementById('depositAccount').value;
+  if (!amount || amount <= 0){ msg.textContent = 'Indique um valor válido.'; return; }
+  if (!account){ msg.textContent = 'Selecione uma conta de pagamento.'; return; }
+  if (account === 'zumbopay') { await processZumboPayDeposit(amount, currentPhone || '258000000000'); return; }
+  try {
+    const snap = await get(ref(db, `users/${currentUid}/balance`));
+    const newBalance = (snap.val() || 0) + amount;
+    await update(ref(db, `users/${currentUid}`), { balance: newBalance });
+    await push(ref(db, `users/${currentUid}/history`), { type: 'deposito', amount, account, createdAt: serverTimestamp() });
+    msg.textContent = `Depósito de ${fmtMZN(amount)} registado.`;
+    document.getElementById('depositAmount').value = '';
+  } catch (err) { msg.textContent = traduzErroFirebase(err); }
+});
 
-                  const data = await response.json();
+// Withdraw
+document.getElementById('withdrawSubmit').addEventListener('click', async () => {
+  const msg = document.getElementById('withdrawMsg');
+  if (!currentUid){ msg.textContent = 'Sessão não iniciada.'; return; }
+  const amount = parseFloat(document.getElementById('withdrawAmount').value);
+  const account = document.getElementById('withdrawAccount').value;
+  if (!amount || amount <= 0){ msg.textContent = 'Indique um valor válido.'; return; }
+  if (!account){ msg.textContent = 'Selecione uma conta de pagamento.'; return; }
+  try {
+    const snap = await get(ref(db, `users/${currentUid}/balance`));
+    const currentBalance = snap.val() || 0;
+    if (amount > currentBalance){ msg.textContent = 'Saldo insuficiente.'; return; }
+    await update(ref(db, `users/${currentUid}`), { balance: currentBalance - amount });
+    await push(ref(db, `users/${currentUid}/history`), { type: 'levantamento', amount, account, createdAt: serverTimestamp() });
+    msg.textContent = `Pedido de levantamento de ${fmtMZN(amount)} enviado.`;
+    document.getElementById('withdrawAmount').value = '';
+  } catch (err) { msg.textContent = traduzErroFirebase(err); }
+});
 
-                  if (data.status === 'completed' || data.status === 'paid') {
-                      clearInterval(interval);
-                      if (msg) {
-                          msg.textContent = `✅ Depósito de ${fmtMZN(amount)} confirmado!`;
-                          msg.style.color = '#74B98B';
-                      }
-                      await updateZumboPayBalance(amount);
-                      setTimeout(closeOverlays, 3000);
-                      resolve({ status: 'completed' });
-                      return;
-                  }
+// Error translation
+function traduzErroFirebase(err){
+  const code = err?.code ?? '';
+  const map = {
+    'auth/email-already-in-use': 'Este número já está registado. Tente iniciar sessão.',
+    'auth/invalid-email': 'Número de telefone inválido.',
+    'auth/weak-password': 'A palavra-passe é demasiado fraca.',
+    'auth/user-not-found': 'Número ou palavra-passe incorretos.',
+    'auth/wrong-password': 'Número ou palavra-passe incorretos.',
+    'auth/invalid-credential': 'Número ou palavra-passe incorretos.',
+    'auth/too-many-requests': 'Demasiadas tentativas. Tente novamente mais tarde.',
+    'auth/popup-closed-by-user': 'Janela do Google fechada antes de concluir.',
+    'auth/network-request-failed': 'Falha de rede. Verifique a sua ligação.'
+  };
+  return map[code] || 'Ocorreu um erro. Tente novamente.';
+}
 
-                  if (data.status === 'failed' || data.status === 'cancelled') {
-                      clearInterval(interval);
-                      if (msg) {
-                          msg.textContent = '❌ Pagamento falhou. Tente novamente.';
-                          msg.style.color = '#E88A93';
-                      }
-                      resolve({ status: 'failed' });
-                      return;
-                  }
-
-                  if (attempts >= maxAttempts) {
-                      clearInterval(interval);
-                      if (msg) {
-                          msg.textContent = '⏳ Pagamento em processamento. Verifique seu saldo.';
-                          msg.style.color = '#FFC93C';
-                      }
-                      resolve({ status: 'pending' });
-                      return;
-                  }
-
-                  console.log(`⏳ Aguardando confirmação... (${attempts}/${maxAttempts})`);
-
-              } catch (error) {
-                  console.error('Erro ao verificar status:', error);
-                  if (attempts >= maxAttempts) {
-                      clearInterval(interval);
-                      resolve({ status: 'unknown' });
-                  }
-              }
-          }, 3000);
-      });
-  }
-
-  async function updateZumboPayBalance(amount) {
-      if (currentUid) {
-          try {
-              const userRef = ref(db, `users/${currentUid}`);
-              const snap = await get(userRef);
-              
-              if (snap.exists()) {
-                  const data = snap.val();
-                  const newBalance = (data.balance || 0) + amount;
-                  
-                  await update(userRef, {
-                      balance: newBalance,
-                      withdrawable: (data.withdrawable || 0) + amount,
-                      lastDeposit: {
-                          amount: amount,
-                          method: 'zumbopay',
-                          date: serverTimestamp()
-                      }
-                  });
-
-                  console.log('✅ Saldo atualizado com sucesso!');
-              }
-          } catch (error) {
-              console.error('❌ Erro ao atualizar saldo:', error);
-          }
-      }
-  }
-
-  // ============================================================
-  //  TRADUÇÃO DE ERROS
-  // ============================================================
-  function traduzErroFirebase(err){
-    const code = err?.code ?? '';
-    const map = {
-      'auth/email-already-in-use': 'Este número já está registado. Tente iniciar sessão.',
-      'auth/invalid-email': 'Número de telefone inválido.',
-      'auth/weak-password': 'A palavra-passe é demasiado fraca.',
-      'auth/user-not-found': 'Número ou palavra-passe incorretos.',
-      'auth/wrong-password': 'Número ou palavra-passe incorretos.',
-      'auth/invalid-credential': 'Número ou palavra-passe incorretos.',
-      'auth/too-many-requests': 'Demasiadas tentativas. Tente novamente mais tarde.',
-      'auth/popup-closed-by-user': 'Janela do Google fechada antes de concluir.',
-      'auth/network-request-failed': 'Falha de rede. Verifique a sua ligação.'
-    };
-    return map[code] || 'Ocorreu um erro. Tente novamente.';
-  }
+console.log('✅ TAKO BET — ZumboPay integrado com confirmação via celular!');
 </script>
 
 </body>
